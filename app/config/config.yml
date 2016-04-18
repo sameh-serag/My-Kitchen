@@ -93,3 +93,14 @@ nelmio_api_doc:
     sandbox:
         request_format:
             default_format:       json
+            
+sonata_admin:
+    title: My Kitchen
+    templates:
+        layout: AdminBundle:General:standard_layout.html.twig
+        
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        sonata.admin.block.admin_list:
+            contexts:   [admin]            

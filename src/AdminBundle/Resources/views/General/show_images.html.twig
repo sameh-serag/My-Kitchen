@@ -1,0 +1,9 @@
+{% extends 'SonataAdminBundle:CRUD:base_show_field.html.twig' %}
+
+{% block field %}
+    {% if object.getImages() | length > 0 %}
+        {% for image in object.getImages() %}
+            <img src="{{ asset(image.getSmallImageUrl(150,150)) }}" title="{{ object }}" alt="{{ object }}" />&nbsp;&nbsp;&nbsp;
+        {% endfor %}
+    {% endif %}
+{% endblock %}

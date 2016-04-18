@@ -5,3 +5,17 @@ kitchen:
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+    
+objects_admin:
+    resource: "@AdminBundle/Resources/config/routing.yml"
+    prefix:   /admin    
+
+login_check:
+    path:  /login-check
+
+logout:
+    path:  /logout
+
+login:
+    path:  /login
+    defaults: { _controller: AdminBundle:Admin:login }

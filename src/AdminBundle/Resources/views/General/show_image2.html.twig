@@ -1,0 +1,7 @@
+{% extends 'SonataAdminBundle:CRUD:base_show_field.html.twig' %}
+
+{% block field %}
+    {% if object.getWebPath2() %}
+        <img src="{{ asset(object.getWebPath2()) }}" style="width: 80%;" title="{{ object }}" alt="{{ object }}" />
+    {% endif %}
+{% endblock %}

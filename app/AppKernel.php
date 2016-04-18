@@ -20,7 +20,13 @@ class AppKernel extends Kernel
             new KitchenBundle\KitchenBundle(),
             new FOS\RestBundle\FOSRestBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
-            new Nelmio\ApiDocBundle\NelmioApiDocBundle()
+            new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new Sonata\BlockBundle\SonataBlockBundle(),
+            new Sonata\CoreBundle\SonataCoreBundle(),
+            new Sonata\AdminBundle\SonataAdminBundle(),
+            new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
+            new AdminBundle\AdminBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
