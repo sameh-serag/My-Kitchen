@@ -7,16 +7,16 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 
-
 /**
  * User
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="KitchenBundle\Entity\UserRepository")
  * @UniqueEntity(fields={"username", "email"})
+ * @ORM\HasLifecycleCallbacks
  */
-class User
-{
+class User {
+
     /**
      * @var integer
      *
@@ -41,43 +41,11 @@ class User
     private $token;
 
     /**
-     * @return string
-     */
-    public function getToken()
-    {
-        return $this->token;
-    }
-
-    /**
      * @var string
      *
      * @ORM\Column(name="tokenValidTo", type="integer", nullable=true)
      */
     private $tokenValidTo;
-
-    /**
-     * @return string
-     */
-    public function getTokenValidTo()
-    {
-        return $this->tokenValidTo;
-    }
-
-    /**
-     * @param string $tokenValidTo
-     */
-    public function setTokenValidTo($tokenValidTo)
-    {
-        $this->tokenValidTo = $tokenValidTo;
-    }
-
-    /**
-     * @param string $token
-     */
-    public function setToken($token)
-    {
-        $this->token = $token;
-    }
 
     /**
      * @var string
@@ -87,12 +55,24 @@ class User
     private $image;
 
     /**
+     * a temp variable for storing the old image name to delete the old image after the update
+     * @var string $temp
+     */
+    private $temp;
+
+    /**
+     * @Assert\Image
+     * @var \Symfony\Component\HttpFoundation\File\UploadedFile
+     */
+    private $file;
+
+    /**
      * @ORM\ManyToOne(targetEntity="KitchenBundle\Entity\City", inversedBy="users")
      * @ORM\JoinColumn(name="city_id", referencedColumnName="id", nullable=true)
      */
     private $city;
 
-     /**
+    /**
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=255)
@@ -109,7 +89,7 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(name="rate", type="string", length=255)
+     * @ORM\Column(name="rate", type="string", length=255,nullable=true)
      */
     private $rate;
 
@@ -118,55 +98,7 @@ class User
      *
      * @ORM\Column(name="in_holiday", type="boolean")
      */
-    private $inHoliday;
-
-    /**
-     * @return string
-     */
-    public function getRate()
-    {
-        return $this->rate;
-    }
-
-    /**
-     * @param string $rate
-     */
-    public function setRate($rate)
-    {
-        $this->rate = $rate;
-    }
-
-    /**
-     * @return boolean
-     */
-    public function isInHoliday()
-    {
-        return $this->inHoliday;
-    }
-
-    /**
-     * @param boolean $inHoliday
-     */
-    public function setInHoliday($inHoliday)
-    {
-        $this->inHoliday = $inHoliday;
-    }
-
-    /**
-     * @return int
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
-     * @param int $type
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-    }
+    private $inHoliday = false;
 
     /**
      * @var string
@@ -221,6 +153,13 @@ class User
     private $type;
 
     /**
+     * @var integer
+     * 0 = pendding, 1 = approved, 2 = rejected
+     * @ORM\Column(name="status", type="smallint", options={"comment":"0 = pendding, 1 = approved, 2 = rejected"})
+     */
+    private $status = 0;
+    
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="createdAt", type="datetime")
@@ -254,8 +193,253 @@ class User
      */
     private $ratings;
 
+    /**
+     * Set image
+     *
+     * @param string $image
+     * @return User
+     */
+    public function setImage($image) {
+        $this->image = $image;
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage() {
+        return $this->image;
+    }
+
+    /**
+     * Set file
+     *
+     * @param \Symfony\Component\HttpFoundation\File\UploadedFile $file
+     * @return User
+     */
+    public function setFile($file) {
+        $this->file = $file;
+        //check if we have an old image
+        if ($this->image) {
+            //store the old name to delete on the update
+            $this->temp = $this->image;
+            $this->image = NULL;
+        } else {
+            $this->image = 'initial';
+        }
+        return $this;
+    }
+
+    /**
+     * Get file
+     *
+     * @return \Symfony\Component\HttpFoundation\File\UploadedFile
+     */
+    public function getFile() {
+        return $this->file;
+    }
+
+    /**
+     * this function is used to delete the current image
+     * the deleting of the current object will also delete the image and you do not need to call this function
+     * if you call this function before you remove the object the image will not be removed
+     */
+    public function removeImage() {
+        //check if we have an old image
+        if ($this->image) {
+            //store the old name to delete on the update
+            $this->temp = $this->image;
+            //delete the current image
+            $this->image = NULL;
+        }
+    }
+
+    /**
+     * create the the directory if not found
+     * @param string $directoryPath
+     * @throws \Exception if the directory can not be created
+     */
+    private function createDirectory($directoryPath) {
+        if (!@is_dir($directoryPath)) {
+            $oldumask = umask(0);
+            $success = @mkdir($directoryPath, 0755, TRUE);
+            umask($oldumask);
+            if (!$success) {
+                throw new \Exception("Can not create the directory $directoryPath");
+            }
+        }
+    }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload() {
+        $this->password = md5($this->password);
+        
+        if (NULL !== $this->file && (NULL === $this->image || 'initial' === $this->image)) {
+            //get the image extension
+            $extension = $this->file->guessExtension();
+            //generate a random image name
+            $img = uniqid();
+            //get the image upload directory
+            $uploadDir = $this->getUploadRootDir();
+            $this->createDirectory($uploadDir);
+            //check that the file name does not exist
+            while (@file_exists("$uploadDir/$img.$extension")) {
+                //try to find a new unique name
+                $img = uniqid();
+            }
+            //set the image new name
+            $this->image = "$img.$extension";
+        }
+    }
+
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function upload() {
+        if (NULL !== $this->file) {
+            // you must throw an exception here if the file cannot be moved
+            // so that the entity is not persisted to the database
+            // which the UploadedFile move() method does
+            $this->file->move($this->getUploadRootDir(), $this->image);
+            //remove the file as you do not need it any more
+            $this->file = NULL;
+        }
+        //check if we have an old image
+        if ($this->temp) {
+            //try to delete the old image
+            @unlink($this->getUploadRootDir() . '/' . $this->temp);
+            //clear the temp image
+            $this->temp = NULL;
+        }
+    }
+
+    /**
+     * @ORM\PostRemove()
+     */
+    public function postRemove() {
+        //check if we have an image
+        if ($this->image) {
+            //try to delete the image
+            @unlink($this->getAbsolutePath());
+        }
+    }
+
+    /**
+     * @return string the path of image starting of root
+     */
+    public function getAbsolutePath() {
+        return $this->getUploadRootDir() . '/' . $this->image;
+    }
+
+    /**
+     * @return string the relative path of image starting from web directory
+     */
+    public function getWebPath() {
+        return NULL === $this->image ? NULL : $this->getUploadDir() . '/' . $this->image;
+    }
+
+    /**
+     * @return string the path of upload directory starting of root
+     */
+    public function getUploadRootDir() {
+        // the absolute directory path where uploaded documents should be saved
+        return __DIR__ . '/../../../web/' . $this->getUploadDir();
+    }
+
+    /**
+     * @param $width the desired image width
+     * @param $height the desired image height
+     * @return string the htaccess file url pattern which map to timthumb url
+     */
+    public function getSmallImageUrl($width = 50, $height = 50) {
+        return NULL === $this->image ? null : "user-image/$width/$height/$this->image";
+    }
+
+    /**
+     * @return string the document upload directory path starting from web folder
+     */
+    private function getUploadDir() {
+        return 'uploads/user-images';
+    }
+
+    /**
+     * @return string
+     */
+    public function getToken() {
+        return $this->token;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTokenValidTo() {
+        return $this->tokenValidTo;
+    }
+
+    /**
+     * @param string $tokenValidTo
+     */
+    public function setTokenValidTo($tokenValidTo) {
+        $this->tokenValidTo = $tokenValidTo;
+    }
+
+    /**
+     * @param string $token
+     */
+    public function setToken($token) {
+        $this->token = $token;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRate() {
+        return $this->rate;
+    }
+
+    /**
+     * @param string $rate
+     */
+    public function setRate($rate) {
+        $this->rate = $rate;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isInHoliday() {
+        return $this->inHoliday;
+    }
+
+    /**
+     * @param boolean $inHoliday
+     */
+    public function setInHoliday($inHoliday) {
+        $this->inHoliday = $inHoliday;
+    }
+
+    /**
+     * @return int
+     */
+    public function getType() {
+        return $this->type;
+    }
+
+    /**
+     * @param int $type
+     */
+    public function setType($type) {
+        $this->type = $type;
+    }
+
     public function __toString() {
-        return (string) $this->username;
+        return (string) $this->name;
     }
 
     public function __construct() {
@@ -266,6 +450,7 @@ class User
         $this->requests = new \Doctrine\Common\Collections\ArrayCollection();
         $this->orders = new \Doctrine\Common\Collections\ArrayCollection();
     }
+
     /**
      * @ORM\PreUpdate()
      */
@@ -278,8 +463,7 @@ class User
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -289,8 +473,7 @@ class User
      * @param string $name
      * @return User
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -301,32 +484,8 @@ class User
      *
      * @return string 
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
-    }
-
-    /**
-     * Set image
-     *
-     * @param string $image
-     * @return User
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * Get image
-     *
-     * @return string 
-     */
-    public function getImage()
-    {
-        return $this->image;
     }
 
     /**
@@ -335,8 +494,7 @@ class User
      * @param string $username
      * @return User
      */
-    public function setUsername($username)
-    {
+    public function setUsername($username) {
         $this->username = $username;
 
         return $this;
@@ -347,8 +505,7 @@ class User
      *
      * @return string 
      */
-    public function getUsername()
-    {
+    public function getUsername() {
         return $this->username;
     }
 
@@ -358,8 +515,7 @@ class User
      * @param string $password
      * @return User
      */
-    public function setPassword($password)
-    {
+    public function setPassword($password) {
         $this->password = $password;
 
         return $this;
@@ -370,8 +526,7 @@ class User
      *
      * @return string 
      */
-    public function getPassword()
-    {
+    public function getPassword() {
         return $this->password;
     }
 
@@ -381,8 +536,7 @@ class User
      * @param string $mobile
      * @return User
      */
-    public function setMobile($mobile)
-    {
+    public function setMobile($mobile) {
         $this->mobile = $mobile;
 
         return $this;
@@ -393,8 +547,7 @@ class User
      *
      * @return string 
      */
-    public function getMobile()
-    {
+    public function getMobile() {
         return $this->mobile;
     }
 
@@ -404,8 +557,7 @@ class User
      * @param string $email
      * @return User
      */
-    public function setEmail($email)
-    {
+    public function setEmail($email) {
         $this->email = $email;
 
         return $this;
@@ -416,8 +568,7 @@ class User
      *
      * @return string 
      */
-    public function getEmail()
-    {
+    public function getEmail() {
         return $this->email;
     }
 
@@ -427,8 +578,7 @@ class User
      * @param string $lat
      * @return User
      */
-    public function setLat($lat)
-    {
+    public function setLat($lat) {
         $this->lat = $lat;
 
         return $this;
@@ -439,8 +589,7 @@ class User
      *
      * @return string 
      */
-    public function getLat()
-    {
+    public function getLat() {
         return $this->lat;
     }
 
@@ -450,8 +599,7 @@ class User
      * @param string $lng
      * @return User
      */
-    public function setLng($lng)
-    {
+    public function setLng($lng) {
         $this->lng = $lng;
 
         return $this;
@@ -462,8 +610,7 @@ class User
      *
      * @return string 
      */
-    public function getLng()
-    {
+    public function getLng() {
         return $this->lng;
     }
 
@@ -473,8 +620,7 @@ class User
      * @param string $notes
      * @return User
      */
-    public function setNotes($notes)
-    {
+    public function setNotes($notes) {
         $this->notes = $notes;
 
         return $this;
@@ -485,8 +631,7 @@ class User
      *
      * @return string 
      */
-    public function getNotes()
-    {
+    public function getNotes() {
         return $this->notes;
     }
 
@@ -496,8 +641,7 @@ class User
      * @param string $deliveryNotes
      * @return User
      */
-    public function setDeliveryNotes($deliveryNotes)
-    {
+    public function setDeliveryNotes($deliveryNotes) {
         $this->deliveryNotes = $deliveryNotes;
 
         return $this;
@@ -508,8 +652,7 @@ class User
      *
      * @return string 
      */
-    public function getDeliveryNotes()
-    {
+    public function getDeliveryNotes() {
         return $this->deliveryNotes;
     }
 
@@ -519,8 +662,7 @@ class User
      * @param \KitchenBundle\Entity\City $city
      * @return User
      */
-    public function setCity($city = null)
-    {
+    public function setCity($city = null) {
         $this->city = $city;
 
         return $this;
@@ -531,11 +673,9 @@ class User
      *
      * @return \KitchenBundle\Entity\City
      */
-    public function getCity()
-    {
+    public function getCity() {
         return $this->city;
     }
-
 
     /**
      * Add plate
@@ -543,8 +683,7 @@ class User
      * @param \KitchenBundle\Entity\Plate $plate
      * @return User
      */
-    public function addPlate( $plate)
-    {
+    public function addPlate($plate) {
         $this->plates[] = $plate;
 
         return $this;
@@ -555,8 +694,7 @@ class User
      *
      * @param \KitchenBundle\Entity\Plate $plate
      */
-    public function removePlate($plate)
-    {
+    public function removePlate($plate) {
         $this->plates->removeElement($plate);
     }
 
@@ -565,11 +703,9 @@ class User
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getPlates()
-    {
+    public function getPlates() {
         return $this->plates;
     }
-
 
     /**
      * Add Order
@@ -577,8 +713,7 @@ class User
      * @param \KitchenBundle\Entity\Request $orders
      * @return User
      */
-    public function addOrder( $orders)
-    {
+    public function addOrder($orders) {
         $this->orders[] = $orders;
 
         return $this;
@@ -589,8 +724,7 @@ class User
      *
      * @param \KitchenBundle\Entity\Request $order
      */
-    public function removeOrder($order)
-    {
+    public function removeOrder($order) {
         $this->orders->removeElement($order);
     }
 
@@ -599,8 +733,7 @@ class User
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getOrders()
-    {
+    public function getOrders() {
         return $this->orders;
     }
 
@@ -610,8 +743,7 @@ class User
      * @param \KitchenBundle\Entity\Request $request
      * @return User
      */
-    public function addRequest( $request)
-    {
+    public function addRequest($request) {
         $this->requests[] = $request;
 
         return $this;
@@ -622,8 +754,7 @@ class User
      *
      * @param \KitchenBundle\Entity\Plate $request
      */
-    public function removeRequest($request)
-    {
+    public function removeRequest($request) {
         $this->requests->removeElement($request);
     }
 
@@ -632,11 +763,9 @@ class User
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getRequests()
-    {
+    public function getRequests() {
         return $this->requests;
     }
-
 
     /**
      * Add Rating
@@ -644,8 +773,7 @@ class User
      * @param \KitchenBundle\Entity\Rating $rating
      * @return User
      */
-    public function addRating( $rating)
-    {
+    public function addRating($rating) {
         $this->rating[] = $rating;
 
         return $this;
@@ -656,8 +784,7 @@ class User
      *
      * @param \KitchenBundle\Entity\Rating $rating
      */
-    public function removeRating($rating)
-    {
+    public function removeRating($rating) {
         $this->ratings->removeElement($rating);
     }
 
@@ -666,9 +793,87 @@ class User
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getRatings()
-    {
+    public function getRatings() {
         return $this->ratings;
     }
 
+
+    /**
+     * Get inHoliday
+     *
+     * @return boolean 
+     */
+    public function getInHoliday()
+    {
+        return $this->inHoliday;
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     * @return User
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer 
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     * @return User
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     * @return User
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
 }

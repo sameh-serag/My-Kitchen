@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="KitchenBundle\Entity\CountryRepository")
  */
-class Country
-{
+class Country {
+
     /**
      * @var integer
      *
@@ -28,19 +28,21 @@ class Country
      */
     private $name;
 
-
     /**
      * @ORM\OneToMany(targetEntity="KitchenBundle\Entity\City", mappedBy="country")
      */
     private $cities;
+
+    public function __toString() {
+        return (string) $this->name;
+    }
 
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -50,8 +52,7 @@ class Country
      * @param string $name
      * @return Country
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -62,16 +63,14 @@ class Country
      *
      * @return string 
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
     /**
      * Constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->cities = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -81,8 +80,7 @@ class Country
      * @param \KitchenBundle\Entity\City $city
      * @return Country
      */
-    public function addCity( $city)
-    {
+    public function addCity($city) {
         $this->cities[] = $city;
 
         return $this;
@@ -93,8 +91,7 @@ class Country
      *
      * @param \KitchenBundle\Entity\City $city
      */
-    public function removeCity($city)
-    {
+    public function removeCity($city) {
         $this->cities->removeElement($city);
     }
 
@@ -103,8 +100,7 @@ class Country
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getCities()
-    {
+    public function getCities() {
         return $this->cities;
     }
 

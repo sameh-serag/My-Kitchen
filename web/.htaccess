@@ -19,6 +19,8 @@ DirectoryIndex app.php
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
+    RewriteRule ^user-image/([0-9]+)/([0-9]+)/([0-9a-zA-Z\-_]+).([a-zA-Z]{3,4})$ timthumb.php?src=/uploads/user-images/$3.$4&w=$1&h=$2&zc=1&q=80 [NC,L]
+    RewriteRule ^plate-image/([0-9]+)/([0-9]+)/([0-9a-zA-Z\-_]+).([a-zA-Z]{3,4})$ timthumb.php?src=/uploads/plate-images/$3.$4&w=$1&h=$2&zc=1&q=80 [NC,L]
 
     # Determine the RewriteBase automatically and set it as environment variable.
     # If you are using Apache aliases to do mass virtual hosting or installed the

@@ -98,6 +98,22 @@ sonata_admin:
     title: My Kitchen
     templates:
         layout: AdminBundle:General:standard_layout.html.twig
+    dashboard:
+        blocks:
+            # display a dashboard block
+            - { position: left, type: sonata.admin.block.admin_list, settings: { groups: [Site] } }
+
+        groups:
+            Site:
+                items:
+                    - category_admin    
+                    - country_admin
+                    - city_admin
+                    - user_admin
+                    - plate_admin
+                    - rate_admin
+                    - request_admin
+                    - request_details_admin
         
 sonata_block:
     default_contexts: [cms]

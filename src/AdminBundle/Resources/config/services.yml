@@ -1,81 +1,48 @@
 services:
-#    page_admin:
-#      class: Objects\AdminBundle\Admin\PageAdmin
-#      tags:
-#         - { name: sonata.admin, manager_type: orm, label: Page }
-#      arguments: [null, Objects\AdminBundle\Entity\Page, SonataAdminBundle:CRUD]
-#    block_admin:
-#      class: Objects\AdminBundle\Admin\BlockAdmin
-#      tags:
-#         - { name: sonata.admin, manager_type: orm, label: Block }
-#      arguments: [null, Objects\AdminBundle\Entity\Block, SonataAdminBundle:CRUD]
-#    banner_admin:
-#      class: Objects\AdminBundle\Admin\BannerAdmin
-#      tags:
-#         - { name: sonata.admin, manager_type: orm, label: Banner }
-#      arguments: [null, Objects\AdminBundle\Entity\Banner, ObjectsAdminBundle:Banner] 
     category_admin:
-        class: Objects\AdminBundle\Admin\CategoryAdmin
-        arguments: [~, Objects\SiteBundle\Entity\Category, ObjectsAdminBundle:Category]
+        class: AdminBundle\Admin\CategoryAdmin
+        arguments: [~, KitchenBundle\Entity\Category, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: Category}
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Category} 
+            
+    country_admin:
+        class: AdminBundle\Admin\CountryAdmin
+        arguments: [~, KitchenBundle\Entity\Country, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Country}    
             
     city_admin:
-        class: Objects\AdminBundle\Admin\CityAdmin
-        arguments: [~, Objects\SiteBundle\Entity\City, ObjectsAdminBundle:City]
+        class: AdminBundle\Admin\CityAdmin
+        arguments: [~, KitchenBundle\Entity\City, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: City}
-            
-    type_admin:
-        class: Objects\AdminBundle\Admin\TypeAdmin
-        arguments: [~, Objects\SiteBundle\Entity\Type, ObjectsAdminBundle:Type]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: Type}
-            
-    brand_admin:
-        class: Objects\AdminBundle\Admin\BrandAdmin
-        arguments: [~, Objects\SiteBundle\Entity\Brand, ObjectsAdminBundle:Brand]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: Brand}
-            
-    branch_admin:
-        class: Objects\AdminBundle\Admin\BranchAdmin
-        arguments: [~, Objects\SiteBundle\Entity\Branch, ObjectsAdminBundle:Branch]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: Branch}
-            
-    offer_admin:
-        class: Objects\AdminBundle\Admin\OfferAdmin
-        arguments: [~, Objects\SiteBundle\Entity\Offer, ObjectsAdminBundle:Offer]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: Offer}
-            
-    contact_admin:
-        class: Objects\AdminBundle\Admin\ContactAdmin
-        arguments: [~, Objects\SiteBundle\Entity\Contact, ObjectsAdminBundle:Contact]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: Contact}
+            - {name: sonata.admin, manager_type: orm, group: admin, label: City}        
             
     user_admin:
-        class: Objects\AdminBundle\Admin\UserAdmin
-        arguments: [~, Objects\UserBundle\Entity\User, ObjectsAdminBundle:User]
+        class: AdminBundle\Admin\UserAdmin
+        arguments: [~, KitchenBundle\Entity\User, AdminBundle:User]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: User}
+            - {name: sonata.admin, manager_type: orm, group: admin, label: User} 
             
-    notification_admin:
-        class: Objects\AdminBundle\Admin\NotificationAdmin
-        arguments: [~, Objects\SiteBundle\Entity\Notification, SonataAdminBundle:CRUD]
+    plate_admin:
+        class: AdminBundle\Admin\PlateAdmin
+        arguments: [~, KitchenBundle\Entity\Plate, AdminBundle:Plate]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: Notification} 
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Plate}        
             
-    zone_admin:
-        class: Objects\AdminBundle\Admin\ZoneAdmin
-        arguments: [~, Objects\SiteBundle\Entity\Zone, SonataAdminBundle:CRUD]
+    rate_admin:
+        class: AdminBundle\Admin\RateAdmin
+        arguments: [~, KitchenBundle\Entity\Rating, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: Zone} 
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Rate} 
             
-    options_admin:
-        class: Objects\AdminBundle\Admin\OptionsAdmin
-        arguments: [~, Objects\SiteBundle\Entity\Options, SonataAdminBundle:CRUD]
+    request_admin:
+        class: AdminBundle\Admin\RequestAdmin
+        arguments: [~, KitchenBundle\Entity\Request, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: Options}
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Request}
+            
+    request_details_admin:
+        class: AdminBundle\Admin\RequestDetailsAdmin
+        arguments: [~, KitchenBundle\Entity\RequestDetails, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Request Details}          

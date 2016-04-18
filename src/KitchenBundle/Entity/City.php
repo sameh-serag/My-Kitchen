@@ -31,7 +31,7 @@ class City
 
     /**
      * @ORM\ManyToOne(targetEntity="KitchenBundle\Entity\Country", inversedBy="cities")
-     * @ORM\JoinColumn(name="country_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="country_id", referencedColumnName="id",nullable=false)
      */
     private $country;
 
@@ -39,6 +39,10 @@ class City
      * @ORM\OneToMany(targetEntity="KitchenBundle\Entity\User", mappedBy="city")
      */
     private $chefs;
+
+    public function __toString() {
+        return (string) $this->name;
+    }
 
     /**
      * Get id
@@ -78,7 +82,7 @@ class City
      * @param \KitchenBundle\Entity\Country $country
      * @return City
      */
-    public function setState($country = null)
+    public function setCountry($country = null)
     {
         $this->country = $country;
 

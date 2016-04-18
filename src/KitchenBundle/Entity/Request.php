@@ -103,6 +103,10 @@ class Request
      */
     private $updatedAt;
 
+    public function __toString() {
+        return (string) $this->id;
+    }
+
     /**
      * Get id
      *
@@ -378,5 +382,74 @@ class Request
     public function getRequestDetails()
     {
         return $this->requestdetails;
+    }
+
+    /**
+     * Set total_price
+     *
+     * @param string $totalPrice
+     * @return Request
+     */
+    public function setTotalPrice($totalPrice)
+    {
+        $this->total_price = $totalPrice;
+
+        return $this;
+    }
+
+    /**
+     * Get total_price
+     *
+     * @return string 
+     */
+    public function getTotalPrice()
+    {
+        return $this->total_price;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     * @return Request
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     * @return Request
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
     }
 }
