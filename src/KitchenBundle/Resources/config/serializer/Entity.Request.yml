@@ -1,0 +1,30 @@
+KitchenBundle\Entity\Request:
+    exclusion_policy: ALL
+    properties : 
+        id:
+            expose:  true
+            groups: [myOrders, myRequests]
+        total_price :
+            expose : true
+            groups: [myOrders]
+        status :
+            expose : true
+            groups: [myOrders]
+        chef :
+            expose : true
+            groups: [myOrders]
+        deliveryTime :
+            expose : true
+            groups: [myRequests]
+        deliveryDate :
+            expose : true
+            groups: [myRequests]
+        userLat :
+            expose : true
+            groups: [myRequests]
+        userLng :
+            expose : true
+            groups: [myRequests]
+        requestdetails :
+              expose : true
+              groups: [myRequests]

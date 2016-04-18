@@ -1,0 +1,12 @@
+KitchenBundle\Entity\City:
+    exclusion_policy: ALL
+    properties : 
+        id:
+            expose:  true
+            groups: [cities, chef]
+        name :
+            expose : true
+            groups: [cities, chef]
+        country :
+            expose : true
+            groups: [chef]

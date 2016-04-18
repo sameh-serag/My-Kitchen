@@ -1,0 +1,9 @@
+KitchenBundle\Utils\APIResponse:
+    properties : 
+        status:
+            groups: ["apiResponse"]
+        data:
+            groups: ["apiResponse"]
+        error:
+            groups: ["apiResponse"]
+            

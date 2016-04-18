@@ -1,0 +1,9 @@
+KitchenBundle\Entity\Country:
+    exclusion_policy: ALL
+    properties : 
+        id:
+            expose:  true
+            groups: [country, chef]
+        name :
+            expose : true
+            groups: [country, chef]

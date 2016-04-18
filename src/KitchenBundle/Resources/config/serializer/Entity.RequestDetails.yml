@@ -1,0 +1,9 @@
+KitchenBundle\Entity\RequestDetails:
+    exclusion_policy: ALL
+    properties : 
+        quantity :
+            expose : true
+            groups: [myRequests]
+        plate :
+            expose : true
+            groups: [myRequests]

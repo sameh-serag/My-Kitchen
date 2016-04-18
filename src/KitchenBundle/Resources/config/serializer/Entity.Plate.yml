@@ -1,0 +1,21 @@
+KitchenBundle\Entity\Plate:
+    exclusion_policy: ALL
+    properties : 
+        id:
+            expose:  true
+            groups: [chefplates, plate]
+        name :
+            expose : true
+            groups: [chefplates, plate, myRequests]
+        isHot :
+            expose : true
+            groups: [chefplates, plate]
+        price :
+            expose : true
+            groups: [chefplates, plate]
+        image :
+            expose : true
+            groups: [chefplates, plate]
+        description :
+            expose : true
+            groups: [chefplates, plate]

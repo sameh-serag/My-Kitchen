@@ -1,0 +1,9 @@
+KitchenBundle\Entity\Category:
+    exclusion_policy: ALL
+    properties : 
+        id:
+            expose:  true
+            groups: [categories]
+        name :
+            expose : true
+            groups: [categories]

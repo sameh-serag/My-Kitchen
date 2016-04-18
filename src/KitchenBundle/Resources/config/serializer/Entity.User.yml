@@ -1,0 +1,30 @@
+KitchenBundle\Entity\User:
+    exclusion_policy: ALL
+    properties : 
+        id :
+            expose:  true
+            groups: [chefs, chefplates, chef]
+        name :
+            expose : true
+            groups: [chefs, chefplates, chef, myOrders]
+        image :
+            expose : true
+            groups: [chefs, chefplates, chef]
+        rate :
+            expose : true
+            groups: [chefs, chef]
+        notes :
+            expose : true
+            groups: [chefplates, chef]
+        deliveryNotes :
+            expose : true
+            groups: [chefplates, chef]
+        inHoliday :
+            expose : true
+            groups: [chefplates, chef]
+        plates :
+            expose : true
+            groups: [chefplates]
+        city :
+            expose : true
+            groups: [chef]

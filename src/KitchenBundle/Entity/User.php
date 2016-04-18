@@ -216,7 +216,7 @@ class User
     /**
      * @var integer
      * 0 = chef, 1 = user
-     * @ORM\Column(name="type", type="smallint")
+     * @ORM\Column(name="type", type="smallint", options={"comment":"0 = chef, 1 = user"})
      */
     private $type;
 
@@ -240,6 +240,16 @@ class User
     private $plates;
 
     /**
+     * @ORM\OneToMany(targetEntity="KitchenBundle\Entity\Request", mappedBy="chef")
+     */
+    private $requests;
+
+    /**
+     * @ORM\OneToMany(targetEntity="KitchenBundle\Entity\Request", mappedBy="user")
+     */
+    private $orders;
+
+    /**
      * @ORM\OneToMany(targetEntity="KitchenBundle\Entity\Rating", mappedBy="chef")
      */
     private $ratings;
@@ -253,6 +263,8 @@ class User
         $this->updatedAt = new \DateTime();
         $this->plates = new \Doctrine\Common\Collections\ArrayCollection();
         $this->ratings = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->requests = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->orders = new \Doctrine\Common\Collections\ArrayCollection();
     }
     /**
      * @ORM\PreUpdate()
@@ -556,6 +568,73 @@ class User
     public function getPlates()
     {
         return $this->plates;
+    }
+
+
+    /**
+     * Add Order
+     *
+     * @param \KitchenBundle\Entity\Request $orders
+     * @return User
+     */
+    public function addOrder( $orders)
+    {
+        $this->orders[] = $orders;
+
+        return $this;
+    }
+
+    /**
+     * Remove Order
+     *
+     * @param \KitchenBundle\Entity\Request $order
+     */
+    public function removeOrder($order)
+    {
+        $this->orders->removeElement($order);
+    }
+
+    /**
+     * Get Orders
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getOrders()
+    {
+        return $this->orders;
+    }
+
+    /**
+     * Add Request
+     *
+     * @param \KitchenBundle\Entity\Request $request
+     * @return User
+     */
+    public function addRequest( $request)
+    {
+        $this->requests[] = $request;
+
+        return $this;
+    }
+
+    /**
+     * Remove Request
+     *
+     * @param \KitchenBundle\Entity\Plate $request
+     */
+    public function removeRequest($request)
+    {
+        $this->requests->removeElement($request);
+    }
+
+    /**
+     * Get Requests
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRequests()
+    {
+        return $this->requests;
     }
 
 

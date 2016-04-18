@@ -1,0 +1,4 @@
+api:
+    type: rest
+    resource: "KitchenBundle\Controller\APIController"
+    name_prefix:  api_1_ 
