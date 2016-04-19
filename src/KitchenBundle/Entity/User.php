@@ -80,6 +80,11 @@ class User {
     private $password;
 
     /**
+     * @var string $userPassword
+     */
+    private $userPassword;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="mobile", type="string", length=255)
@@ -158,7 +163,7 @@ class User {
      * @ORM\Column(name="status", type="smallint", options={"comment":"0 = pendding, 1 = approved, 2 = rejected"})
      */
     private $status = 0;
-    
+
     /**
      * @var \DateTime
      *
@@ -192,6 +197,27 @@ class User {
      * @ORM\OneToMany(targetEntity="KitchenBundle\Entity\Rating", mappedBy="chef")
      */
     private $ratings;
+
+    /**
+     * Set userPassword
+     *
+     * @param string $userPassword
+     * @return User
+     */
+    public function setUserPassword($userPassword) {
+        $this->userPassword = $userPassword;
+
+        return $this;
+    }
+
+    /**
+     * Get userPassword
+     *
+     * @return string
+     */
+    public function getUserPassword() {
+        return $this->userPassword;
+    }
 
     /**
      * Set image
@@ -277,8 +303,11 @@ class User {
      * @ORM\PreUpdate()
      */
     public function preUpload() {
-        $this->password = md5($this->password);
-        
+        if ($this->getUserPassword()) {
+            //hash the password
+            $this->setPassword(md5($this->getUserPassword()));
+        }
+
         if (NULL !== $this->file && (NULL === $this->image || 'initial' === $this->image)) {
             //get the image extension
             $extension = $this->file->guessExtension();
@@ -797,14 +826,12 @@ class User {
         return $this->ratings;
     }
 
-
     /**
      * Get inHoliday
      *
      * @return boolean 
      */
-    public function getInHoliday()
-    {
+    public function getInHoliday() {
         return $this->inHoliday;
     }
 
@@ -814,8 +841,7 @@ class User {
      * @param integer $status
      * @return User
      */
-    public function setStatus($status)
-    {
+    public function setStatus($status) {
         $this->status = $status;
 
         return $this;
@@ -826,8 +852,7 @@ class User {
      *
      * @return integer 
      */
-    public function getStatus()
-    {
+    public function getStatus() {
         return $this->status;
     }
 
@@ -837,8 +862,7 @@ class User {
      * @param \DateTime $createdAt
      * @return User
      */
-    public function setCreatedAt($createdAt)
-    {
+    public function setCreatedAt($createdAt) {
         $this->createdAt = $createdAt;
 
         return $this;
@@ -849,8 +873,7 @@ class User {
      *
      * @return \DateTime 
      */
-    public function getCreatedAt()
-    {
+    public function getCreatedAt() {
         return $this->createdAt;
     }
 
@@ -860,8 +883,7 @@ class User {
      * @param \DateTime $updatedAt
      * @return User
      */
-    public function setUpdatedAt($updatedAt)
-    {
+    public function setUpdatedAt($updatedAt) {
         $this->updatedAt = $updatedAt;
 
         return $this;
@@ -872,8 +894,8 @@ class User {
      *
      * @return \DateTime 
      */
-    public function getUpdatedAt()
-    {
+    public function getUpdatedAt() {
         return $this->updatedAt;
     }
+
 }

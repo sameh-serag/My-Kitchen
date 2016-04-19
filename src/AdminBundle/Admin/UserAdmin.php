@@ -81,7 +81,7 @@ class UserAdmin extends Admin {
         $formMapper
                 ->add('name')
                 ->add('username')
-                ->add('password')
+                ->add('userPassword', 'password', array('label' => 'Password', 'required' => false))
                 ->add('city')
                 ->add('mobile')
                 ->add('rate')

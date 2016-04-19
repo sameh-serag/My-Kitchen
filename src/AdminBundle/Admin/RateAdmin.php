@@ -8,6 +8,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Admin\Admin;
+use Doctrine\ORM\EntityRepository;
 
 class RateAdmin extends Admin {
 
@@ -71,7 +72,7 @@ class RateAdmin extends Admin {
         ;
     }
 
-    public function configureFormFields(FormMapper $formMapper) {        
+    public function configureFormFields(FormMapper $formMapper) {
         $formMapper
                 ->add('time')
                 ->add('hot')
@@ -79,8 +80,23 @@ class RateAdmin extends Admin {
                 ->add('taste')
                 ->add('value')
                 ->add('comment')
-                ->add('chef')
-                ->add('user')
+                ->add('chef', 'entity', array(
+                    'required' => false,
+                    'class' => 'KitchenBundle:User',
+                    'query_builder' => function(EntityRepository $er) {
+                        $qb = $er->createQueryBuilder('u');
+                        return $qb->where($qb->expr()->eq('u.type', '0'));
+                    }
+                ))
+                ->add('user', 'entity', array(
+                    'required' => false,
+                    'class' => 'KitchenBundle:User',
+                    'query_builder' => function(EntityRepository $er) {
+                        $qb = $er->createQueryBuilder('u');
+                        return $qb->where($qb->expr()->eq('u.type', '1'));
+                    }
+                ))
         ;
     }
+
 }
