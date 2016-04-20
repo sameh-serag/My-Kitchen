@@ -8,6 +8,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Admin\Admin;
+use Doctrine\ORM\EntityRepository;
 
 class PlateAdmin extends Admin {
 
@@ -73,8 +74,15 @@ class PlateAdmin extends Admin {
                 ->add('price')
                 ->add('isHot', null, array('required' => false))
                 ->add('description')
-                ->add('file', 'file', array('required' => false, 'label' => 'Image'))
-                ->add('chef')
+                ->add('file', 'file', array('required' => true, 'label' => 'Image'))
+                ->add('chef', 'entity', array(
+                    'required' => false,
+                    'class' => 'KitchenBundle:User',
+                    'query_builder' => function(EntityRepository $er) {
+                        $qb = $er->createQueryBuilder('u');
+                        return $qb->where($qb->expr()->eq('u.type', '0'));
+                    }
+                ))
                 ->add('category')
         ;
     }
