@@ -97,4 +97,20 @@ class UserAdmin extends Admin {
         ;
     }
 
+    public function prePersist($object) {
+        parent::prePersist($object);
+        $this->updateUser($object);
+    }
+
+    public function preUpdate($object) {
+        parent::preUpdate($object);
+        $this->updateUser($object);
+    }
+
+    public function updateUser(\KitchenBundle\Entity\User $u) {
+        if ($u->getUserPassword()) {
+            $u->setPassword(md5($u->getUserPassword()));
+        }
+    }
+
 }
