@@ -100,6 +100,9 @@ class UserAdmin extends Admin {
                 ->add('deliveryNotes')                
                 ->add('status', 'choice', array('choices' => array('0' => 'Pendding', '1' => 'Approved', '2' => 'Rejected')))
                 ->add('file', 'file', array('required' => false, 'label' => 'Image'))
+                ->setHelps(array(
+                    'userPassword' => 'Password required in new user create.'
+                ))
         ;
     }
 
