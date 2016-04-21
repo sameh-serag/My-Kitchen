@@ -58,8 +58,7 @@ class ChefAdmin extends Admin {
                 ->add('lng')
                 ->add('notes')
                 ->add('deliveryNotes')
-                ->add('type')
-                ->add('status')
+                ->add('status', null, array('template' => 'AdminBundle:General:show_status.html.twig'))
                 ->add('image', null, array('template' => 'AdminBundle:General:show_image.html.twig'))
         ;
     }

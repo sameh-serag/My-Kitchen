@@ -32,7 +32,7 @@ class PlateAdmin extends Admin {
                 ->add('isHot')
                 ->add('description')
                 ->add('image', null, array('template' => 'AdminBundle:General:list_image.html.twig'))
-                ->add('chef')
+                ->add('chef', null, array('admin_code' => 'chef_admin'))
                 ->add('category')
                 ->add('_action', 'actions', array(
                     'actions' => array(
@@ -52,7 +52,7 @@ class PlateAdmin extends Admin {
                 ->add('isHot')
                 ->add('description')
                 ->add('image', null, array('template' => 'AdminBundle:General:show_image.html.twig'))
-                ->add('chef')
+                ->add('chef', null, array('admin_code' => 'chef_admin'))
                 ->add('category')
         ;
     }
@@ -82,7 +82,7 @@ class PlateAdmin extends Admin {
                         $qb = $er->createQueryBuilder('u');
                         return $qb->where($qb->expr()->eq('u.type', '0'));
                     }
-                ))
+                ), array('admin_code' => 'chef_admin'))
                 ->add('category')
         ;
     }

@@ -57,9 +57,8 @@ class UserAdmin extends Admin {
                 ->add('lat')
                 ->add('lng')
                 ->add('notes')
-                ->add('deliveryNotes')
-                ->add('type')
-                ->add('status')
+                ->add('deliveryNotes')                
+                ->add('status', null, array('template' => 'AdminBundle:General:show_status.html.twig'))
                 ->add('image', null, array('template' => 'AdminBundle:General:show_image.html.twig'))
         ;
     }

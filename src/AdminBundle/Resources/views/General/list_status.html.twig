@@ -1,0 +1,11 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field %}
+    {% if object.getStatus() == '0' %}
+        Pendding
+    {% elseif object.getStatus() == '1' %}
+        Approved
+    {% elseif object.getStatus() == '2' %}
+        Rejected
+    {% endif %}
+{% endblock %}

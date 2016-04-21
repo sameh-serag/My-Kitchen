@@ -32,8 +32,8 @@ class RateAdmin extends Admin {
                 ->add('clean')
                 ->add('taste')
                 ->add('value')
-                ->add('chef')
-                ->add('user')
+                ->add('chef', null, array('admin_code' => 'chef_admin'))
+                ->add('user', null, array('admin_code' => 'user_admin'))
                 ->add('_action', 'actions', array(
                     'actions' => array(
                         'show' => array(),
@@ -53,8 +53,8 @@ class RateAdmin extends Admin {
                 ->add('taste')
                 ->add('value')
                 ->add('comment')
-                ->add('chef')
-                ->add('user')
+                ->add('chef', null, array('admin_code' => 'chef_admin'))
+                ->add('user', null, array('admin_code' => 'user_admin'))
         ;
     }
 
@@ -87,7 +87,7 @@ class RateAdmin extends Admin {
                         $qb = $er->createQueryBuilder('u');
                         return $qb->where($qb->expr()->eq('u.type', '0'));
                     }
-                ))
+                ),array('admin_code' => 'chef_admin'))
                 ->add('user', 'entity', array(
                     'required' => false,
                     'class' => 'KitchenBundle:User',
@@ -95,7 +95,7 @@ class RateAdmin extends Admin {
                         $qb = $er->createQueryBuilder('u');
                         return $qb->where($qb->expr()->eq('u.type', '1'));
                     }
-                ))
+                ),array('admin_code' => 'user_admin'))
         ;
     }
 

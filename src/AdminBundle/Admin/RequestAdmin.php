@@ -26,7 +26,7 @@ class RequestAdmin extends Admin {
     public function configureListFields(ListMapper $listMapper) {
         $listMapper
                 ->addIdentifier('id')
-                ->add('status')
+                ->add('status', null, array('template' => 'AdminBundle:General:list_status.html.twig'))
                 ->add('cancelTime')
                 ->add('deliveryDate')
                 ->add('deliveryTime')
@@ -46,7 +46,7 @@ class RequestAdmin extends Admin {
     public function configureShowFields(ShowMapper $showMapper) {
         $showMapper
                 ->add('id')
-                ->add('status')
+                ->add('status', null, array('template' => 'AdminBundle:General:show_status.html.twig'))
                 ->add('cancelTime')
                 ->add('deliveryDate')
                 ->add('deliveryTime')
