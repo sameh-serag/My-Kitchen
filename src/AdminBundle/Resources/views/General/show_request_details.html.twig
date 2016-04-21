@@ -1,0 +1,15 @@
+{% extends 'SonataAdminBundle:CRUD:base_show_field.html.twig' %}
+
+{% block field %}
+    {% if object.getRequestDetails() %}
+        <table style="width: 70%;">
+            <tr><th>Quantity</th><th>Plate</th></tr>
+            {% for detail in object.getRequestDetails() %}
+                <tr>
+                    <td>{{ detail.quantity }}</td>
+                    <td><a href="{{ path('plate_admin_show',{'id' : detail.id}) }}">{{ detail.plate }}</a></td>
+                </tr>
+            {% endfor %}    
+        </table>
+    {% endif %}
+{% endblock %}

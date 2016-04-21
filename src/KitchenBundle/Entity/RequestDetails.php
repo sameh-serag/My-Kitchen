@@ -40,6 +40,9 @@ class RequestDetails
      */
     private $plate;
 
+    public function __toString() {
+        return (string) $this->id;
+    }
 
     /**
      * Get id

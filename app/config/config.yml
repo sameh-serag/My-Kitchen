@@ -113,7 +113,7 @@ sonata_admin:
                     - plate_admin
                     - rate_admin
                     - request_admin
-                    - request_details_admin
+#                    - request_details_admin
         
 sonata_block:
     default_contexts: [cms]

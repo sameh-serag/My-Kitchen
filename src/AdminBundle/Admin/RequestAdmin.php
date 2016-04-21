@@ -55,6 +55,7 @@ class RequestAdmin extends Admin {
                 ->add('totalPrice')
                 ->add('userMobile')
                 ->add('notes')
+                ->add('requestdetails', null, array('template' => 'AdminBundle:General:show_request_details.html.twig'))
         ;
     }
 
@@ -65,7 +66,7 @@ class RequestAdmin extends Admin {
         ;
     }
 
-    public function configureFormFields(FormMapper $formMapper) {        
+    public function configureFormFields(FormMapper $formMapper) {
         $formMapper
                 ->add('status', 'choice', array('choices' => array('0' => 'Pendding', '1' => 'Approved', '2' => 'Rejected')))
                 ->add('cancelTime', null, array('attr' => array('data-class' => 'datetime'), 'widget' => 'single_text', 'format' => 'yyyy-MM-dd H:mm'))
@@ -74,8 +75,33 @@ class RequestAdmin extends Admin {
                 ->add('userLat', null, array('attr' => array('class' => 'LatField')))
                 ->add('userLng', null, array('attr' => array('class' => 'LngField')))
                 ->add('totalPrice')
+                ->add('deliveryPrice')
                 ->add('userMobile')
                 ->add('notes')
+                ->add('requestdetails', 'sonata_type_collection', array(
+                    'by_reference' => false,
+                    'cascade_validation' => true,
+                        ), array(
+                    'edit' => 'inline',
+                    'inline' => 'table'
+                ))
         ;
     }
+
+    public function prePersist($object) {
+
+        foreach ($object->getRequestDetails() as $detail) {
+
+            $detail->setRequest($object);
+        }
+    }
+
+    public function preUpdate($object) {
+
+        foreach ($object->getRequestDetails() as $detail) {
+
+            $detail->setRequest($object);
+        }
+    }
+
 }

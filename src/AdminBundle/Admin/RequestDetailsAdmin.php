@@ -60,7 +60,7 @@ class RequestDetailsAdmin extends Admin {
     public function configureFormFields(FormMapper $formMapper) {        
         $formMapper
                 ->add('quantity')
-                ->add('request')
+//                ->add('request')
                 ->add('plate')
         ;
     }

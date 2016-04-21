@@ -92,7 +92,7 @@ class Request
     private $notes;
 
     /**
-     * @ORM\OneToMany(targetEntity="KitchenBundle\Entity\RequestDetails", mappedBy="request")
+     * @ORM\OneToMany(targetEntity="KitchenBundle\Entity\RequestDetails", mappedBy="request", cascade={"persist", "remove"}, orphanRemoval=true)
      */
     private $requestdetails;
 
