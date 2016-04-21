@@ -32,4 +32,28 @@ class AdminController extends Controller {
         ));
     }
 
+    public function getCountryCitiesAction(Request $request) {
+        $id = $request->get('countryid');
+        $em = $this->getDoctrine()->getManager();
+        $country = $em->getRepository('KitchenBundle:Country')->find($id);
+        if ($country) {
+            $cities = $em->getRepository('KitchenBundle:City')->findBy(array('country' => $country));
+            if($cities) {
+                $citiesArr = array();
+                foreach ($cities as $city) {
+                    $cities = array();
+
+                    $cities['id'] = $city->getId();
+                    $cities['name'] = $city->getName();
+                    $citiesArr[] = $cities;
+                }
+
+                return new JsonResponse($citiesArr);
+            } else {
+                return new JsonResponse('failed');
+            }
+        } else {
+            return new JsonResponse('failed');
+        }
+    }
 }

@@ -12,8 +12,11 @@
     <script src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"type="text/javascript"></script>
     <script src="{{ asset('bundles/admin/js/addMap.js') }}" type="text/javascript"></script>
     <script src="{{ asset('bundles/admin/js/Zone&&City.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('bundles/admin/js/Brand&&Branch.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/admin/js/countries-cities.js') }}" type="text/javascript"></script>
     
+    <script>        
+        var getCitiesPath = "{{path('get_country_cities')}}";
+    </script>
 {% endblock %}    
 
 {% block sonata_top_nav_menu %}

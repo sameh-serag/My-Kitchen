@@ -23,6 +23,12 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: User} 
             
+    chef_admin:
+        class: AdminBundle\Admin\ChefAdmin
+        arguments: [~, KitchenBundle\Entity\User, AdminBundle:Chef]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Chef} 
+            
     plate_admin:
         class: AdminBundle\Admin\PlateAdmin
         arguments: [~, KitchenBundle\Entity\Plate, AdminBundle:Plate]

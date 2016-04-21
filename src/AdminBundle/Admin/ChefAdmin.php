@@ -9,19 +9,19 @@ use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Admin\Admin;
 
-class UserAdmin extends Admin {
+class ChefAdmin extends Admin {
 
     /**
      * this variable holds the route name prefix for this actions
      * @var string
      */
-    protected $baseRouteName = 'user_admin';
+    protected $baseRouteName = 'chef_admin';
 
     /**
      * this variable holds the url route prefix for this actions
      * @var string
      */
-    protected $baseRoutePattern = 'user';
+    protected $baseRoutePattern = 'chef';
 
     public function configureListFields(ListMapper $listMapper) {
         $listMapper
@@ -83,7 +83,7 @@ class UserAdmin extends Admin {
         if ($this->getSubject() && $this->getSubject()->getId()) {
             $class = 'edit';
         }
-        
+
         $formMapper
                 ->add('name')
                 ->add('username')
@@ -97,7 +97,7 @@ class UserAdmin extends Admin {
                 ->add('lat', null, array('attr' => array('class' => 'LatField')))
                 ->add('lng', null, array('attr' => array('class' => 'LngField')))
                 ->add('notes')
-                ->add('deliveryNotes')                
+                ->add('deliveryNotes')
                 ->add('status', 'choice', array('choices' => array('0' => 'Pendding', '1' => 'Approved', '2' => 'Rejected')))
                 ->add('file', 'file', array('required' => false, 'label' => 'Image'))
         ;
@@ -117,15 +117,16 @@ class UserAdmin extends Admin {
         if ($u->getUserPassword()) {
             $u->setPassword(md5($u->getUserPassword()));
         }
-        $u->setType('1');
+        $u->setType('0');
     }
 
     public function createQuery($context = 'list') {
         $query = parent::createQuery($context);
         $query->andWhere(
-                $query->expr()->eq($query->getRootAliases()[0] . '.type', ':usertype')
+                $query->expr()->eq($query->getRootAliases()[0] . '.type', ':cheftype')
         );
-        $query->setParameter('usertype', '1');
+        $query->setParameter('cheftype', '0');
         return $query;
     }
+
 }

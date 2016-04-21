@@ -110,6 +110,7 @@ sonata_admin:
                     - country_admin
                     - city_admin
                     - user_admin
+                    - chef_admin
                     - plate_admin
                     - rate_admin
                     - request_admin

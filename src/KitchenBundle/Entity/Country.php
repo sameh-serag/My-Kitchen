@@ -29,6 +29,11 @@ class Country {
     private $name;
 
     /**
+     * @ORM\OneToMany(targetEntity="KitchenBundle\Entity\User", mappedBy="country")
+     */
+    private $chefs;
+    
+    /**
      * @ORM\OneToMany(targetEntity="KitchenBundle\Entity\City", mappedBy="country")
      */
     private $cities;
@@ -104,4 +109,37 @@ class Country {
         return $this->cities;
     }
 
+
+    /**
+     * Add chefs
+     *
+     * @param \KitchenBundle\Entity\User $chefs
+     * @return Country
+     */
+    public function addChef(\KitchenBundle\Entity\User $chefs)
+    {
+        $this->chefs[] = $chefs;
+
+        return $this;
+    }
+
+    /**
+     * Remove chefs
+     *
+     * @param \KitchenBundle\Entity\User $chefs
+     */
+    public function removeChef(\KitchenBundle\Entity\User $chefs)
+    {
+        $this->chefs->removeElement($chefs);
+    }
+
+    /**
+     * Get chefs
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getChefs()
+    {
+        return $this->chefs;
+    }
 }

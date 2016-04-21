@@ -67,11 +67,17 @@ class User {
     private $file;
 
     /**
-     * @ORM\ManyToOne(targetEntity="KitchenBundle\Entity\City", inversedBy="users")
+     * @ORM\ManyToOne(targetEntity="KitchenBundle\Entity\City", inversedBy="chefs")
      * @ORM\JoinColumn(name="city_id", referencedColumnName="id", nullable=true)
      */
     private $city;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="KitchenBundle\Entity\Country", inversedBy="chefs")
+     * @ORM\JoinColumn(name="country_id", referencedColumnName="id", nullable=true)
+     */
+    private $country;
+    
     /**
      * @var string
      *
@@ -898,4 +904,27 @@ class User {
         return $this->updatedAt;
     }
 
+
+    /**
+     * Set country
+     *
+     * @param \KitchenBundle\Entity\Country $country
+     * @return User
+     */
+    public function setCountry(\KitchenBundle\Entity\Country $country = null)
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * Get country
+     *
+     * @return \KitchenBundle\Entity\Country 
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
 }
