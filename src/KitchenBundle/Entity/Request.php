@@ -24,14 +24,14 @@ class Request
     /**
      * @var string
      *
-     * @ORM\Column(name="status", type="string", length=255, options={"comment"="0:pendding | 1:approved | 2:rejected"})
+     * @ORM\Column(name="status", type="smallint", length=255, options={"comment"="0:pendding | 1:approved | 2:rejected"})
      */
     private $status;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="cancel_time", type="datetime")
+     * @ORM\Column(name="cancel_time", type="datetime", nullable=true)
      */
     private $cancelTime;
 
@@ -48,6 +48,13 @@ class Request
      * @ORM\Column(name="delivery_time", type="time")
      */
     private $deliveryTime;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="delivery_price", type="decimal")
+     */
+    private $deliveryPrice;
 
     /**
      * @var string
@@ -68,19 +75,19 @@ class Request
      *
      * @ORM\Column(name="total_price", type="decimal")
      */
-    private $total_price;
+    private $totalPrice;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="user_mobile", type="string", length=255)
+     * @ORM\Column(name="user_mobile", type="string", length=255, nullable=true)
      */
     private $userMobile;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="notes", type="text")
+     * @ORM\Column(name="notes", type="text", nullable=true)
      */
     private $notes;
 
@@ -202,6 +209,28 @@ class Request
     public function getDeliveryDate()
     {
         return $this->deliveryDate;
+    }
+
+    /**
+     * Set deliveryPrice
+     *
+     * @param \DateTime $deliveryPrice
+     * @return Request
+     */
+    public function setDeliveryPrice($deliveryPrice)
+    {
+        $this->deliveryPrice = $deliveryPrice;
+
+        return $this;
+    }
+
+    /**
+     * Get deliveryPrice
+     *
+     */
+    public function getDeliveryPrice()
+    {
+        return $this->deliveryPrice;
     }
 
     /**
@@ -392,7 +421,7 @@ class Request
      */
     public function setTotalPrice($totalPrice)
     {
-        $this->total_price = $totalPrice;
+        $this->totalPrice = $totalPrice;
 
         return $this;
     }
@@ -404,7 +433,7 @@ class Request
      */
     public function getTotalPrice()
     {
-        return $this->total_price;
+        return $this->totalPrice;
     }
 
     /**

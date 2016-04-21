@@ -32,7 +32,7 @@ class RequestAdmin extends Admin {
                 ->add('deliveryTime')
                 ->add('userLat')
                 ->add('userLng')
-                ->add('total_price')
+                ->add('totalPrice')
                 ->add('_action', 'actions', array(
                     'actions' => array(
                         'show' => array(),
@@ -52,7 +52,7 @@ class RequestAdmin extends Admin {
                 ->add('deliveryTime')
                 ->add('userLat')
                 ->add('userLng')
-                ->add('total_price')
+                ->add('totalPrice')
                 ->add('userMobile')
                 ->add('notes')
         ;
@@ -73,7 +73,7 @@ class RequestAdmin extends Admin {
                 ->add('deliveryTime')
                 ->add('userLat', null, array('attr' => array('class' => 'LatField')))
                 ->add('userLng', null, array('attr' => array('class' => 'LngField')))
-                ->add('total_price')
+                ->add('totalPrice')
                 ->add('userMobile')
                 ->add('notes')
         ;

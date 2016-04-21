@@ -1,6 +1,6 @@
 KitchenBundle\Entity\RequestDetails:
     exclusion_policy: ALL
-    properties : 
+    properties :
         quantity :
             expose : true
             groups: [myRequests]

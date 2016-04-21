@@ -3,7 +3,9 @@
 namespace KitchenBundle\Controller;
 
 use KitchenBundle\Entity\Rating;
+use KitchenBundle\Entity\RequestDetails;
 use KitchenBundle\Entity\User;
+use KitchenBundle\Entity\Plate;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,9 +20,12 @@ use Symfony\Component\Form\FormInterface;
 
 use KitchenBundle\Form\RatingType;
 use KitchenBundle\Form\UserType;
+use KitchenBundle\Form\PlateType;
+use KitchenBundle\Form\RequestType;
 
 use KitchenBundle\Utils\APIResponse;
 use KitchenBundle\Utils\APIError;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 
 class ApiController extends FOSRestController
@@ -408,6 +413,8 @@ class ApiController extends FOSRestController
         return $this->handleView($view);
     }
 
+
+
     /**
      * Get Chef's Requests
      *
@@ -722,7 +729,247 @@ class ApiController extends FOSRestController
         return $this->handleView($view);
     }
 
+    /**
+     * Create a new plate.
+     *
+     * @ApiDoc(
+     *   resource = true,
+     *   description = "Create a new plate",
+     *   parameters={
+     *      { "name"="is_hot", "dataType"="boolean", "required"=true, "description"="" },
+     *      { "name"="chef", "dataType"="string", "required"=true, "description"="", "format"="" },
+     *      { "name"="price", "dataType"="integer", "required"=true, "description"="", "" },
+     *      { "name"="name", "dataType"="string", "required"=true, "description"="", "" },
+     *      { "name"="description", "dataType"="string", "required"=true, "description"="", "" },
+     *      { "name"="image", "dataType"="string", "required"=true, "description"="", "" },
+     *   },
+     *   statusCodes = {
+     *     200 = "Returned when successful",
+     *     400 = "Returned when the data has errors"
+     *   }
+     * )
+     *
+     * @return type
+     */
+    public function postPlateAction(Request $request) {
 
+        // get parameterBag object
+        $parameterBag = $request->request;
+
+        // get entity manager
+        $em = $this->getDoctrine()->getManager();
+
+        // get POST params
+        $name = $parameterBag->get('name');
+        $is_hot = $parameterBag->get('is_hot');
+        $chef = $parameterBag->get('chef');
+        $price = $parameterBag->get('price');
+        $description = $parameterBag->get('description');
+        $image = $parameterBag->get('image');
+
+        $entity = new Plate();
+
+
+            $entityParams = array(
+                'name'     => $name,
+                'chef'     => $chef,
+                'isHot'   => $is_hot,
+                'price'    => $price,
+                'description'    => $description,
+                'image'    => $image,
+            );
+
+
+
+        // create service form
+        $form = $this->createForm(new PlateType(), $entity, array('csrf_protection' => false));
+
+        // submit form against request params
+        $form->submit($entityParams);
+
+        if($form->isValid()) {
+
+            $apiResponse = new APIResponse(TRUE);
+
+            $em->persist($form->getData());
+            $apiResponse->setData('created');
+            $em->flush();
+
+            // prepare response object with http created status 201
+            $view = $this->view($apiResponse, Codes::HTTP_CREATED);
+        }
+        else {
+            // get form errors
+            $errors = $this->getErrorMessages($form);
+
+            // prepare response object with http bad request status 400
+            $apiResponse = new APIResponse(FALSE, NULL, $errors);
+            $view = $this->view($apiResponse, Codes::HTTP_BAD_REQUEST);
+        }
+
+        return $this->handleView($view);
+    }
+
+    /**
+     * Create a new order for user for certain chef.
+     *
+     * @ApiDoc(
+     *   resource = true,
+     *   description = "Create a new order for user for certain chef.",
+     *   parameters={
+     *      { "name"="user", "dataType"="string", "required"=true, "description"="" },
+     *      { "name"="chef", "dataType"="string", "required"=true, "description"="", "format"="" },
+     *      { "name"="delivery_date", "dataType"="date", "required"=true, "description"="", "" },
+     *      { "name"="delivery_time", "dataType"="time", "required"=true, "description"="", "" },
+     *      { "name"="user_lat", "dataType"="string", "required"=true, "description"="", "" },
+     *      { "name"="user_lng", "dataType"="string", "required"=true, "description"="", "" },
+     *      { "name"="total_price", "dataType"="string", "required"=true, "description"="", "" },
+     *   },
+     *   statusCodes = {
+     *     200 = "Returned when successful",
+     *     400 = "Returned when the data has errors"
+     *   }
+     * )
+     *
+     * @return type
+     */
+    public function postRequestAction(Request $request) {
+
+        // get parameterBag object
+        $parameterBag = $request->request;
+
+        // get entity manager
+        $em = $this->getDoctrine()->getManager();
+
+        // get POST params
+        $user = $parameterBag->get('user');
+        $chef = $parameterBag->get('chef');
+        $delivery_date = $parameterBag->get('delivery_date');
+        $delivery_time = $parameterBag->get('delivery_time');
+        $user_lat = $parameterBag->get('user_lat');
+        $user_lng = $parameterBag->get('user_lng');
+        $plates = $parameterBag->get('plates');
+        $total_price = $parameterBag->get('total_price');
+
+        $entity = new \KitchenBundle\Entity\Request();
+
+        $entityParams = array(
+            'user'     => $user,
+            'chef'     => $chef,
+            'deliveryDate'   => $delivery_date,
+            'deliveryTime'    => $delivery_time,
+            'userLat'    => $user_lat,
+            'userLng'    => $user_lng,
+            'status'    => 0,
+            'totalPrice'    => $total_price
+        );
+
+
+
+        // create service form
+        $form = $this->createForm(new RequestType(), $entity, array('csrf_protection' => false));
+
+        // submit form against request params
+        $form->submit($entityParams);
+
+        if($form->isValid()) {
+
+            $apiResponse = new APIResponse(TRUE);
+
+            $em->persist($form->getData());
+            $apiResponse->setData('created');
+            $em->flush();
+
+//            $plates = json_decode($plates);
+//            foreach ($plates as $plate){
+//                $ent = new RequestDetails();
+//                $ent->setPlate($plate['id']);
+//                $ent->setQuantity($plate['quantity']);
+//
+//            }
+
+            // prepare response object with http created status 201
+            $view = $this->view($apiResponse, Codes::HTTP_CREATED);
+        }
+        else {
+            // get form errors
+            $errors = $this->getErrorMessages($form);
+
+            // prepare response object with http bad request status 400
+            $apiResponse = new APIResponse(FALSE, NULL, $errors);
+            $view = $this->view($apiResponse, Codes::HTTP_BAD_REQUEST);
+        }
+
+        return $this->handleView($view);
+    }
+
+    /**
+     * Approve Request Order.
+     *
+     * @ApiDoc(
+     *   resource = true,
+     *   description = "Approve Request Order.",
+     *   parameters={
+     *      { "name"="request", "dataType"="string", "required"=true, "description"="" },
+     *      { "name"="delivery_price", "dataType"="integer", "required"=true, "description"="", "format"="" },
+     *      { "name"="cancel_time", "dataType"="datetime", "required"=true, "description"="", "" },
+     *      { "name"="user_mobile", "dataType"="string", "required"=true, "description"="", "" },
+     *      { "name"="notes", "dataType"="string", "required"=true, "description"="", "" },
+     *   },
+     *   statusCodes = {
+     *     200 = "Returned when successful",
+     *     400 = "Returned when the data has errors"
+     *   }
+     * )
+     *
+     * @return type
+     */
+    public function postApproveRequestAction(Request $request) {
+
+        // get parameterBag object
+        $parameterBag = $request->request;
+
+        // get entity manager
+        $em = $this->getDoctrine()->getManager();
+
+        // get POST params
+        $req = $parameterBag->get('request');
+        $delivery_price = $parameterBag->get('delivery_price');
+        $cancel_time = $parameterBag->get('cancel_time');
+        $user_mobile = $parameterBag->get('user_mobile');
+        $notes = $parameterBag->get('notes');
+
+        $em = $this->getDoctrine()->getManager();
+
+        $req = $em->getRepository('KitchenBundle:Request')->findOneBy(array('id'=>$req));
+
+        $apiResponse = new APIResponse();
+
+        if($req) {
+            $req->setCancelTime(new \DateTime($cancel_time));
+            $req->setUserMobile($user_mobile);
+            $req->setNotes($notes);
+            $req->setDeliveryPrice($delivery_price);
+            $req->setStatus(1);
+            $em->persist($req);
+            $em->flush();
+            $apiResponse->setStatus(TRUE);
+            $apiResponse->setData('Request Approved!');
+
+            // prepare response object with http updated status 200
+            $view = $this->view($apiResponse, Codes::HTTP_OK);
+        }
+        else {
+            $apiResponse->setStatus(FALSE);
+            $apiResponse->setError('No country found for the given id');
+            // prepare response object with http status 404 NOT FOUND
+            $view = $this->view($apiResponse, Codes::HTTP_NOT_FOUND);
+        }
+
+
+
+        return $this->handleView($view);
+    }
 
     /**
      * Login from the submitted data.
