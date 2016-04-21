@@ -7,7 +7,30 @@ $(document).ready(function () {
         initialize();
 
     }
+
+
+    if ($('#location-map-div').length > 0) {
+        initialize_location($('#location-map-div').attr('data-lat'), $('#location-map-div').attr('data-lng'));
+    }
 });
+
+function initialize_location(lat, lng) {
+    var latlng = new google.maps.LatLng(lat, lng);
+    var mapOptions = {
+        center: latlng,
+        zoom: 10,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(document.getElementById('location-map-div'),
+            mapOptions);
+            
+    var marker = new google.maps.Marker({
+        position: latlng,
+        map: map,
+        animation: google.maps.Animation.DROP,
+        title: 'the desired location'
+    });
+}
 
 function initialize() {
 

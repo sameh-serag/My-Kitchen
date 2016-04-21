@@ -28,10 +28,7 @@ class UserAdmin extends Admin {
                 ->addIdentifier('id')
                 ->add('name')
                 ->add('username')
-                ->add('city')
                 ->add('mobile')
-                ->add('rate')
-                ->add('inHoliday')
                 ->add('email')
                 ->add('image', null, array('template' => 'AdminBundle:General:list_image.html.twig'))
                 ->add('_action', 'actions', array(
@@ -49,16 +46,11 @@ class UserAdmin extends Admin {
                 ->add('id')
                 ->add('name')
                 ->add('username')
-                ->add('city')
                 ->add('mobile')
-                ->add('rate')
-                ->add('inHoliday')
                 ->add('email')
+                ->add('Location', null, array('template' => 'AdminBundle:General:show_chef_location.html.twig'))
                 ->add('lat')
                 ->add('lng')
-                ->add('notes')
-                ->add('deliveryNotes')                
-                ->add('status', null, array('template' => 'AdminBundle:General:show_status.html.twig'))
                 ->add('image', null, array('template' => 'AdminBundle:General:show_image.html.twig'))
         ;
     }
@@ -68,36 +60,20 @@ class UserAdmin extends Admin {
                 ->add('id')
                 ->add('name')
                 ->add('username')
-                ->add('city')
                 ->add('mobile')
-                ->add('rate')
-                ->add('inHoliday')
                 ->add('email')
         ;
     }
 
-    public function configureFormFields(FormMapper $formMapper) {
-        $class = 'new';
-
-        if ($this->getSubject() && $this->getSubject()->getId()) {
-            $class = 'edit';
-        }
-        
+    public function configureFormFields(FormMapper $formMapper) {        
         $formMapper
                 ->add('name')
                 ->add('username')
                 ->add('userPassword', 'password', array('label' => 'Password', 'required' => false))
-                ->add('country', null, array('attr' => array('class' => 'countries-list ' . $class)))
-                ->add('city', null, array('attr' => array('class' => 'cities-list')))
                 ->add('mobile')
-                ->add('rate')
-                ->add('inHoliday', null, array('required' => false))
                 ->add('email')
                 ->add('lat', null, array('attr' => array('class' => 'LatField')))
-                ->add('lng', null, array('attr' => array('class' => 'LngField')))
-                ->add('notes')
-                ->add('deliveryNotes')                
-                ->add('status', 'choice', array('choices' => array('0' => 'Pendding', '1' => 'Approved', '2' => 'Rejected')))
+                ->add('lng', null, array('attr' => array('class' => 'LngField')))             
                 ->add('file', 'file', array('required' => false, 'label' => 'Image'))
                 ->setHelps(array(
                     'userPassword' => 'Password required in new user create.'

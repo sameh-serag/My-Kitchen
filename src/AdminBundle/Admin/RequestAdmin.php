@@ -50,6 +50,7 @@ class RequestAdmin extends Admin {
                 ->add('cancelTime')
                 ->add('deliveryDate')
                 ->add('deliveryTime')
+                ->add('Location', null, array('template' => 'AdminBundle:General:show_location.html.twig'))
                 ->add('userLat')
                 ->add('userLng')
                 ->add('totalPrice')

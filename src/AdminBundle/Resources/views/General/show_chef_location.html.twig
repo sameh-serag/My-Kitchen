@@ -1,0 +1,7 @@
+{% extends 'SonataAdminBundle:CRUD:base_show_field.html.twig' %}
+
+{% block field %}
+    {% if object.getLat() and object.getLng() %}
+        <div id="location-map-div" data-lat="{{ object.getLat() }}" data-lng="{{ object.getLng() }}" style="width: 100%;height: 300px;"></div>
+    {% endif %}
+{% endblock %}
