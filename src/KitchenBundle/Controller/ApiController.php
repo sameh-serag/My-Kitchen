@@ -632,6 +632,7 @@ class ApiController extends FOSRestController
      *      { "name"="notes", "dataType"="string", "required"=true, "description"="", "" },
      *      { "name"="delivery_notes", "dataType"="string", "required"=true, "description"="", "" },
      *      { "name"="city", "dataType"="string", "required"=true, "description"="", "" },
+     *      { "name"="country", "dataType"="string", "required"=true, "description"="", "" },
      *      { "name"="image", "dataType"="string", "required"=true, "description"="", "" },
      *   },
      *   statusCodes = {
@@ -663,6 +664,7 @@ class ApiController extends FOSRestController
         $notes = $parameterBag->get('notes');
         $delivery_notes = $parameterBag->get('delivery_notes');
         $city = $parameterBag->get('city');
+        $country = $parameterBag->get('country');
 
         $entity = new User();
 
@@ -680,10 +682,11 @@ class ApiController extends FOSRestController
              'rate'         => 0,
              'inHoliday'    => false,
              'type'         => $type,
-             'notes'         => $notes,
-             'deliveryNotes' => $delivery_notes,
+             'notes'        => $notes,
+             'deliveryNotes'=> $delivery_notes,
              'city'         => $city,
-             'image'         => $image,
+             'country'      => $country,
+             'image'        => $image,
          );
      }else{ //user
          $entityParams = array(
@@ -709,8 +712,20 @@ class ApiController extends FOSRestController
         if($form->isValid()) {
 
             $apiResponse = new APIResponse(TRUE);
+            $obj = $form->getData();
 
-            $em->persist($form->getData());
+            $ch = curl_init($image);
+            $ext = pathinfo($image, PATHINFO_EXTENSION);
+            $image_name = uniqid('ws_');
+            $obj->setImage($image_name.'.'.$ext);
+            $fp = fopen(__DIR__ . '/../../../web/uploads/user-images/' . $image_name .'.'. $ext , 'wb');
+            curl_setopt($ch, CURLOPT_FILE, $fp);
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+            curl_exec($ch);
+            curl_close($ch);
+            fclose($fp);
+
+            $em->persist($obj);
             $apiResponse->setData('created');
             $em->flush();
 
@@ -758,6 +773,17 @@ class ApiController extends FOSRestController
 
         // get entity manager
         $em = $this->getDoctrine()->getManager();
+
+        // get Headers object
+        $header = $request->headers;
+        $token = $header->get('token');
+
+        if(!$this->isTokenValid($token)){
+            $apiResponse = new APIResponse(FALSE, NULL, 'Not Authorized');
+            $view = $this->view($apiResponse, Codes::HTTP_BAD_REQUEST);
+
+            return $this->handleView($view);
+        }
 
         // get POST params
         $name = $parameterBag->get('name');
@@ -824,6 +850,7 @@ class ApiController extends FOSRestController
      *      { "name"="user_lat", "dataType"="string", "required"=true, "description"="", "" },
      *      { "name"="user_lng", "dataType"="string", "required"=true, "description"="", "" },
      *      { "name"="total_price", "dataType"="string", "required"=true, "description"="", "" },
+     *      { "name"="plates", "dataType"="json array", "required"=true, "description"="ex. [{'id':1,'quantity':55},{'id':2,'quantity':33}]", "" },
      *   },
      *   statusCodes = {
      *     200 = "Returned when successful",
@@ -841,6 +868,17 @@ class ApiController extends FOSRestController
         // get entity manager
         $em = $this->getDoctrine()->getManager();
 
+        // get Headers object
+        $header = $request->headers;
+        $token = $header->get('token');
+
+        if(!$this->isTokenValid($token)){
+            $apiResponse = new APIResponse(FALSE, NULL, 'Not Authorized');
+            $view = $this->view($apiResponse, Codes::HTTP_BAD_REQUEST);
+
+            return $this->handleView($view);
+        }
+
         // get POST params
         $user = $parameterBag->get('user');
         $chef = $parameterBag->get('chef');
@@ -854,13 +892,13 @@ class ApiController extends FOSRestController
         $entity = new \KitchenBundle\Entity\Request();
 
         $entityParams = array(
-            'user'     => $user,
-            'chef'     => $chef,
-            'deliveryDate'   => $delivery_date,
-            'deliveryTime'    => $delivery_time,
-            'userLat'    => $user_lat,
-            'userLng'    => $user_lng,
-            'status'    => 0,
+            'user'          => $user,
+            'chef'          => $chef,
+            'deliveryDate'  => $delivery_date,
+            'deliveryTime'  => $delivery_time,
+            'userLat'       => $user_lat,
+            'userLng'       => $user_lng,
+            'status'        => 0,
             'totalPrice'    => $total_price
         );
 
@@ -876,17 +914,22 @@ class ApiController extends FOSRestController
 
             $apiResponse = new APIResponse(TRUE);
 
-            $em->persist($form->getData());
+            $obj = $form->getData();
+
             $apiResponse->setData('created');
+//            echo json_encode(array(array('id'=>1,'quantity'=>55), array('id'=>1,'quantity'=>55)));
+            $plates = json_decode($plates, true);
+            foreach ($plates as $plate){
+                $ent = new RequestDetails();
+                $plate_obj = $em->getRepository('KitchenBundle:Plate')->findOneBy(array('id'=>$plate['id']));
+                $ent->setPlate($plate_obj);
+                $ent->setQuantity($plate['quantity']);
+                $ent->setRequest($obj);
+                $em->persist($ent);
+            }
+            $em->persist($obj);
             $em->flush();
 
-//            $plates = json_decode($plates);
-//            foreach ($plates as $plate){
-//                $ent = new RequestDetails();
-//                $ent->setPlate($plate['id']);
-//                $ent->setQuantity($plate['quantity']);
-//
-//            }
 
             // prepare response object with http created status 201
             $view = $this->view($apiResponse, Codes::HTTP_CREATED);
@@ -932,6 +975,17 @@ class ApiController extends FOSRestController
         // get entity manager
         $em = $this->getDoctrine()->getManager();
 
+        // get Headers object
+        $header = $request->headers;
+        $token = $header->get('token');
+
+        if(!$this->isTokenValid($token)){
+            $apiResponse = new APIResponse(FALSE, NULL, 'Not Authorized');
+            $view = $this->view($apiResponse, Codes::HTTP_BAD_REQUEST);
+
+            return $this->handleView($view);
+        }
+
         // get POST params
         $req = $parameterBag->get('request');
         $delivery_price = $parameterBag->get('delivery_price');
@@ -950,6 +1004,7 @@ class ApiController extends FOSRestController
             $req->setUserMobile($user_mobile);
             $req->setNotes($notes);
             $req->setDeliveryPrice($delivery_price);
+            $req->setTotalPrice($req->getTotalPrice() + $delivery_price);
             $req->setStatus(1);
             $em->persist($req);
             $em->flush();

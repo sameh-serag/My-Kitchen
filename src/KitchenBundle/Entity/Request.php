@@ -52,7 +52,7 @@ class Request
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="delivery_price", type="decimal")
+     * @ORM\Column(name="delivery_price", type="decimal", nullable=true)
      */
     private $deliveryPrice;
 
