@@ -2,9 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a0cbfb26-e098-4c89-894d-d1109ca46de4" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/apple-touch-icon.png" afterPath="$PROJECT_DIR$/web/apple-touch-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/favicon.ico" afterPath="$PROJECT_DIR$/web/favicon.ico" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/KitchenBundle/Controller/ApiController.php" afterPath="$PROJECT_DIR$/src/KitchenBundle/Controller/ApiController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/KitchenBundle/Entity/Request.php" afterPath="$PROJECT_DIR$/src/KitchenBundle/Entity/Request.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/KitchenBundle/Form/UserType.php" afterPath="$PROJECT_DIR$/src/KitchenBundle/Form/UserType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/.htaccess" afterPath="$PROJECT_DIR$/web/.htaccess" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app.php" afterPath="$PROJECT_DIR$/web/app.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app_dev.php" afterPath="$PROJECT_DIR$/web/app_dev.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/config.php" afterPath="$PROJECT_DIR$/web/config.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/robots.txt" afterPath="$PROJECT_DIR$/web/robots.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/timthumb.php" afterPath="$PROJECT_DIR$/web/timthumb.php" />
     </list>
     <ignored path="my_kitchen.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,8 +42,8 @@
       <file leaf-file-name="ApiController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Controller/ApiController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="718" column="34" selection-start-line="718" selection-start-column="34" selection-end-line="718" selection-end-column="34" />
+            <state relative-caret-position="371">
+              <caret line="719" column="50" selection-start-line="719" selection-start-column="50" selection-end-line="719" selection-end-column="50" />
               <folding>
                 <element signature="e#44#76#0#PHP" expanded="true" />
                 <element signature="e#1383#1406#1#PHP" expanded="true" />
@@ -49,11 +57,21 @@
                 <element signature="e#13928#13948#1#PHP" expanded="true" />
                 <element signature="e#15424#15444#1#PHP" expanded="true" />
                 <element signature="e#19295#19315#1#PHP" expanded="true" />
-                <element signature="e#31770#31791#1#PHP" expanded="true" />
-                <element signature="e#34401#34424#1#PHP" expanded="true" />
-                <element signature="e#36393#36413#1#PHP" expanded="true" />
-                <element signature="e#37545#37565#1#PHP" expanded="true" />
+                <element signature="e#31658#31679#1#PHP" expanded="true" />
+                <element signature="e#34289#34312#1#PHP" expanded="true" />
+                <element signature="e#36281#36301#1#PHP" expanded="true" />
+                <element signature="e#37457#37477#1#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserType.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Form/UserType.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="38" column="30" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -61,7 +79,7 @@
       <file leaf-file-name="UserAdmin.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AdminBundle/Admin/UserAdmin.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="259">
+            <state relative-caret-position="1305">
               <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
               <folding />
             </state>
@@ -71,7 +89,7 @@
       <file leaf-file-name="RequestAdmin.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AdminBundle/Admin/RequestAdmin.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1009">
+            <state relative-caret-position="1395">
               <caret line="98" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
               <folding />
             </state>
@@ -81,7 +99,7 @@
       <file leaf-file-name="RequestType.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Form/RequestType.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
+            <state relative-caret-position="300">
               <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
               <folding>
                 <element signature="e#38#78#0#PHP" expanded="true" />
@@ -93,7 +111,7 @@
       <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Entity/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
+            <state relative-caret-position="4830">
               <caret line="325" column="55" selection-start-line="325" selection-start-column="55" selection-end-line="325" selection-end-column="55" />
               <folding />
             </state>
@@ -115,7 +133,7 @@
       <file leaf-file-name="Request.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Entity/Request.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
+            <state relative-caret-position="5820">
               <caret line="388" column="36" selection-start-line="388" selection-start-column="20" selection-end-line="388" selection-end-column="36" />
               <folding />
             </state>
@@ -125,18 +143,8 @@
       <file leaf-file-name="City.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Entity/City.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
+            <state relative-caret-position="495">
               <caret line="33" column="67" selection-start-line="33" selection-start-column="67" selection-end-line="33" selection-end-column="82" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RequestDetails.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Entity/RequestDetails.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -175,7 +183,6 @@
         <option value="$PROJECT_DIR$/src/KitchenBundle/Form/RatingType.php" />
         <option value="$PROJECT_DIR$/src/KitchenBundle/Utils/APIError.php" />
         <option value="$PROJECT_DIR$/src/KitchenBundle/Entity/Rating.php" />
-        <option value="$PROJECT_DIR$/src/KitchenBundle/Form/UserType.php" />
         <option value="$PROJECT_DIR$/src/KitchenBundle/Resources/config/serializer/Entity.User.yml" />
         <option value="$PROJECT_DIR$/src/KitchenBundle/Resources/config/serializer/Entity.Plate.yml" />
         <option value="$PROJECT_DIR$/src/KitchenBundle/Entity/User.php" />
@@ -187,6 +194,7 @@
         <option value="$PROJECT_DIR$/src/KitchenBundle/Form/RequestType.php" />
         <option value="$PROJECT_DIR$/src/KitchenBundle/Entity/Request.php" />
         <option value="$PROJECT_DIR$/src/KitchenBundle/Entity/City.php" />
+        <option value="$PROJECT_DIR$/src/KitchenBundle/Form/UserType.php" />
         <option value="$PROJECT_DIR$/src/KitchenBundle/Controller/ApiController.php" />
       </list>
     </option>
@@ -231,7 +239,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -285,6 +292,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -361,22 +369,22 @@
       <workItem from="1461008403502" duration="922000" />
       <workItem from="1461185447858" duration="2291000" />
       <workItem from="1461188651942" duration="6605000" />
-      <workItem from="1461367415982" duration="4486000" />
+      <workItem from="1461367415982" duration="4966000" />
+      <workItem from="1461624645410" duration="1124000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64040000" />
+    <option name="totallyTimeSpent" value="65644000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="27" width="1368" height="742" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22803031" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23181818" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328594" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -388,6 +396,7 @@
       <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38619676" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="false" show_stripe_button="true" weight="0.27878788" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" x="498" y="27" width="370" height="741" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -448,10 +457,10 @@
             <element signature="e#13928#13948#1#PHP" expanded="true" />
             <element signature="e#15424#15444#1#PHP" expanded="true" />
             <element signature="e#19295#19315#1#PHP" expanded="true" />
-            <element signature="e#31770#31791#1#PHP" expanded="true" />
-            <element signature="e#34401#34424#1#PHP" expanded="true" />
-            <element signature="e#36393#36413#1#PHP" expanded="true" />
-            <element signature="e#37545#37565#1#PHP" expanded="true" />
+            <element signature="e#31658#31679#1#PHP" expanded="true" />
+            <element signature="e#34289#34312#1#PHP" expanded="true" />
+            <element signature="e#36281#36301#1#PHP" expanded="true" />
+            <element signature="e#37457#37477#1#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -619,13 +628,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Form/UserType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="45" column="58" selection-start-line="45" selection-start-column="58" selection-end-line="45" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Utils/APIError.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -708,7 +710,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Entity/RequestDetails.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
+        <state relative-caret-position="225">
           <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
           <folding />
         </state>
@@ -724,7 +726,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AdminBundle/Admin/RequestAdmin.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1009">
+        <state relative-caret-position="1395">
           <caret line="98" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
           <folding />
         </state>
@@ -732,7 +734,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Entity/City.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
+        <state relative-caret-position="495">
           <caret line="33" column="67" selection-start-line="33" selection-start-column="67" selection-end-line="33" selection-end-column="82" />
           <folding />
         </state>
@@ -750,7 +752,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Form/RequestType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
+        <state relative-caret-position="300">
           <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
           <folding>
             <element signature="e#38#78#0#PHP" expanded="true" />
@@ -760,7 +762,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Entity/Request.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
+        <state relative-caret-position="5820">
           <caret line="388" column="36" selection-start-line="388" selection-start-column="20" selection-end-line="388" selection-end-column="36" />
           <folding />
         </state>
@@ -770,7 +772,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -778,13 +779,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AdminBundle/Admin/UserAdmin.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
+        <state relative-caret-position="1305">
           <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
           <folding />
         </state>
@@ -792,16 +792,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Entity/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
+        <state relative-caret-position="4830">
           <caret line="325" column="55" selection-start-line="325" selection-start-column="55" selection-end-line="325" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Form/UserType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="38" column="30" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Controller/ApiController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="718" column="34" selection-start-line="718" selection-start-column="34" selection-end-line="718" selection-end-column="34" />
+        <state relative-caret-position="371">
+          <caret line="719" column="50" selection-start-line="719" selection-start-column="50" selection-end-line="719" selection-end-column="50" />
           <folding>
             <element signature="e#44#76#0#PHP" expanded="true" />
             <element signature="e#1383#1406#1#PHP" expanded="true" />
@@ -815,10 +823,10 @@
             <element signature="e#13928#13948#1#PHP" expanded="true" />
             <element signature="e#15424#15444#1#PHP" expanded="true" />
             <element signature="e#19295#19315#1#PHP" expanded="true" />
-            <element signature="e#31770#31791#1#PHP" expanded="true" />
-            <element signature="e#34401#34424#1#PHP" expanded="true" />
-            <element signature="e#36393#36413#1#PHP" expanded="true" />
-            <element signature="e#37545#37565#1#PHP" expanded="true" />
+            <element signature="e#31658#31679#1#PHP" expanded="true" />
+            <element signature="e#34289#34312#1#PHP" expanded="true" />
+            <element signature="e#36281#36301#1#PHP" expanded="true" />
+            <element signature="e#37457#37477#1#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

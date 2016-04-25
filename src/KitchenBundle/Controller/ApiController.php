@@ -621,7 +621,7 @@ class ApiController extends FOSRestController
      *   resource = true,
      *   description = "Create a User/Chef from the submitted data",
      *   parameters={
-     *      { "name"="type", "dataType"="integer", "required"=true, "description"="is it user registration or chef registration", "format"="0 => user, 1 => chef" },
+     *      { "name"="type", "dataType"="integer", "required"=true, "description"="is it user registration or chef registration", "format"="0 => chef, 1 => user" },
      *      { "name"="username", "dataType"="string", "required"=true, "description"="", "format"="" },
      *      { "name"="email", "dataType"="string", "required"=true, "description"="", "format"="" },
      *      { "name"="mobile", "dataType"="string", "required"=true, "description"="", "" },
@@ -670,37 +670,37 @@ class ApiController extends FOSRestController
 
 
         // set service properties
-     if($type){ //chef
-         $entityParams = array(
-             'name'         => $name,
-             'username'     => $username,
-             'email'        => $email,
-             'password'     => $password,
-             'mobile'       => $mobile,
-             'lat'          => $lat,
-             'lng'          => $lng,
-             'rate'         => 0,
-             'inHoliday'    => false,
-             'type'         => $type,
-             'notes'        => $notes,
-             'deliveryNotes'=> $delivery_notes,
-             'city'         => $city,
-             'country'      => $country,
-             'image'        => $image,
-         );
-     }else{ //user
-         $entityParams = array(
-             'username'     => $username,
-             'email'        => $email,
-             'password'     => $password,
-             'mobile'       => $mobile,
-             'lat'          => $lat,
-             'lng'          => $lng,
-             'rate'         => 0,
-             'inHoliday'    => false,
-             'type'         => $type,
-         );
-     }
+        if(!$type){ //chef
+            $entityParams = array(
+                'name'         => $name,
+                'username'     => $username,
+                'email'        => $email,
+                'password'     => $password,
+                'mobile'       => $mobile,
+                'lat'          => $lat,
+                'lng'          => $lng,
+                'rate'         => 0,
+                'inHoliday'    => false,
+                'type'         => $type,
+                'notes'        => $notes,
+                'deliveryNotes'=> $delivery_notes,
+                'city'         => $city,
+                'country'      => $country,
+                'image'        => $image,
+            );
+        }else{ //user
+            $entityParams = array(
+                'username'     => $username,
+                'email'        => $email,
+                'password'     => $password,
+                'mobile'       => $mobile,
+                'lat'          => $lat,
+                'lng'          => $lng,
+                'rate'         => 0,
+                'inHoliday'    => false,
+                'type'         => $type,
+            );
+        }
 
 
         // create service form
@@ -714,16 +714,13 @@ class ApiController extends FOSRestController
             $apiResponse = new APIResponse(TRUE);
             $obj = $form->getData();
 
-            $ch = curl_init($image);
-            $ext = pathinfo($image, PATHINFO_EXTENSION);
             $image_name = uniqid('ws_');
-            $obj->setImage($image_name.'.'.$ext);
-            $fp = fopen(__DIR__ . '/../../../web/uploads/user-images/' . $image_name .'.'. $ext , 'wb');
-            curl_setopt($ch, CURLOPT_FILE, $fp);
-            curl_setopt($ch, CURLOPT_HEADER, 0);
-            curl_exec($ch);
-            curl_close($ch);
-            fclose($fp);
+            $ifp = fopen(__DIR__ . '/../../../web/uploads/user-images/' . $image_name, "wb");
+            $data = explode(',', $image);
+            fwrite($ifp, base64_decode($data[1]));
+            fclose($ifp);
+
+            $obj->setImage($image_name);
 
             $em->persist($obj);
             $apiResponse->setData('created');
@@ -796,14 +793,14 @@ class ApiController extends FOSRestController
         $entity = new Plate();
 
 
-            $entityParams = array(
-                'name'     => $name,
-                'chef'     => $chef,
-                'isHot'   => $is_hot,
-                'price'    => $price,
-                'description'    => $description,
-                'image'    => $image,
-            );
+        $entityParams = array(
+            'name'     => $name,
+            'chef'     => $chef,
+            'isHot'   => $is_hot,
+            'price'    => $price,
+            'description'    => $description,
+            'image'    => $image,
+        );
 
 
 
@@ -1067,7 +1064,7 @@ class ApiController extends FOSRestController
             $em->flush();
             $apiResponse = new APIResponse(TRUE);
 
-            $apiResponse->setData(array('token' => $token, 'type' => $user->getType() ? 'user' : 'chef' ));
+            $apiResponse->setData(array('token' => $token, 'id' => $user->getId(), 'type' => $user->getType() ? 'user' : 'chef' ));
 
             // prepare response object with http created status 201
             $view = $this->view($apiResponse, Codes::HTTP_ACCEPTED);
@@ -1108,11 +1105,11 @@ class ApiController extends FOSRestController
         $user = $em->getRepository('KitchenBundle:User')->findOneBy(array('token'=>$token));
         if($user){
             if($user->getTokenValidTo() > time()){
-                return true;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                return true;
             }else{
                 return false;
             }
-        }else{                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+        }else{
             return false;
         }
 
@@ -1123,7 +1120,7 @@ class ApiController extends FOSRestController
         $errors = array();
 
         foreach ($form->getErrors() as $key => $error) {
-            if ($form->isRoot()) {                                      
+            if ($form->isRoot()) {
                 $errors['#'][] = $error->getMessage();
             } else {
                 $errors[] = $error->getMessage();

@@ -22,7 +22,7 @@ class UserType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        if($this->type) {
+        if(!$this->type) {
             $builder
                 ->add('username', NULL, array(
                     'constraints' => array(new NotBlank())
@@ -34,6 +34,9 @@ class UserType extends AbstractType
                     'constraints' => array(new NotBlank())
                 ))
                 ->add('city', NULL, array(
+                    'constraints' => array(new NotBlank())
+                ))
+                ->add('country', NULL, array(
                     'constraints' => array(new NotBlank())
                 ))
                 ->add('name', NULL, array(
