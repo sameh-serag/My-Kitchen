@@ -368,6 +368,52 @@ class ApiController extends FOSRestController
     }
 
     /**
+     * Get user details
+     *
+     * @ApiDoc(
+     *   description = "Get user",
+     *   output = {
+     *     "class" = "KitchenBundle\Entity\User",
+     *     "groups" = {"userDetails"},
+     *   },
+     *   statusCodes = {
+     *     200 = "Returned when successful",
+     *     404 = "Returned when no country found"
+     *   }
+     * )
+     *
+     * @param string     $user_id      user Id
+     * @return type
+     */
+    public function getUserAction($user_id) {
+
+        $em = $this->getDoctrine()->getManager();
+        $apiResponse = new APIResponse();
+
+        if($user_id){
+            $user = $em->getRepository('KitchenBundle:User')->findOneBy(array('id'=>$user_id));
+
+            if($user) {
+                $apiResponse->setStatus(TRUE);
+                $apiResponse->setData($user);
+                // prepare response object with http status 200
+                $view = $this->view($apiResponse, Codes::HTTP_OK);
+            }
+            else {
+                $apiResponse->setStatus(FALSE);
+                $apiResponse->setError('No user found for the given id');
+                // prepare response object with http status 404 NOT FOUND
+                $view = $this->view($apiResponse, Codes::HTTP_NOT_FOUND);
+            }
+        }
+
+        $context = SerializationContext::create()->setGroups(array("apiResponse", "userDetails"));
+        $view->setSerializationContext($context);
+
+        return $this->handleView($view);
+    }
+
+    /**
      * Get chef
      *
      * @ApiDoc(
@@ -634,6 +680,7 @@ class ApiController extends FOSRestController
      *      { "name"="city", "dataType"="string", "required"=true, "description"="", "" },
      *      { "name"="country", "dataType"="string", "required"=true, "description"="", "" },
      *      { "name"="image", "dataType"="string", "required"=true, "description"="", "" },
+     *      { "name"="user_id", "dataType"="string", "required"=false, "description"="", "" },
      *   },
      *   statusCodes = {
      *     200 = "Returned when successful",
@@ -665,8 +712,14 @@ class ApiController extends FOSRestController
         $delivery_notes = $parameterBag->get('delivery_notes');
         $city = $parameterBag->get('city');
         $country = $parameterBag->get('country');
+        $user_id = $parameterBag->get('user_id');
 
-        $entity = new User();
+        if($user_id){
+            $entity = $em->getRepository('KitchenBundle:User')->findOneBy(array('id'=>$user_id));
+        }else{
+            $entity = new User();
+        }
+
 
 
         // set service properties
@@ -714,20 +767,30 @@ class ApiController extends FOSRestController
             $apiResponse = new APIResponse(TRUE);
             $obj = $form->getData();
 
-            $image_name = uniqid('ws_');
-            $ifp = fopen(__DIR__ . '/../../../web/uploads/user-images/' . $image_name, "wb");
-            $data = explode(',', $image);
-            fwrite($ifp, base64_decode($data[1]));
-            fclose($ifp);
+            if($image){
+                $image_name = uniqid('ws_');
+                $ifp = fopen(__DIR__ . '/../../../web/uploads/user-images/' . $image_name, "wb");
+                $data = explode(',', $image);
+                fwrite($ifp, base64_decode($data[1]));
+                fclose($ifp);
 
-            $obj->setImage($image_name);
+                $obj->setImage($image_name);
+            }
 
             $em->persist($obj);
-            $apiResponse->setData('created');
+            if($user_id){
+                $apiResponse->setData('updated');
+                // prepare response object with http created status 200
+                $view = $this->view($apiResponse, Codes::HTTP_OK);
+            }else{
+                $apiResponse->setData('created');
+                // prepare response object with http created status 201
+                $view = $this->view($apiResponse, Codes::HTTP_CREATED);
+            }
+
             $em->flush();
 
-            // prepare response object with http created status 201
-            $view = $this->view($apiResponse, Codes::HTTP_CREATED);
+
         }
         else {
             // get form errors

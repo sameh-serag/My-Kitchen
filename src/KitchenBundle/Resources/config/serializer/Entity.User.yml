@@ -3,10 +3,10 @@ KitchenBundle\Entity\User:
     properties : 
         id :
             expose:  true
-            groups: [chefs, chefplates, chef]
+            groups: [chefs, chefplates, chef, userDetails]
         name :
             expose : true
-            groups: [chefs, chefplates, chef, myOrders]
+            groups: [chefs, chefplates, chef, myOrders, userDetails]
         image :
             expose : true
             groups: [chefs, chefplates, chef]
@@ -28,3 +28,18 @@ KitchenBundle\Entity\User:
         city :
             expose : true
             groups: [chef]
+        mobile :
+            expose : true
+            groups: [userDetails]
+        email :
+            expose : true
+            groups: [userDetails]
+        username :
+            expose : true
+            groups: [userDetails]
+        lat :
+            expose : true
+            groups: [userDetails]
+        lng :
+            expose : true
+            groups: [userDetails]
