@@ -12,8 +12,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity(repositoryClass="KitchenBundle\Entity\PlateRepository")
  * @ORM\HasLifecycleCallbacks
  */
-class Plate
-{
+class Plate {
+
     /**
      * @var integer
      *
@@ -62,7 +62,7 @@ class Plate
      * @var \Symfony\Component\HttpFoundation\File\UploadedFile
      */
     private $file;
-    
+
     /**
      * @var string
      *
@@ -83,16 +83,15 @@ class Plate
     private $category;
 
     public function __toString() {
-        return (string) $this->name;
+        return (string) $this->name . ' - ' . $this->price;
     }
-    
+
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -102,8 +101,7 @@ class Plate
      * @param string $name
      * @return Plate
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -114,8 +112,7 @@ class Plate
      *
      * @return string 
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -125,8 +122,7 @@ class Plate
      * @param string $price
      * @return Plate
      */
-    public function setPrice($price)
-    {
+    public function setPrice($price) {
         $this->price = $price;
 
         return $this;
@@ -137,8 +133,7 @@ class Plate
      *
      * @return string 
      */
-    public function getPrice()
-    {
+    public function getPrice() {
         return $this->price;
     }
 
@@ -148,8 +143,7 @@ class Plate
      * @param boolean $isHot
      * @return Plate
      */
-    public function setIsHot($isHot)
-    {
+    public function setIsHot($isHot) {
         $this->isHot = $isHot;
 
         return $this;
@@ -160,8 +154,7 @@ class Plate
      *
      * @return boolean 
      */
-    public function getIsHot()
-    {
+    public function getIsHot() {
         return $this->isHot;
     }
 
@@ -249,7 +242,7 @@ class Plate
      * @ORM\PreUpdate()
      */
     public function preUpload() {
-       
+
         if (NULL !== $this->file && (NULL === $this->image || 'initial' === $this->image)) {
             //get the image extension
             $extension = $this->file->guessExtension();
@@ -345,8 +338,7 @@ class Plate
      * @param string $description
      * @return Plate
      */
-    public function setDescription($description)
-    {
+    public function setDescription($description) {
         $this->description = $description;
 
         return $this;
@@ -357,16 +349,14 @@ class Plate
      *
      * @return string 
      */
-    public function getDescription()
-    {
+    public function getDescription() {
         return $this->description;
     }
 
     /**
      * @return \KitchenBundle\Entity\User
      */
-    public function getChef()
-    {
+    public function getChef() {
         return $this->chef;
     }
 
@@ -374,16 +364,14 @@ class Plate
      * @param \KitchenBundle\Entity\User $chef
      * @return Plate
      */
-    public function setChef($chef)
-    {
+    public function setChef($chef) {
         $this->chef = $chef;
     }
 
     /**
      * @return \KitchenBundle\Entity\Category
      */
-    public function getCategory()
-    {
+    public function getCategory() {
         return $this->category;
     }
 
@@ -391,8 +379,8 @@ class Plate
      * @param \KitchenBundle\Entity\Category $category
      * @return Plate
      */
-    public function setCategory($category)
-    {
+    public function setCategory($category) {
         $this->category = $category;
     }
+
 }

@@ -12,7 +12,8 @@ use Doctrine\Common\Collections\ArrayCollection;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="KitchenBundle\Entity\UserRepository")
- * @UniqueEntity(fields={"username", "email"})
+ * @UniqueEntity(fields={"email"})
+ * @UniqueEntity(fields={"username"})
  * @ORM\HasLifecycleCallbacks
  */
 class User {

@@ -63,7 +63,9 @@ class RequestAdmin extends Admin {
     public function configureDatagridFilters(DatagridMapper $datagridMapper) {
         $datagridMapper
                 ->add('id')
-                ->add('createdAt')
+                ->add('createdAt', 'doctrine_orm_date', array(), null, array('widget' => 'single_text', 'required' => false,  'attr' => array('class' => 'datepicker', 'data-class' => 'date')))                
+                ->add('userMobile')
+                ->add('status', 'doctrine_orm_choice', array(), 'choice', array('choices' => array('0' => 'Pendding', '1' => 'Approved', '2' => 'Rejected')))
         ;
     }
 
@@ -72,7 +74,7 @@ class RequestAdmin extends Admin {
                 ->add('status', 'choice', array('choices' => array('0' => 'Pendding', '1' => 'Approved', '2' => 'Rejected')))
                 ->add('cancelTime', null, array('attr' => array('data-class' => 'datetime'), 'widget' => 'single_text', 'format' => 'yyyy-MM-dd H:mm'))
                 ->add('deliveryDate', null, array('attr' => array('data-class' => 'date'), 'widget' => 'single_text', 'format' => 'yyyy-MM-dd'))
-                ->add('deliveryTime')
+                ->add('deliveryTime', null, array('attr' => array('data-class' => 'time'), 'widget' => 'single_text'))
                 ->add('userLat', null, array('attr' => array('class' => 'LatField')))
                 ->add('userLng', null, array('attr' => array('class' => 'LngField')))
                 ->add('totalPrice')
