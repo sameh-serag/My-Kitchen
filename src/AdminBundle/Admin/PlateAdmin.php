@@ -63,7 +63,13 @@ class PlateAdmin extends Admin {
                 ->add('name')
                 ->add('price')
                 ->add('isHot')
-                ->add('chef')
+                ->add('chef', null, array(),null,array(
+                    'class' => 'KitchenBundle:User',
+                    'query_builder' => function(EntityRepository $er) {
+                        $qb = $er->createQueryBuilder('u');
+                        return $qb->where($qb->expr()->eq('u.type', '0'));
+                    }
+                ))
                 ->add('category')
         ;
     }

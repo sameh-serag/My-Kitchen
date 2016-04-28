@@ -377,7 +377,7 @@ class Request
      */
     public function setUser($user)
     {
-        $this->chef = $user;
+        $this->user = $user;
     }
 
     /**

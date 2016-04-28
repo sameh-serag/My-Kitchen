@@ -67,8 +67,20 @@ class RateAdmin extends Admin {
                 ->add('taste')
                 ->add('value')
                 ->add('comment')
-                ->add('chef')
-                ->add('user')
+                ->add('chef', null, array(),null,array(
+                    'class' => 'KitchenBundle:User',
+                    'query_builder' => function(EntityRepository $er) {
+                        $qb = $er->createQueryBuilder('u');
+                        return $qb->where($qb->expr()->eq('u.type', '0'));
+                    }
+                ))
+                ->add('user', null, array(),null,array(
+                    'class' => 'KitchenBundle:User',
+                    'query_builder' => function(EntityRepository $er) {
+                        $qb = $er->createQueryBuilder('u');
+                        return $qb->where($qb->expr()->eq('u.type', '1'));
+                    }
+                ))
         ;
     }
 
