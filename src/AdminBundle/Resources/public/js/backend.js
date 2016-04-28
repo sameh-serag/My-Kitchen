@@ -24,7 +24,7 @@ function removeImage(anchor) {
     });
 }
 $(document).ready(function () {
-
+    $.datepicker.setDefaults($.datepicker.regional['']);
     $open_offer = $('.is-open-offer');
 
     if ($open_offer.prop('checked')) {
