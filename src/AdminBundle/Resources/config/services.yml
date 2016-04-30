@@ -51,4 +51,10 @@ services:
         class: AdminBundle\Admin\RequestDetailsAdmin
         arguments: [~, KitchenBundle\Entity\RequestDetails, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: Request Details}          
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Request Details}  
+            
+    report_admin:
+        class: AdminBundle\Admin\ReportAdmin
+        arguments: [~, KitchenBundle\Entity\Report, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Report}

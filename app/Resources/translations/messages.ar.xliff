@@ -1,0 +1,227 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="" >
+        <body>
+            <trans-unit id="City List">
+                <source>City List</source>
+                <target>المدن</target>
+            </trans-unit>
+            <trans-unit id="Country List">
+                <source>Country List</source>
+                <target>الدول</target>
+            </trans-unit>
+            <trans-unit id="Action">
+                <source>Action</source>
+                <target>نشاط</target>
+            </trans-unit>
+            <trans-unit id="Category List">
+                <source>Category List</source>
+                <target>التصنيفات</target>
+            </trans-unit>
+            <trans-unit id="Name">
+                <source>Name</source>
+                <target>الاسم</target>
+            </trans-unit>
+            <trans-unit id="Plate">
+                <source>Plate</source>
+                <target>طبق</target>
+            </trans-unit>
+            <trans-unit id="Plate List">
+                <source>Plate List</source>
+                <target>الأطباق</target>
+            </trans-unit>
+            <trans-unit id="Category">
+                <source>Category</source>
+                <target>تصنيف</target>
+            </trans-unit>
+            <trans-unit id="Country">
+                <source>Country</source>
+                <target>دولة</target>
+            </trans-unit>
+            <trans-unit id="City">
+                <source>City</source>
+                <target>مدينة</target>
+            </trans-unit>
+            <trans-unit id="User">
+                <source>User</source>
+                <target>مستخدم</target>
+            </trans-unit>
+            <trans-unit id="Chef">
+                <source>Chef</source>
+                <target>طباخ</target>
+            </trans-unit>
+            <trans-unit id="Rate">
+                <source>Rate</source>
+                <target>تقييم</target>
+            </trans-unit>
+            <trans-unit id="Request">
+                <source>Request</source>
+                <target>طلب</target>
+            </trans-unit>
+            <trans-unit id="Username">
+                <source>Username</source>
+                <target>اسم المستخدم</target>
+            </trans-unit>
+            <trans-unit id="Mobile">
+                <source>Mobile</source>
+                <target>موبايل</target>
+            </trans-unit>
+            <trans-unit id="Email">
+                <source>Email</source>
+                <target>البريد الالكترونى</target>
+            </trans-unit>
+            <trans-unit id="Image">
+                <source>Image</source>
+                <target>صورة</target>
+            </trans-unit>
+            <trans-unit id="Location">
+                <source>Location</source>
+                <target>المكان</target>
+            </trans-unit>
+            <trans-unit id="Lat">
+                <source>Lat</source>
+                <target>خط العرض</target>
+            </trans-unit>
+            <trans-unit id="Lng">
+                <source>Lng</source>
+                <target>خط الطول</target>
+            </trans-unit>
+            <trans-unit id="User List">
+                <source>User List</source>
+                <target>المستخدمين</target>
+            </trans-unit>
+            <trans-unit id="Password">
+                <source>Password</source>
+                <target>كلمة السر</target>
+            </trans-unit>
+            <trans-unit id="Password Message">
+                <source>Password required in new user create.</source>
+                <target>كلمة المرور المطلوبة في حالة مستخدم جديد</target>
+            </trans-unit>
+            <trans-unit id="In Holiday">
+                <source>In Holiday</source>
+                <target>في عطلة</target>
+            </trans-unit>
+            <trans-unit id="Notes">
+                <source>Notes</source>
+                <target>ملاحظات</target>
+            </trans-unit>
+            <trans-unit id="Delivery Notes">
+                <source>Delivery Notes</source>
+                <target>ملاحظات التوصيل</target>
+            </trans-unit>
+            <trans-unit id="Status">
+                <source>Status</source>
+                <target>الحالة</target>
+            </trans-unit>
+            <trans-unit id="Password Chef Message">
+                <source>Password required in new chef create.</source>
+                <target>كلمة المرور المطلوبة في حالة طباخ جديد</target>
+            </trans-unit>
+            <trans-unit id="Price">
+                <source>Price</source>
+                <target>السعر</target>
+            </trans-unit>
+            <trans-unit id="Is Hot">
+                <source>Is Hot</source>
+                <target>متميز</target>
+            </trans-unit>
+            <trans-unit id="Description">
+                <source>Description</source>
+                <target>الوصف</target>
+            </trans-unit>
+            <trans-unit id="Plate Images">
+                <source>Plate Images</source>
+                <target>صور الطبق</target>
+            </trans-unit>
+            <trans-unit id="Gallery">
+                <source>Gallery</source>
+                <target>الصور</target>
+            </trans-unit>
+            <trans-unit id="Rating List">
+                <source>Rating List</source>
+                <target>التقييمات</target>
+            </trans-unit>
+            <trans-unit id="Time">
+                <source>Time</source>
+                <target>الوقت</target>
+            </trans-unit>
+            <trans-unit id="Hot">
+                <source>Hot</source>
+                <target>مميز</target>
+            </trans-unit>
+            <trans-unit id="Clean">
+                <source>Clean</source>
+                <target>النظافة</target>
+            </trans-unit>
+            <trans-unit id="Taste">
+                <source>Taste</source>
+                <target>الطعم</target>
+            </trans-unit>
+            <trans-unit id="Value">
+                <source>Value</source>
+                <target>القيمة</target>
+            </trans-unit>
+            <trans-unit id="Comment">
+                <source>Comment</source>
+                <target>التعليق</target>
+            </trans-unit>
+            <trans-unit id="Request List">
+                <source>Request List</source>
+                <target>الطلبات</target>
+            </trans-unit>
+            <trans-unit id="Created At">
+                <source>Created At</source>
+                <target>وقت الانشاء</target>
+            </trans-unit>
+            <trans-unit id="User Mobile">
+                <source>User Mobile</source>
+                <target>موبايل</target>
+            </trans-unit>
+            <trans-unit id="Cancel Time">
+                <source>Cancel Time</source>
+                <target>وقت الالغاء</target>
+            </trans-unit>
+            <trans-unit id="Delivery Time">
+                <source>Delivery Time</source>
+                <target>وقت التوصيل</target>
+            </trans-unit>
+            <trans-unit id="User Lat">
+                <source>User Lat</source>
+                <target>خط العرض</target>
+            </trans-unit>
+            <trans-unit id="User Lng">
+                <source>User Lng</source>
+                <target>خط الطول</target>
+            </trans-unit>
+            <trans-unit id="Total Price">
+                <source>Total Price</source>
+                <target>السعر الكلى</target>
+            </trans-unit>
+            <trans-unit id="Delivery Date">
+                <source>Delivery Date</source>
+                <target>وقت التوصيل</target>
+            </trans-unit>
+            <trans-unit id="Requestdetails">
+                <source>Requestdetails</source>
+                <target>بيانات الطلب</target>
+            </trans-unit>
+            <trans-unit id="Quantity">
+                <source>Quantity</source>
+                <target>الكمية</target>
+            </trans-unit>
+            <trans-unit id="Report List">
+                <source>Report List</source>
+                <target>التقارير</target>
+            </trans-unit>
+            <trans-unit id="Report">
+                <source>Report</source>
+                <target>تقرير</target>
+            </trans-unit>
+            <trans-unit id="Content">
+                <source>Content</source>
+                <target>المحتوى</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

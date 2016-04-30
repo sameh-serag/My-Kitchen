@@ -10,29 +10,23 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Admin\Admin;
 use Doctrine\ORM\EntityRepository;
 
-class RateAdmin extends Admin {
+class ReportAdmin extends Admin {
 
     /**
      * this variable holds the route name prefix for this actions
      * @var string
      */
-    protected $baseRouteName = 'rate_admin';
+    protected $baseRouteName = 'report_admin';
 
     /**
      * this variable holds the url route prefix for this actions
      * @var string
      */
-    protected $baseRoutePattern = 'rate';
+    protected $baseRoutePattern = 'report';
 
     public function configureListFields(ListMapper $listMapper) {
         $listMapper
                 ->addIdentifier('id')
-                ->add('time')
-                ->add('hot')
-                ->add('clean')
-                ->add('taste')
-                ->add('value')
-                ->add('chef', null, array('admin_code' => 'chef_admin'))
                 ->add('user', null, array('admin_code' => 'user_admin'))
                 ->add('_action', 'actions', array(
                     'actions' => array(
@@ -47,13 +41,7 @@ class RateAdmin extends Admin {
     public function configureShowFields(ShowMapper $showMapper) {
         $showMapper
                 ->add('id')
-                ->add('time')
-                ->add('hot')
-                ->add('clean')
-                ->add('taste')
-                ->add('value')
-                ->add('comment')
-                ->add('chef', null, array('admin_code' => 'chef_admin'))
+                ->add('content')
                 ->add('user', null, array('admin_code' => 'user_admin'))
         ;
     }
@@ -61,18 +49,6 @@ class RateAdmin extends Admin {
     public function configureDatagridFilters(DatagridMapper $datagridMapper) {
         $datagridMapper
                 ->add('id')
-                ->add('time')
-                ->add('hot')
-                ->add('clean')
-                ->add('taste')
-                ->add('value')
-                ->add('chef', null, array(),null,array(
-                    'class' => 'KitchenBundle:User',
-                    'query_builder' => function(EntityRepository $er) {
-                        $qb = $er->createQueryBuilder('u');
-                        return $qb->where($qb->expr()->eq('u.type', '0'));
-                    }
-                ))
                 ->add('user', null, array(),null,array(
                     'class' => 'KitchenBundle:User',
                     'query_builder' => function(EntityRepository $er) {
@@ -83,22 +59,8 @@ class RateAdmin extends Admin {
         ;
     }
 
-    public function configureFormFields(FormMapper $formMapper) {
+    public function configureFormFields(FormMapper $formMapper) {        
         $formMapper
-                ->add('time', 'choice', array('choices' => array('1', '2', '3', '4', '5')))
-                ->add('hot', 'choice', array('choices' => array('1', '2', '3', '4', '5')))
-                ->add('clean', 'choice', array('choices' => array('1', '2', '3', '4', '5')))
-                ->add('taste', 'choice', array('choices' => array('1', '2', '3', '4', '5')))
-                ->add('value', 'choice', array('choices' => array('1', '2', '3', '4', '5')))
-                ->add('comment')
-                ->add('chef', 'entity', array(
-                    'required' => false,
-                    'class' => 'KitchenBundle:User',
-                    'query_builder' => function(EntityRepository $er) {
-                        $qb = $er->createQueryBuilder('u');
-                        return $qb->where($qb->expr()->eq('u.type', '0'));
-                    }
-                ),array('admin_code' => 'chef_admin'))
                 ->add('user', 'entity', array(
                     'required' => false,
                     'class' => 'KitchenBundle:User',
@@ -107,7 +69,7 @@ class RateAdmin extends Admin {
                         return $qb->where($qb->expr()->eq('u.type', '1'));
                     }
                 ),array('admin_code' => 'user_admin'))
+                ->add('content')                
         ;
     }
-
 }

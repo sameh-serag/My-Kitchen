@@ -3,7 +3,7 @@
 {% block field %}
     {% if object.getRequestDetails() %}
         <table style="width: 70%;">
-            <tr><th>Quantity</th><th>Plate</th></tr>
+            <tr><th>الكمية</th><th>الطبق</th></tr>
             {% for detail in object.getRequestDetails() %}
                 <tr>
                     <td>{{ detail.quantity }}</td>

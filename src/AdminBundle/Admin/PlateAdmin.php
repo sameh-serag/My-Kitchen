@@ -9,6 +9,7 @@ use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Admin\Admin;
 use Doctrine\ORM\EntityRepository;
+use KitchenBundle\Form\GalleryType;
 
 class PlateAdmin extends Admin {
 
@@ -50,10 +51,11 @@ class PlateAdmin extends Admin {
                 ->add('name')
                 ->add('price')
                 ->add('isHot')
-                ->add('description')
-                ->add('image', null, array('template' => 'AdminBundle:General:show_image.html.twig'))
+                ->add('description')                
                 ->add('chef', null, array('admin_code' => 'chef_admin'))
                 ->add('category')
+                ->add('image', null, array('template' => 'AdminBundle:General:show_image.html.twig'))
+                ->add('gallery', null, array('template' => 'AdminBundle:General:show_gallery.html.twig'))
         ;
     }
 
@@ -79,8 +81,7 @@ class PlateAdmin extends Admin {
                 ->add('name')
                 ->add('price')
                 ->add('isHot', null, array('required' => false))
-                ->add('description')
-                ->add('file', 'file', array('required' => true, 'label' => 'Image'))
+                ->add('description')                
                 ->add('chef', 'entity', array(
                     'required' => false,
                     'class' => 'KitchenBundle:User',
@@ -90,7 +91,35 @@ class PlateAdmin extends Admin {
                     }
                 ), array('admin_code' => 'chef_admin'))
                 ->add('category')
+                ->add('file', 'file', array('required' => false, 'label' => 'Image'))        
+                ->add('gallery', 'collection', array(
+                    'type' => new GalleryType(),
+                    'required' => false,
+                    'label' => 'Plate Images',
+                    'by_reference' => false,
+                    'allow_add' => true,
+                    'allow_delete' => true
+                ))        
         ;
     }
 
+    public function prePersist($object) {
+
+        if ($object->getGallery()) {
+            foreach ($object->getGallery() as $image) {
+                $image->setPlate($object);
+            }
+        }
+
+    }
+    
+    public function preUpdate($object) {
+
+        if ($object->getGallery()) {
+            foreach ($object->getGallery() as $image) {
+                $image->setPlate($object);
+            }
+        }
+
+    }
 }

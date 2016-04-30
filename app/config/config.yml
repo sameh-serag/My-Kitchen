@@ -117,6 +117,7 @@ sonata_admin:
                     - plate_admin
                     - rate_admin
                     - request_admin
+                    - report_admin
 #                    - request_details_admin
         
 sonata_block:

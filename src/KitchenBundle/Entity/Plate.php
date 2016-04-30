@@ -83,7 +83,7 @@ class Plate {
     private $category;
 
     /**
-     * @ORM\OneToMany(targetEntity="KitchenBundle\Entity\Gallery", mappedBy="plate")
+     * @ORM\OneToMany(targetEntity="KitchenBundle\Entity\Gallery", mappedBy="plate", cascade={"persist", "remove"}, orphanRemoval=true)
      */
     private $gallery;
 
@@ -408,7 +408,7 @@ class Plate {
      * @param \KitchenBundle\Entity\Gallery $image
      * @return Plate
      */
-    public function addImageGallery( $image)
+    public function addGallery( $image)
     {
         $this->gallery[] = $image;
 
@@ -420,7 +420,7 @@ class Plate {
      *
      * @param \KitchenBundle\Entity\Gallery $image
      */
-    public function removeImageGallery($image)
+    public function removeGallery($image)
     {
         $this->gallery->removeElement($image);
     }

@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    newFields = "<div><label class='control-label' for='searchTextField'>Add your location </label><br><input id='searchTextField' type='text' size='50'></div><br><div id='map_canvas'  style='height: 400px ;width:100%;'></div><br>";
+    newFields = "<div><label class='control-label' for='searchTextField'>ابحث عن مكانك </label><br><input id='searchTextField' type='text' size='50'></div><br><div id='map_canvas'  style='height: 400px ;width:100%;'></div><br>";
     parent = $('.LatField').parent().parent();
     parent.prepend(newFields);
     if ($('#map_canvas').length > 0) {

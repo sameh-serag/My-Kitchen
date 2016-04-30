@@ -1,0 +1,13 @@
+{% extends 'SonataAdminBundle:CRUD:base_show_field.html.twig' %}
+
+{% block field %}
+    {% if object.getGallery() %}
+        <ul style="list-style: none;padding: 0;margin: 0;">
+            {% for image in object.getGallery() %}
+                <li style="display: inline;">
+                    <img src="{{ asset(image.getSmallImageUrl(250,200)) }}" title="{{ object }}" alt="{{ object }}" />
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}

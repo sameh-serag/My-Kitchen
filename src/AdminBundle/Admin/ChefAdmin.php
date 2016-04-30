@@ -100,7 +100,7 @@ class ChefAdmin extends Admin {
                 ->add('lng', null, array('attr' => array('class' => 'LngField')))
                 ->add('notes')
                 ->add('deliveryNotes')
-                ->add('status', 'choice', array('choices' => array('0' => 'Pendding', '1' => 'Approved', '2' => 'Rejected')))
+                ->add('status', 'choice', array('choices' => array('0' => 'معلق', '1' => 'موافق عليه', '2' => 'مرفوض')))
                 ->add('file', 'file', array('required' => false, 'label' => 'Image'))
                 ->setHelps(array(
                     'userPassword' => 'Password required in new chef create.'

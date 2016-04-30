@@ -33,8 +33,6 @@ class RequestAdmin extends Admin {
                 ->add('cancelTime')
                 ->add('deliveryDate')
                 ->add('deliveryTime')
-                ->add('userLat')
-                ->add('userLng')
                 ->add('totalPrice')
                 ->add('_action', 'actions', array(
                     'actions' => array(
@@ -106,7 +104,7 @@ class RequestAdmin extends Admin {
                         return $qb->where($qb->expr()->eq('u.type', '1'));
                     }
                 ),array('admin_code' => 'user_admin'))
-                ->add('status', 'choice', array('choices' => array('0' => 'Pendding', '1' => 'Approved', '2' => 'Rejected')))
+                ->add('status', 'choice', array('choices' => array('0' => 'معلق', '1' => 'موافق عليه', '2' => 'مرفوض')))
                 ->add('cancelTime', null, array('attr' => array('data-class' => 'datetime'), 'widget' => 'single_text', 'format' => 'yyyy-MM-dd H:mm'))
                 ->add('deliveryDate', null, array('attr' => array('data-class' => 'date'), 'widget' => 'single_text', 'format' => 'yyyy-MM-dd'))
                 ->add('deliveryTime', null, array('attr' => array('data-class' => 'time'), 'widget' => 'single_text'))
