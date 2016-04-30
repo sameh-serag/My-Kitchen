@@ -78,7 +78,7 @@ class User {
      * @ORM\JoinColumn(name="country_id", referencedColumnName="id", nullable=true)
      */
     private $country;
-    
+
     /**
      * @var string
      *
@@ -475,7 +475,9 @@ class User {
     }
 
     public function __toString() {
-        return (string) $this->name;
+            return (string) $this->name;
+        else
+            return (string) $this->username;
     }
 
     public function __construct() {
