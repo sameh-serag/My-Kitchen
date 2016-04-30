@@ -475,6 +475,7 @@ class User {
     }
 
     public function __toString() {
+        if ($this->name)
             return (string) $this->name;
         else
             return (string) $this->username;
