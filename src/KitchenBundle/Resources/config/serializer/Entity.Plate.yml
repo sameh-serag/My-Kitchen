@@ -3,10 +3,10 @@ KitchenBundle\Entity\Plate:
     properties : 
         id:
             expose:  true
-            groups: [chefplates, plate]
+            groups: [chefplates, plate, plates]
         name :
             expose : true
-            groups: [chefplates, plate, myRequests]
+            groups: [chefplates, plate, requestDetails, plates]
         isHot :
             expose : true
             groups: [chefplates, plate]
@@ -16,6 +16,11 @@ KitchenBundle\Entity\Plate:
         image :
             expose : true
             groups: [chefplates, plate]
+            accessor:
+                  getter: getFullImagePath
         description :
+            expose : true
+            groups: [chefplates, plate]
+        gallery :
             expose : true
             groups: [chefplates, plate]

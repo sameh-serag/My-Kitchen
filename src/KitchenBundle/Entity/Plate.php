@@ -82,8 +82,18 @@ class Plate {
      */
     private $category;
 
+    /**
+     * @ORM\OneToMany(targetEntity="KitchenBundle\Entity\Gallery", mappedBy="plate")
+     */
+    private $gallery;
+
+
     public function __toString() {
         return (string) $this->name . ' - ' . $this->price;
+    }
+
+    public function __construct() {
+        $this->gallery = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -176,6 +186,15 @@ class Plate {
      */
     public function getImage() {
         return $this->image;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getFullImagePath() {
+        return $_SERVER['HTTP_HOST'].'/'.$this->getUploadDir(). '/' .$this->image;
     }
 
     /**
@@ -381,6 +400,39 @@ class Plate {
      */
     public function setCategory($category) {
         $this->category = $category;
+    }
+
+    /**
+     * Add image
+     *
+     * @param \KitchenBundle\Entity\Gallery $image
+     * @return Plate
+     */
+    public function addImageGallery( $image)
+    {
+        $this->gallery[] = $image;
+
+        return $this;
+    }
+
+    /**
+     * Remove image gallery
+     *
+     * @param \KitchenBundle\Entity\Gallery $image
+     */
+    public function removeImageGallery($image)
+    {
+        $this->gallery->removeElement($image);
+    }
+
+    /**
+     * Get  Gallery
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGallery()
+    {
+        return $this->gallery;
     }
 
 }

@@ -3,7 +3,7 @@ KitchenBundle\Entity\Country:
     properties : 
         id:
             expose:  true
-            groups: [country, chef]
+            groups: [country, chef, userDetails]
         name :
             expose : true
-            groups: [country, chef]
+            groups: [country, chef, userDetails]

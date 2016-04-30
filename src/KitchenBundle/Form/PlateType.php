@@ -21,7 +21,9 @@ class PlateType extends AbstractType
         $builder
             ->add('name')
             ->add('isHot')
-            ->add('image')
+            ->add('file', 'file', array(
+                'multiple' => true
+            ))
             ->add('description')
             ->add('price')
             ->add('chef', NULL, array(

@@ -3,8 +3,8 @@ KitchenBundle\Entity\Request:
     properties : 
         id:
             expose:  true
-            groups: [myOrders, myRequests]
-        total_price :
+            groups: [myOrders, myRequests, requestDetails]
+        totalPrice :
             expose : true
             groups: [myOrders]
         status :
@@ -13,18 +13,21 @@ KitchenBundle\Entity\Request:
         chef :
             expose : true
             groups: [myOrders]
+        user :
+              expose : true
+              groups: [myRequests, requestDetails]
         deliveryTime :
             expose : true
-            groups: [myRequests]
+            groups: [requestDetails]
         deliveryDate :
             expose : true
-            groups: [myRequests]
+            groups: [requestDetails]
         userLat :
             expose : true
-            groups: [myRequests]
+            groups: [requestDetails]
         userLng :
             expose : true
-            groups: [myRequests]
+            groups: [requestDetails]
         requestdetails :
               expose : true
-              groups: [myRequests]
+              groups: [requestDetails]

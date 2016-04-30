@@ -247,6 +247,17 @@ class User {
     }
 
     /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getFullImagePath() {
+        return $_SERVER['HTTP_HOST'].'/'.$this->getUploadDir(). '/' .$this->image;
+    }
+
+
+
+    /**
      * Set file
      *
      * @param \Symfony\Component\HttpFoundation\File\UploadedFile $file

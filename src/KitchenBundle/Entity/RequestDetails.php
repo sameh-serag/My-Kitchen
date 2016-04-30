@@ -80,7 +80,6 @@ class RequestDetails
     /**
      * @return \KitchenBundle\Entity\Request
      */
-
     public function getRequest()
     {
         return $this->request;

@@ -50,7 +50,7 @@ class UserType extends AbstractType
                 ))
                 ->add('notes')
                 ->add('rate')
-                ->add('image')
+                ->add('file')
                 ->add('inHoliday')
                 ->add('type')
                 ->add('lat', NULL, array(

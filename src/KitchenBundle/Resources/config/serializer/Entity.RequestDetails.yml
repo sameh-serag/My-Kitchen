@@ -3,7 +3,7 @@ KitchenBundle\Entity\RequestDetails:
     properties :
         quantity :
             expose : true
-            groups: [myRequests]
+            groups: [requestDetails]
         plate :
             expose : true
-            groups: [myRequests]
+            groups: [requestDetails]
