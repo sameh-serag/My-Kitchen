@@ -2,7 +2,9 @@
 
 namespace KitchenBundle\Controller;
 
+use KitchenBundle\Entity\Gallery;
 use KitchenBundle\Entity\Rating;
+use KitchenBundle\Entity\Report;
 use KitchenBundle\Entity\RequestDetails;
 use KitchenBundle\Entity\User;
 use KitchenBundle\Entity\Plate;
@@ -22,6 +24,7 @@ use KitchenBundle\Form\RatingType;
 use KitchenBundle\Form\UserType;
 use KitchenBundle\Form\PlateType;
 use KitchenBundle\Form\RequestType;
+use KitchenBundle\Form\ReportType;
 
 use KitchenBundle\Utils\APIResponse;
 use KitchenBundle\Utils\APIError;
@@ -171,7 +174,7 @@ class ApiController extends FOSRestController
      * @ApiDoc(
      *   description = "Get All plates for certain city",
      *   output = {
-     *     "class" = "KitchenBundle\Entity\Plates",
+     *     "class" = "KitchenBundle\Entity\Plate",
      *     "groups" = {"plates"},
      *   },
      *   statusCodes = {
@@ -460,6 +463,51 @@ class ApiController extends FOSRestController
     }
 
 
+    /**
+     * Get Request details
+     *
+     * @ApiDoc(
+     *   description = "Get Request details",
+     *   output = {
+     *     "class" = "KitchenBundle\Entity\Request",
+     *     "groups" = {"requestDetails"},
+     *   },
+     *   statusCodes = {
+     *     200 = "Returned when successful",
+     *     404 = "Returned when no country found"
+     *   }
+     * )
+     *
+     * @param string     $request_id      request Id
+     * @return type
+     */
+    public function getRequestDetailsAction($request_id) {
+
+        $em = $this->getDoctrine()->getManager();
+        $apiResponse = new APIResponse();
+
+        if($request_id){
+            $request = $em->getRepository('KitchenBundle:Request')->findOneBy(array('id'=>$request_id));
+
+            if($request) {
+                $apiResponse->setStatus(TRUE);
+                $apiResponse->setData( $request );
+                // prepare response object with http status 200
+                $view = $this->view($apiResponse, Codes::HTTP_OK);
+            }
+            else {
+                $apiResponse->setStatus(FALSE);
+                $apiResponse->setError('No Request found for the given id');
+                // prepare response object with http status 404 NOT FOUND
+                $view = $this->view($apiResponse, Codes::HTTP_NOT_FOUND);
+            }
+        }
+
+        $context = SerializationContext::create()->setGroups(array("apiResponse", "requestDetails"));
+        $view->setSerializationContext($context);
+
+        return $this->handleView($view);
+    }
 
     /**
      * Get Chef's Requests
@@ -489,7 +537,7 @@ class ApiController extends FOSRestController
 
             if($chef) {
                 $apiResponse->setStatus(TRUE);
-                $apiResponse->setData($chef->getRequests());
+                $apiResponse->setData( $em->getRepository('KitchenBundle:Request')->findBy(array('chef'=>$chef_id, 'status'=>0)));
                 // prepare response object with http status 200
                 $view = $this->view($apiResponse, Codes::HTTP_OK);
             }
@@ -588,7 +636,7 @@ class ApiController extends FOSRestController
         $token = $header->get('token');
 
         if(!$this->isTokenValid($token)){
-            $apiResponse = new APIResponse(FALSE, NULL, 'Not Authorized');
+            $apiResponse = new APIResponse(FALSE, "", 'Not Authorized');
             $view = $this->view($apiResponse, Codes::HTTP_BAD_REQUEST);
 
             return $this->handleView($view);
@@ -653,7 +701,7 @@ class ApiController extends FOSRestController
             $errors = $this->getErrorMessages($form);
 
             // prepare response object with http bad request status 400
-            $apiResponse = new APIResponse(FALSE, NULL, $errors);
+            $apiResponse = new APIResponse(FALSE, "", $errors);
             $view = $this->view($apiResponse, Codes::HTTP_BAD_REQUEST);
         }
 
@@ -679,7 +727,7 @@ class ApiController extends FOSRestController
      *      { "name"="delivery_notes", "dataType"="string", "required"=true, "description"="", "" },
      *      { "name"="city", "dataType"="string", "required"=true, "description"="", "" },
      *      { "name"="country", "dataType"="string", "required"=true, "description"="", "" },
-     *      { "name"="image", "dataType"="string", "required"=true, "description"="", "" },
+     *      { "name"="image", "dataType"="file", "required"=true, "description"="", "" },
      *      { "name"="user_id", "dataType"="string", "required"=false, "description"="", "" },
      *   },
      *   statusCodes = {
@@ -694,6 +742,7 @@ class ApiController extends FOSRestController
 
         // get parameterBag object
         $parameterBag = $request->request;
+        $fileBag      = $request->files;
 
         // get entity manager
         $em = $this->getDoctrine()->getManager();
@@ -707,7 +756,7 @@ class ApiController extends FOSRestController
         $lng = $parameterBag->get('lng');
         $password = $parameterBag->get('password');
         $name = $parameterBag->get('name');
-        $image = $parameterBag->get('image');
+        $image = $fileBag->get('image');
         $notes = $parameterBag->get('notes');
         $delivery_notes = $parameterBag->get('delivery_notes');
         $city = $parameterBag->get('city');
@@ -739,7 +788,7 @@ class ApiController extends FOSRestController
                 'deliveryNotes'=> $delivery_notes,
                 'city'         => $city,
                 'country'      => $country,
-                'image'        => $image,
+                'file'        => $image,
             );
         }else{ //user
             $entityParams = array(
@@ -766,18 +815,8 @@ class ApiController extends FOSRestController
 
             $apiResponse = new APIResponse(TRUE);
             $obj = $form->getData();
-
-            if($image){
-                $image_name = uniqid('ws_');
-                $ifp = fopen(__DIR__ . '/../../../web/uploads/user-images/' . $image_name, "wb");
-                $data = explode(',', $image);
-                fwrite($ifp, base64_decode($data[1]));
-                fclose($ifp);
-
-                $obj->setImage($image_name);
-            }
-
             $em->persist($obj);
+            
             if($user_id){
                 $apiResponse->setData('updated');
                 // prepare response object with http created status 200
@@ -797,7 +836,7 @@ class ApiController extends FOSRestController
             $errors = $this->getErrorMessages($form);
 
             // prepare response object with http bad request status 400
-            $apiResponse = new APIResponse(FALSE, NULL, $errors);
+            $apiResponse = new APIResponse(FALSE, "", $errors);
             $view = $this->view($apiResponse, Codes::HTTP_BAD_REQUEST);
         }
 
@@ -816,7 +855,7 @@ class ApiController extends FOSRestController
      *      { "name"="price", "dataType"="integer", "required"=true, "description"="", "" },
      *      { "name"="name", "dataType"="string", "required"=true, "description"="", "" },
      *      { "name"="description", "dataType"="string", "required"=true, "description"="", "" },
-     *      { "name"="image", "dataType"="string", "required"=true, "description"="", "" },
+     *      { "name"="image[]", "dataType"="file", "required"=true, "description"="", "" },
      *   },
      *   statusCodes = {
      *     200 = "Returned when successful",
@@ -830,6 +869,7 @@ class ApiController extends FOSRestController
 
         // get parameterBag object
         $parameterBag = $request->request;
+        $fileBag = $request->files;
 
         // get entity manager
         $em = $this->getDoctrine()->getManager();
@@ -839,7 +879,7 @@ class ApiController extends FOSRestController
         $token = $header->get('token');
 
         if(!$this->isTokenValid($token)){
-            $apiResponse = new APIResponse(FALSE, NULL, 'Not Authorized');
+            $apiResponse = new APIResponse(FALSE, "", 'Not Authorized');
             $view = $this->view($apiResponse, Codes::HTTP_BAD_REQUEST);
 
             return $this->handleView($view);
@@ -851,7 +891,7 @@ class ApiController extends FOSRestController
         $chef = $parameterBag->get('chef');
         $price = $parameterBag->get('price');
         $description = $parameterBag->get('description');
-        $image = $parameterBag->get('image');
+        $image = $fileBag->get('image');
 
         $entity = new Plate();
 
@@ -862,13 +902,103 @@ class ApiController extends FOSRestController
             'isHot'   => $is_hot,
             'price'    => $price,
             'description'    => $description,
-            'image'    => $image,
+            'file'    => $image[0],
         );
 
 
 
         // create service form
         $form = $this->createForm(new PlateType(), $entity, array('csrf_protection' => false));
+
+        // submit form against request params
+        $form->submit($entityParams);
+
+        if($form->isValid()) {
+
+            $apiResponse = new APIResponse(TRUE);
+
+            $obj = $form->getData();
+            $em->persist($obj);
+            $apiResponse->setData('created');
+            $em->flush();
+
+            unset($image[0]);
+            foreach ($image as $img){
+                $gallery = new Gallery();
+                $gallery->setPlate($obj);
+                $gallery->setFile($img);
+                $em->persist($gallery);
+                $em->flush();
+            }
+
+            // prepare response object with http created status 201
+            $view = $this->view($apiResponse, Codes::HTTP_CREATED);
+        }
+        else {
+            // get form errors
+            $errors = $this->getErrorMessages($form);
+
+            // prepare response object with http bad request status 400
+            $apiResponse = new APIResponse(FALSE, "", $errors);
+            $view = $this->view($apiResponse, Codes::HTTP_BAD_REQUEST);
+        }
+
+        return $this->handleView($view);
+    }
+
+    /**
+     * Create a new report
+     *
+     * @ApiDoc(
+     *   resource = true,
+     *   description = "Create a new report",
+     *   parameters={
+     *      { "name"="user", "dataType"="string", "required"=true, "description"="", "format"="" },
+     *      { "name"="content", "dataType"="text", "required"=true, "description"="", "" },
+     *   },
+     *   statusCodes = {
+     *     200 = "Returned when successful",
+     *     400 = "Returned when the data has errors"
+     *   }
+     * )
+     *
+     * @return type
+     */
+    public function postReportAction(Request $request) {
+
+        // get parameterBag object
+        $parameterBag = $request->request;
+
+        // get entity manager
+        $em = $this->getDoctrine()->getManager();
+
+        // get Headers object
+        $header = $request->headers;
+        $token = $header->get('token');
+
+        if(!$this->isTokenValid($token)){
+            $apiResponse = new APIResponse(FALSE, "", 'Not Authorized');
+            $view = $this->view($apiResponse, Codes::HTTP_BAD_REQUEST);
+
+            return $this->handleView($view);
+        }
+
+        // get POST params
+        $user = $parameterBag->get('user');
+        $content = $parameterBag->get('content');
+
+        $entity = new Report();
+
+
+        $entityParams = array(
+            'user'     => $user,
+            'content'     => $content
+        );
+
+
+
+        // create service form
+        $form = $this->createForm(new ReportType(), $entity, array('csrf_protection' => false));
 
         // submit form against request params
         $form->submit($entityParams);
@@ -889,7 +1019,7 @@ class ApiController extends FOSRestController
             $errors = $this->getErrorMessages($form);
 
             // prepare response object with http bad request status 400
-            $apiResponse = new APIResponse(FALSE, NULL, $errors);
+            $apiResponse = new APIResponse(FALSE, "", $errors);
             $view = $this->view($apiResponse, Codes::HTTP_BAD_REQUEST);
         }
 
@@ -933,7 +1063,7 @@ class ApiController extends FOSRestController
         $token = $header->get('token');
 
         if(!$this->isTokenValid($token)){
-            $apiResponse = new APIResponse(FALSE, NULL, 'Not Authorized');
+            $apiResponse = new APIResponse(FALSE, "", 'Not Authorized');
             $view = $this->view($apiResponse, Codes::HTTP_BAD_REQUEST);
 
             return $this->handleView($view);
@@ -999,7 +1129,7 @@ class ApiController extends FOSRestController
             $errors = $this->getErrorMessages($form);
 
             // prepare response object with http bad request status 400
-            $apiResponse = new APIResponse(FALSE, NULL, $errors);
+            $apiResponse = new APIResponse(FALSE, "", $errors);
             $view = $this->view($apiResponse, Codes::HTTP_BAD_REQUEST);
         }
 
@@ -1040,7 +1170,7 @@ class ApiController extends FOSRestController
         $token = $header->get('token');
 
         if(!$this->isTokenValid($token)){
-            $apiResponse = new APIResponse(FALSE, NULL, 'Not Authorized');
+            $apiResponse = new APIResponse(FALSE, "", 'Not Authorized');
             $view = $this->view($apiResponse, Codes::HTTP_BAD_REQUEST);
 
             return $this->handleView($view);
@@ -1135,7 +1265,7 @@ class ApiController extends FOSRestController
         else {
             // get form errors
             // prepare response object with http bad request status 400
-            $apiResponse = new APIResponse(FALSE, NULL, 'Wrong Credentials');
+            $apiResponse = new APIResponse(FALSE, "", 'Wrong Credentials');
             $view = $this->view($apiResponse, Codes::HTTP_BAD_REQUEST);
         }
 
@@ -1201,3 +1331,5 @@ class ApiController extends FOSRestController
 
 
 }
+
+

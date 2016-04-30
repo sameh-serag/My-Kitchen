@@ -11,7 +11,7 @@ class APIResponse {
     private $data;
     private $error;
     
-    public function __construct($status = NULL, $data = NULL, $error = NULL) {
+    public function __construct($status = "", $data = "", $error = "") {
         $this->status = $status;
         $this->data = $data;
         $this->error = $error;

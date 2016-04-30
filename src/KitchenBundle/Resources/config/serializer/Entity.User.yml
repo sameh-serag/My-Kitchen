@@ -6,31 +6,36 @@ KitchenBundle\Entity\User:
             groups: [chefs, chefplates, chef, userDetails]
         name :
             expose : true
-            groups: [chefs, chefplates, chef, myOrders, userDetails]
+            groups: [chefs, chefplates, chef, myOrders, userDetails, myRequests]
         image :
             expose : true
-            groups: [chefs, chefplates, chef]
+            groups: [chefs, chefplates, chef, userDetails]
+            accessor:
+                  getter: getFullImagePath
         rate :
             expose : true
             groups: [chefs, chef]
         notes :
             expose : true
-            groups: [chefplates, chef]
+            groups: [chefplates, chef, userDetails]
         deliveryNotes :
             expose : true
-            groups: [chefplates, chef]
+            groups: [chefplates, chef, userDetails]
         inHoliday :
             expose : true
-            groups: [chefplates, chef]
+            groups: [chefplates, chef, userDetails]
         plates :
             expose : true
             groups: [chefplates]
         city :
             expose : true
-            groups: [chef]
+            groups: [chef, userDetails]
+        country :
+            expose : true
+            groups: [chef, userDetails]
         mobile :
             expose : true
-            groups: [userDetails]
+            groups: [userDetails, requestDetails]
         email :
             expose : true
             groups: [userDetails]

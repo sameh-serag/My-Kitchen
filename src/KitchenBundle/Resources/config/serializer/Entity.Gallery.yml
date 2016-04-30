@@ -1,0 +1,11 @@
+KitchenBundle\Entity\Gallery:
+    exclusion_policy: ALL
+    properties : 
+        id:
+            expose:  true
+            groups: [chefplates, plate, plates]
+        image :
+            expose : true
+            groups: [chefplates, plate]
+            accessor:
+                  getter: getFullImagePath
