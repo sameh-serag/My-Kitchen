@@ -9,18 +9,18 @@ KitchenBundle\Entity\Plate:
             groups: [chefplates, plate, requestDetails, plates]
         isHot :
             expose : true
-            groups: [chefplates, plate]
+            groups: [chefplates, plate, plates]
         price :
             expose : true
-            groups: [chefplates, plate]
+            groups: [chefplates, plate, plates]
         image :
             expose : true
-            groups: [chefplates, plate]
+            groups: [chefplates, plate, plates]
             accessor:
                   getter: getFullImagePath
         description :
             expose : true
-            groups: [chefplates, plate]
+            groups: [chefplates, plate, plates]
         gallery :
             expose : true
             groups: [chefplates, plate]

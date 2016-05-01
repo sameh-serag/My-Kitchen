@@ -2,23 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a0cbfb26-e098-4c89-894d-d1109ca46de4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/KitchenBundle/Form/ReportType.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/KitchenBundle/Resources/config/serializer/Entity.Gallery.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my_kitchen.zip" afterPath="$PROJECT_DIR$/my_kitchen.zip" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src.zip" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/KitchenBundle/Controller/ApiController.php" afterPath="$PROJECT_DIR$/src/KitchenBundle/Controller/ApiController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/KitchenBundle/Entity/Plate.php" afterPath="$PROJECT_DIR$/src/KitchenBundle/Entity/Plate.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/KitchenBundle/Entity/RequestDetails.php" afterPath="$PROJECT_DIR$/src/KitchenBundle/Entity/RequestDetails.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/KitchenBundle/Entity/User.php" afterPath="$PROJECT_DIR$/src/KitchenBundle/Entity/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/KitchenBundle/Form/PlateType.php" afterPath="$PROJECT_DIR$/src/KitchenBundle/Form/PlateType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/KitchenBundle/Form/UserType.php" afterPath="$PROJECT_DIR$/src/KitchenBundle/Form/UserType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/KitchenBundle/Resources/config/serializer/Entity.City.yml" afterPath="$PROJECT_DIR$/src/KitchenBundle/Resources/config/serializer/Entity.City.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/KitchenBundle/Resources/config/serializer/Entity.Country.yml" afterPath="$PROJECT_DIR$/src/KitchenBundle/Resources/config/serializer/Entity.Country.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/KitchenBundle/Resources/config/serializer/Entity.Plate.yml" afterPath="$PROJECT_DIR$/src/KitchenBundle/Resources/config/serializer/Entity.Plate.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/KitchenBundle/Resources/config/serializer/Entity.Request.yml" afterPath="$PROJECT_DIR$/src/KitchenBundle/Resources/config/serializer/Entity.Request.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/KitchenBundle/Resources/config/serializer/Entity.RequestDetails.yml" afterPath="$PROJECT_DIR$/src/KitchenBundle/Resources/config/serializer/Entity.RequestDetails.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/KitchenBundle/Resources/config/serializer/Entity.User.yml" afterPath="$PROJECT_DIR$/src/KitchenBundle/Resources/config/serializer/Entity.User.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/KitchenBundle/Utils/APIResponse.php" afterPath="$PROJECT_DIR$/src/KitchenBundle/Utils/APIResponse.php" />
     </list>
     <ignored path="my_kitchen.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -48,29 +34,10 @@
       <file leaf-file-name="ApiController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Controller/ApiController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="401">
-              <caret line="923" column="0" selection-start-line="923" selection-start-column="0" selection-end-line="923" selection-end-column="0" />
+            <state relative-caret-position="281">
+              <caret line="188" column="52" selection-start-line="188" selection-start-column="52" selection-end-line="188" selection-end-column="52" />
               <folding>
                 <element signature="e#44#77#0#PHP" expanded="true" />
-                <element signature="e#1485#1508#1#PHP" expanded="true" />
-                <element signature="e#2879#2902#1#PHP" expanded="true" />
-                <element signature="e#4390#4410#1#PHP" expanded="true" />
-                <element signature="e#5896#5916#1#PHP" expanded="true" />
-                <element signature="e#7652#7672#1#PHP" expanded="true" />
-                <element signature="e#9556#9576#1#PHP" expanded="true" />
-                <element signature="e#11094#11115#1#PHP" expanded="true" />
-                <element signature="e#12559#12579#1#PHP" expanded="true" />
-                <element signature="e#14010#14030#1#PHP" expanded="true" />
-                <element signature="e#15515#15538#1#PHP" expanded="true" />
-                <element signature="e#17025#17045#1#PHP" expanded="true" />
-                <element signature="e#17212#17235#1#PHP" expanded="true" />
-                <element signature="e#18591#18611#1#PHP" expanded="true" />
-                <element signature="e#22460#22480#1#PHP" expanded="true" />
-                <element signature="e#26225#26245#1#PHP" expanded="true" />
-                <element signature="e#37758#37779#1#PHP" expanded="true" />
-                <element signature="e#40385#40408#1#PHP" expanded="true" />
-                <element signature="e#42377#42397#1#PHP" expanded="true" />
-                <element signature="e#43551#43571#1#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -89,11 +56,9 @@
       <file leaf-file-name="ReportType.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Form/ReportType.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
+            <state relative-caret-position="75">
               <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-              <folding>
-                <element signature="e#38#78#0#PHP" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -112,17 +77,17 @@
         <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Entity/Plate.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="116">
-              <caret line="190" column="4" selection-start-line="190" selection-start-column="4" selection-end-line="197" selection-end-column="5" />
+              <caret line="190" column="4" selection-start-line="190" selection-start-column="4" selection-end-line="190" selection-end-column="4" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Entity.Plate.yml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Entity.Plate.yml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Resources/config/serializer/Entity.Plate.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="375">
-              <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
+              <caret line="25" column="38" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -138,11 +103,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Gallery.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Gallery.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Entity/Gallery.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="499">
-              <caret line="262" column="0" selection-start-line="262" selection-start-column="0" selection-end-line="262" selection-end-column="0" />
+            <state relative-caret-position="514">
+              <caret line="264" column="0" selection-start-line="264" selection-start-column="0" selection-end-line="264" selection-end-column="0" />
               <folding>
                 <element signature="e#40#72#0#PHP" expanded="true" />
               </folding>
@@ -153,7 +118,7 @@
       <file leaf-file-name="City.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Entity/City.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
+            <state relative-caret-position="480">
               <caret line="32" column="42" selection-start-line="32" selection-start-column="42" selection-end-line="32" selection-end-column="42" />
               <folding />
             </state>
@@ -163,7 +128,7 @@
       <file leaf-file-name="Report.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Entity/Report.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="109">
+            <state relative-caret-position="510">
               <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
               <folding />
             </state>
@@ -209,9 +174,9 @@
         <option value="$PROJECT_DIR$/src/KitchenBundle/Form/ReportType.php" />
         <option value="$PROJECT_DIR$/src/KitchenBundle/Form/PlateType.php" />
         <option value="$PROJECT_DIR$/src/KitchenBundle/Controller/ApiController.php" />
-        <option value="$PROJECT_DIR$/src/KitchenBundle/Resources/config/serializer/Entity.Plate.yml" />
         <option value="$PROJECT_DIR$/src/KitchenBundle/Resources/config/serializer/Entity.Gallery.yml" />
         <option value="$PROJECT_DIR$/src/KitchenBundle/Entity/Gallery.php" />
+        <option value="$PROJECT_DIR$/src/KitchenBundle/Resources/config/serializer/Entity.Plate.yml" />
       </list>
     </option>
   </component>
@@ -585,18 +550,19 @@
       <workItem from="1461705210507" duration="2586000" />
       <workItem from="1461931463758" duration="2252000" />
       <workItem from="1461959802929" duration="8061000" />
-      <workItem from="1461987298419" duration="4089000" />
+      <workItem from="1461987298419" duration="4688000" />
+      <workItem from="1462094624517" duration="573000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83546000" />
+    <option name="totallyTimeSpent" value="84718000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="27" width="1368" height="742" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23939393" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23901713" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328594" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -905,7 +871,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1320">
           <caret line="88" column="34" selection-start-line="88" selection-start-column="30" selection-end-line="88" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -913,7 +878,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -961,7 +925,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Entity/Report.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
+        <state relative-caret-position="510">
           <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
           <folding />
         </state>
@@ -969,7 +933,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Entity/City.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
+        <state relative-caret-position="480">
           <caret line="32" column="42" selection-start-line="32" selection-start-column="42" selection-end-line="32" selection-end-column="42" />
           <folding />
         </state>
@@ -985,11 +949,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Form/ReportType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
+        <state relative-caret-position="75">
           <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding>
-            <element signature="e#38#78#0#PHP" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -997,43 +959,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="23" column="40" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Controller/ApiController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="923" column="0" selection-start-line="923" selection-start-column="0" selection-end-line="923" selection-end-column="0" />
-          <folding>
-            <element signature="e#44#77#0#PHP" expanded="true" />
-            <element signature="e#1485#1508#1#PHP" expanded="true" />
-            <element signature="e#2879#2902#1#PHP" expanded="true" />
-            <element signature="e#4390#4410#1#PHP" expanded="true" />
-            <element signature="e#5896#5916#1#PHP" expanded="true" />
-            <element signature="e#7652#7672#1#PHP" expanded="true" />
-            <element signature="e#9556#9576#1#PHP" expanded="true" />
-            <element signature="e#11094#11115#1#PHP" expanded="true" />
-            <element signature="e#12559#12579#1#PHP" expanded="true" />
-            <element signature="e#14010#14030#1#PHP" expanded="true" />
-            <element signature="e#15515#15538#1#PHP" expanded="true" />
-            <element signature="e#17025#17045#1#PHP" expanded="true" />
-            <element signature="e#17212#17235#1#PHP" expanded="true" />
-            <element signature="e#18591#18611#1#PHP" expanded="true" />
-            <element signature="e#22460#22480#1#PHP" expanded="true" />
-            <element signature="e#26225#26245#1#PHP" expanded="true" />
-            <element signature="e#37758#37779#1#PHP" expanded="true" />
-            <element signature="e#40385#40408#1#PHP" expanded="true" />
-            <element signature="e#42377#42397#1#PHP" expanded="true" />
-            <element signature="e#43551#43571#1#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Resources/config/serializer/Entity.Plate.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
           <folding />
         </state>
       </provider>
@@ -1046,21 +971,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Entity/Gallery.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="514">
+          <caret line="264" column="0" selection-start-line="264" selection-start-column="0" selection-end-line="264" selection-end-column="0" />
+          <folding>
+            <element signature="e#40#72#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Entity/Plate.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="116">
-          <caret line="190" column="4" selection-start-line="190" selection-start-column="4" selection-end-line="197" selection-end-column="5" />
+          <caret line="190" column="4" selection-start-line="190" selection-start-column="4" selection-end-line="190" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Entity/Gallery.php">
+    <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Controller/ApiController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="499">
-          <caret line="262" column="0" selection-start-line="262" selection-start-column="0" selection-end-line="262" selection-end-column="0" />
+        <state relative-caret-position="281">
+          <caret line="188" column="52" selection-start-line="188" selection-start-column="52" selection-end-line="188" selection-end-column="52" />
           <folding>
-            <element signature="e#40#72#0#PHP" expanded="true" />
+            <element signature="e#44#77#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Resources/config/serializer/Entity.Plate.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="38" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
+          <folding />
         </state>
       </provider>
     </entry>
