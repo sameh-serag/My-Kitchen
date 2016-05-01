@@ -85,11 +85,11 @@ class RateAdmin extends Admin {
 
     public function configureFormFields(FormMapper $formMapper) {
         $formMapper
-                ->add('time', 'choice', array('choices' => array('1', '2', '3', '4', '5')))
-                ->add('hot', 'choice', array('choices' => array('1', '2', '3', '4', '5')))
-                ->add('clean', 'choice', array('choices' => array('1', '2', '3', '4', '5')))
-                ->add('taste', 'choice', array('choices' => array('1', '2', '3', '4', '5')))
-                ->add('value', 'choice', array('choices' => array('1', '2', '3', '4', '5')))
+                ->add('time', 'choice', array('choices' => array('1'=>'1', '2'=>'2', '3'=>'3', '4'=>'4', '5'=>'5')))
+                ->add('hot', 'choice', array('choices' => array('1'=>'1', '2'=>'2', '3'=>'3', '4'=>'4', '5'=>'5')))
+                ->add('clean', 'choice', array('choices' => array('1'=>'1', '2'=>'2', '3'=>'3', '4'=>'4', '5'=>'5')))
+                ->add('taste', 'choice', array('choices' => array('1'=>'1', '2'=>'2', '3'=>'3', '4'=>'4', '5'=>'5')))
+                ->add('value', 'choice', array('choices' => array('1'=>'1', '2'=>'2', '3'=>'3', '4'=>'4', '5'=>'5')))
                 ->add('comment')
                 ->add('chef', 'entity', array(
                     'required' => false,
