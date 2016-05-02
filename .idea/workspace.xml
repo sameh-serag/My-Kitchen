@@ -4,6 +4,7 @@
     <list default="true" id="a0cbfb26-e098-4c89-894d-d1109ca46de4" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/KitchenBundle/Controller/ApiController.php" afterPath="$PROJECT_DIR$/src/KitchenBundle/Controller/ApiController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/KitchenBundle/Form/UserType.php" afterPath="$PROJECT_DIR$/src/KitchenBundle/Form/UserType.php" />
     </list>
     <ignored path="my_kitchen.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,36 +31,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ApiController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ApiController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Controller/ApiController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="1373" column="123" selection-start-line="1373" selection-start-column="123" selection-end-line="1373" selection-end-column="123" />
+            <state relative-caret-position="285">
+              <caret line="898" column="40" selection-start-line="898" selection-start-column="40" selection-end-line="898" selection-end-column="40" />
               <folding>
                 <element signature="e#44#77#0#PHP" expanded="true" />
-                <element signature="e#1485#1508#1#PHP" expanded="true" />
-                <element signature="e#2879#2902#1#PHP" expanded="true" />
-                <element signature="e#4390#4410#1#PHP" expanded="true" />
-                <element signature="e#5910#5930#1#PHP" expanded="true" />
-                <element signature="e#7432#7452#1#PHP" expanded="true" />
-                <element signature="e#9188#9208#1#PHP" expanded="true" />
-                <element signature="e#11117#11137#1#PHP" expanded="true" />
-                <element signature="e#13036#13056#1#PHP" expanded="true" />
-                <element signature="e#14574#14595#1#PHP" expanded="true" />
-                <element signature="e#16039#16059#1#PHP" expanded="true" />
-                <element signature="e#17490#17510#1#PHP" expanded="true" />
-                <element signature="e#18995#19018#1#PHP" expanded="true" />
-                <element signature="e#20505#20525#1#PHP" expanded="true" />
-                <element signature="e#20692#20715#1#PHP" expanded="true" />
-                <element signature="e#22071#22091#1#PHP" expanded="true" />
-                <element signature="e#25940#25960#1#PHP" expanded="true" />
-                <element signature="e#29705#29725#1#PHP" expanded="true" />
-                <element signature="e#34521#34542#1#PHP" expanded="true" />
-                <element signature="e#41996#42017#1#PHP" expanded="true" />
-                <element signature="e#44623#44646#1#PHP" expanded="true" />
-                <element signature="e#46615#46635#1#PHP" expanded="true" />
-                <element signature="e#46785#46805#1#PHP" expanded="true" />
-                <element signature="e#47980#48000#1#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -68,7 +46,7 @@
       <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Entity/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="146">
+            <state relative-caret-position="2445">
               <caret line="166" column="7" selection-start-line="166" selection-start-column="7" selection-end-line="166" selection-end-column="7" />
               <folding>
                 <element signature="e#40#72#0#PHP" expanded="true" />
@@ -97,11 +75,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserType.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="UserType.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Form/UserType.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
-              <caret line="82" column="25" selection-start-line="82" selection-start-column="25" selection-end-line="82" selection-end-column="25" />
+            <state relative-caret-position="333">
+              <caret line="66" column="14" selection-start-line="66" selection-start-column="14" selection-end-line="66" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -199,8 +177,8 @@
         <option value="$PROJECT_DIR$/src/KitchenBundle/Resources/config/serializer/Entity.Category.yml" />
         <option value="$PROJECT_DIR$/src/KitchenBundle/Entity/Plate.php" />
         <option value="$PROJECT_DIR$/src/KitchenBundle/Entity/User.php" />
-        <option value="$PROJECT_DIR$/src/KitchenBundle/Form/UserType.php" />
         <option value="$PROJECT_DIR$/src/KitchenBundle/Controller/ApiController.php" />
+        <option value="$PROJECT_DIR$/src/KitchenBundle/Form/UserType.php" />
       </list>
     </option>
   </component>
@@ -244,6 +222,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane">
+        <subPane />
+      </pane>
       <pane id="Scope">
         <subPane subId="Project Files">
           <PATH>
@@ -657,9 +638,6 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="ProjectPane">
-        <subPane />
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -745,18 +723,19 @@
       <workItem from="1461987298419" duration="4688000" />
       <workItem from="1462094624517" duration="4248000" />
       <workItem from="1462216598630" duration="4488000" />
-      <workItem from="1462226082709" duration="719000" />
+      <workItem from="1462226082709" duration="1317000" />
+      <workItem from="1462229146360" duration="109000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93600000" />
+    <option name="totallyTimeSpent" value="94307000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="27" width="1368" height="742" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24621212" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328594" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1164,7 +1143,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Entity/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
+        <state relative-caret-position="2445">
           <caret line="166" column="7" selection-start-line="166" selection-start-column="7" selection-end-line="166" selection-end-column="7" />
           <folding>
             <element signature="e#40#72#0#PHP" expanded="true" />
@@ -1172,44 +1151,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Form/UserType.php">
+    <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Controller/ApiController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="82" column="25" selection-start-line="82" selection-start-column="25" selection-end-line="82" selection-end-column="25" />
-          <folding />
+        <state relative-caret-position="285">
+          <caret line="898" column="40" selection-start-line="898" selection-start-column="40" selection-end-line="898" selection-end-column="40" />
+          <folding>
+            <element signature="e#44#77#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Controller/ApiController.php">
+    <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Form/UserType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="1373" column="123" selection-start-line="1373" selection-start-column="123" selection-end-line="1373" selection-end-column="123" />
-          <folding>
-            <element signature="e#44#77#0#PHP" expanded="true" />
-            <element signature="e#1485#1508#1#PHP" expanded="true" />
-            <element signature="e#2879#2902#1#PHP" expanded="true" />
-            <element signature="e#4390#4410#1#PHP" expanded="true" />
-            <element signature="e#5910#5930#1#PHP" expanded="true" />
-            <element signature="e#7432#7452#1#PHP" expanded="true" />
-            <element signature="e#9188#9208#1#PHP" expanded="true" />
-            <element signature="e#11117#11137#1#PHP" expanded="true" />
-            <element signature="e#13036#13056#1#PHP" expanded="true" />
-            <element signature="e#14574#14595#1#PHP" expanded="true" />
-            <element signature="e#16039#16059#1#PHP" expanded="true" />
-            <element signature="e#17490#17510#1#PHP" expanded="true" />
-            <element signature="e#18995#19018#1#PHP" expanded="true" />
-            <element signature="e#20505#20525#1#PHP" expanded="true" />
-            <element signature="e#20692#20715#1#PHP" expanded="true" />
-            <element signature="e#22071#22091#1#PHP" expanded="true" />
-            <element signature="e#25940#25960#1#PHP" expanded="true" />
-            <element signature="e#29705#29725#1#PHP" expanded="true" />
-            <element signature="e#34521#34542#1#PHP" expanded="true" />
-            <element signature="e#41996#42017#1#PHP" expanded="true" />
-            <element signature="e#44623#44646#1#PHP" expanded="true" />
-            <element signature="e#46615#46635#1#PHP" expanded="true" />
-            <element signature="e#46785#46805#1#PHP" expanded="true" />
-            <element signature="e#47980#48000#1#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="333">
+          <caret line="66" column="14" selection-start-line="66" selection-start-column="14" selection-end-line="66" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>

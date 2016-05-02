@@ -896,6 +896,7 @@ class ApiController extends FOSRestController
             );
         }else{ //user
             $entityParams = array(
+                'name'         => $name,
                 'username'     => $username,
                 'email'        => $email,
                 'password'     => $password,
@@ -1397,26 +1398,6 @@ class ApiController extends FOSRestController
 
         return $this->handleView($view);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     private function isTokenValid($token) {

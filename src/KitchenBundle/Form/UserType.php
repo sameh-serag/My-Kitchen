@@ -65,6 +65,9 @@ class UserType extends AbstractType
             ->add('username', NULL, array(
                 'constraints' => array(new NotBlank())
             ))
+            ->add('name', NULL, array(
+                'constraints' => array(new NotBlank())
+            ))
             ->add('email', NULL, array(
                 'constraints' => array(new NotBlank())
             ))
