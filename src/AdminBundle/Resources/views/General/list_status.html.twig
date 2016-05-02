@@ -2,10 +2,10 @@
 
 {% block field %}
     {% if object.getStatus() == '0' %}
-        Pendding
+        معلق
     {% elseif object.getStatus() == '1' %}
-        Approved
+        موافق عليه
     {% elseif object.getStatus() == '2' %}
-        Rejected
+        مرفوض
     {% endif %}
 {% endblock %}

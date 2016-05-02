@@ -82,7 +82,7 @@ class RequestAdmin extends Admin {
                 ))
                 ->add('createdAt', 'doctrine_orm_date', array(), null, array('widget' => 'single_text', 'required' => false,  'attr' => array('class' => 'datepicker', 'data-class' => 'date')))                
                 ->add('userMobile')
-                ->add('status', 'doctrine_orm_choice', array(), 'choice', array('choices' => array('0' => 'Pendding', '1' => 'Approved', '2' => 'Rejected')))
+                ->add('status', 'doctrine_orm_choice', array(), 'choice', array('choices' => array('0' => 'معلق', '1' => 'موافق عليه', '2' => 'مرفوض')))
         ;
     }
 
