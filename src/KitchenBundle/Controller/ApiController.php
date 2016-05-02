@@ -1368,7 +1368,11 @@ class ApiController extends FOSRestController
         $email = $parameterBag->get('email');
         $password = $parameterBag->get('password');
 
-        $user = $em->getRepository('KitchenBundle:User')->findOneBy(array('email'=>$email, 'password'=>$password, 'status' => 1));
+        $user = $em->getRepository('KitchenBundle:User')->findOneBy(array('email'=>$email, 'password'=>$password, 'status' => 1, 'type' => 0));
+
+        if(!$user) {
+            $user = $em->getRepository('KitchenBundle:User')->findOneBy(array('email'=>$email, 'password'=>$password, 'type' => 1));
+        }
 
         if($user) {
             $token = md5(time()).md5(time()+$user->getId());

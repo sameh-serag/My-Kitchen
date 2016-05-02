@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a0cbfb26-e098-4c89-894d-d1109ca46de4" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/KitchenBundle/Controller/ApiController.php" afterPath="$PROJECT_DIR$/src/KitchenBundle/Controller/ApiController.php" />
     </list>
     <ignored path="my_kitchen.iws" />
@@ -32,11 +33,33 @@
       <file leaf-file-name="ApiController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Controller/ApiController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1530">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="281">
+              <caret line="1373" column="123" selection-start-line="1373" selection-start-column="123" selection-end-line="1373" selection-end-column="123" />
               <folding>
                 <element signature="e#44#77#0#PHP" expanded="true" />
+                <element signature="e#1485#1508#1#PHP" expanded="true" />
+                <element signature="e#2879#2902#1#PHP" expanded="true" />
+                <element signature="e#4390#4410#1#PHP" expanded="true" />
+                <element signature="e#5910#5930#1#PHP" expanded="true" />
+                <element signature="e#7432#7452#1#PHP" expanded="true" />
+                <element signature="e#9188#9208#1#PHP" expanded="true" />
                 <element signature="e#11117#11137#1#PHP" expanded="true" />
+                <element signature="e#13036#13056#1#PHP" expanded="true" />
+                <element signature="e#14574#14595#1#PHP" expanded="true" />
+                <element signature="e#16039#16059#1#PHP" expanded="true" />
+                <element signature="e#17490#17510#1#PHP" expanded="true" />
+                <element signature="e#18995#19018#1#PHP" expanded="true" />
+                <element signature="e#20505#20525#1#PHP" expanded="true" />
+                <element signature="e#20692#20715#1#PHP" expanded="true" />
+                <element signature="e#22071#22091#1#PHP" expanded="true" />
+                <element signature="e#25940#25960#1#PHP" expanded="true" />
+                <element signature="e#29705#29725#1#PHP" expanded="true" />
+                <element signature="e#34521#34542#1#PHP" expanded="true" />
+                <element signature="e#41996#42017#1#PHP" expanded="true" />
+                <element signature="e#44623#44646#1#PHP" expanded="true" />
+                <element signature="e#46615#46635#1#PHP" expanded="true" />
+                <element signature="e#46785#46805#1#PHP" expanded="true" />
+                <element signature="e#47980#48000#1#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -45,8 +68,8 @@
       <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Entity/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="521">
-              <caret line="254" column="23" selection-start-line="254" selection-start-column="23" selection-end-line="254" selection-end-column="23" />
+            <state relative-caret-position="146">
+              <caret line="166" column="7" selection-start-line="166" selection-start-column="7" selection-end-line="166" selection-end-column="7" />
               <folding>
                 <element signature="e#40#72#0#PHP" expanded="true" />
               </folding>
@@ -67,7 +90,7 @@
       <file leaf-file-name="RateAdmin.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AdminBundle/Admin/RateAdmin.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="723">
+            <state relative-caret-position="1305">
               <caret line="93" column="34" selection-start-line="93" selection-start-column="34" selection-end-line="93" selection-end-column="34" />
               <folding />
             </state>
@@ -77,8 +100,8 @@
       <file leaf-file-name="UserType.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Form/UserType.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="78" column="14" selection-start-line="78" selection-start-column="14" selection-end-line="78" selection-end-column="14" />
+            <state relative-caret-position="528">
+              <caret line="82" column="25" selection-start-line="82" selection-start-column="25" selection-end-line="82" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -107,7 +130,7 @@
       <file leaf-file-name="Plate.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Entity/Plate.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
+            <state relative-caret-position="2910">
               <caret line="195" column="40" selection-start-line="195" selection-start-column="40" selection-end-line="195" selection-end-column="40" />
               <folding />
             </state>
@@ -127,7 +150,7 @@
       <file leaf-file-name="City.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Entity/City.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
+            <state relative-caret-position="495">
               <caret line="33" column="82" selection-start-line="33" selection-start-column="67" selection-end-line="33" selection-end-column="82" />
               <folding />
             </state>
@@ -171,12 +194,12 @@
         <option value="$PROJECT_DIR$/src/KitchenBundle/Resources/config/serializer/Entity.Rate.yml" />
         <option value="$PROJECT_DIR$/src/KitchenBundle/Resources/config/serializer/Entity.User.yml" />
         <option value="$PROJECT_DIR$/src/AdminBundle/Admin/RateAdmin.php" />
-        <option value="$PROJECT_DIR$/src/KitchenBundle/Form/UserType.php" />
         <option value="$PROJECT_DIR$/src/KitchenBundle/Form/PlateType.php" />
         <option value="$PROJECT_DIR$/src/KitchenBundle/Resources/config/serializer/Entity.Plate.yml" />
         <option value="$PROJECT_DIR$/src/KitchenBundle/Resources/config/serializer/Entity.Category.yml" />
         <option value="$PROJECT_DIR$/src/KitchenBundle/Entity/Plate.php" />
         <option value="$PROJECT_DIR$/src/KitchenBundle/Entity/User.php" />
+        <option value="$PROJECT_DIR$/src/KitchenBundle/Form/UserType.php" />
         <option value="$PROJECT_DIR$/src/KitchenBundle/Controller/ApiController.php" />
       </list>
     </option>
@@ -566,17 +589,77 @@
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="b3">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="my_kitchen">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="app">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="cache">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="dev">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="profiler">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
             <PATH_ELEMENT USER_OBJECT="a6">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="my_kitchen">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="app">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="cache">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="dev">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="profiler">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="77">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane />
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -661,22 +744,22 @@
       <workItem from="1461959802929" duration="8061000" />
       <workItem from="1461987298419" duration="4688000" />
       <workItem from="1462094624517" duration="4248000" />
-      <workItem from="1462216598630" duration="3888000" />
+      <workItem from="1462216598630" duration="4488000" />
+      <workItem from="1462226082709" duration="719000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="92281000" />
+    <option name="totallyTimeSpent" value="93600000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="27" width="1368" height="742" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24242425" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24621212" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328594" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -688,6 +771,7 @@
       <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38619676" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="false" show_stripe_button="true" weight="0.28636363" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" x="493" y="27" width="380" height="741" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -913,7 +997,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1275">
           <caret line="85" column="7" selection-start-line="85" selection-start-column="7" selection-end-line="85" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -921,9 +1004,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding>
-            <marker date="1461960029500" expanded="true" signature="396:525" placeholder="Update Kitch... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -959,7 +1039,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="13" column="69" selection-start-line="13" selection-start-column="69" selection-end-line="13" selection-end-column="69" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -967,7 +1046,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="206">
           <caret line="382" column="3" selection-start-line="382" selection-start-column="3" selection-end-line="413" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -975,7 +1053,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="94">
           <caret line="79" column="4" selection-start-line="79" selection-start-column="4" selection-end-line="81" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -983,7 +1060,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -999,7 +1075,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1007,7 +1082,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3945">
           <caret line="264" column="0" selection-start-line="264" selection-start-column="0" selection-end-line="264" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1015,7 +1089,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1023,7 +1096,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="33" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1031,13 +1103,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="93" selection-start-line="8" selection-start-column="93" selection-end-line="8" selection-end-column="93" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AdminBundle/Admin/RateAdmin.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="723">
+        <state relative-caret-position="1305">
           <caret line="93" column="34" selection-start-line="93" selection-start-column="34" selection-end-line="93" selection-end-column="34" />
           <folding />
         </state>
@@ -1045,7 +1116,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Entity/City.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
+        <state relative-caret-position="495">
           <caret line="33" column="82" selection-start-line="33" selection-start-column="67" selection-end-line="33" selection-end-column="82" />
           <folding />
         </state>
@@ -1075,14 +1146,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Form/UserType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="78" column="14" selection-start-line="78" selection-start-column="14" selection-end-line="78" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Resources/config/serializer/Entity.Plate.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -1093,7 +1156,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Entity/Plate.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
+        <state relative-caret-position="2910">
           <caret line="195" column="40" selection-start-line="195" selection-start-column="40" selection-end-line="195" selection-end-column="40" />
           <folding />
         </state>
@@ -1101,21 +1164,51 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Entity/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="521">
-          <caret line="254" column="23" selection-start-line="254" selection-start-column="23" selection-end-line="254" selection-end-column="23" />
+        <state relative-caret-position="146">
+          <caret line="166" column="7" selection-start-line="166" selection-start-column="7" selection-end-line="166" selection-end-column="7" />
           <folding>
             <element signature="e#40#72#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Form/UserType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="82" column="25" selection-start-line="82" selection-start-column="25" selection-end-line="82" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Controller/ApiController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1530">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="281">
+          <caret line="1373" column="123" selection-start-line="1373" selection-start-column="123" selection-end-line="1373" selection-end-column="123" />
           <folding>
             <element signature="e#44#77#0#PHP" expanded="true" />
+            <element signature="e#1485#1508#1#PHP" expanded="true" />
+            <element signature="e#2879#2902#1#PHP" expanded="true" />
+            <element signature="e#4390#4410#1#PHP" expanded="true" />
+            <element signature="e#5910#5930#1#PHP" expanded="true" />
+            <element signature="e#7432#7452#1#PHP" expanded="true" />
+            <element signature="e#9188#9208#1#PHP" expanded="true" />
             <element signature="e#11117#11137#1#PHP" expanded="true" />
+            <element signature="e#13036#13056#1#PHP" expanded="true" />
+            <element signature="e#14574#14595#1#PHP" expanded="true" />
+            <element signature="e#16039#16059#1#PHP" expanded="true" />
+            <element signature="e#17490#17510#1#PHP" expanded="true" />
+            <element signature="e#18995#19018#1#PHP" expanded="true" />
+            <element signature="e#20505#20525#1#PHP" expanded="true" />
+            <element signature="e#20692#20715#1#PHP" expanded="true" />
+            <element signature="e#22071#22091#1#PHP" expanded="true" />
+            <element signature="e#25940#25960#1#PHP" expanded="true" />
+            <element signature="e#29705#29725#1#PHP" expanded="true" />
+            <element signature="e#34521#34542#1#PHP" expanded="true" />
+            <element signature="e#41996#42017#1#PHP" expanded="true" />
+            <element signature="e#44623#44646#1#PHP" expanded="true" />
+            <element signature="e#46615#46635#1#PHP" expanded="true" />
+            <element signature="e#46785#46805#1#PHP" expanded="true" />
+            <element signature="e#47980#48000#1#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
