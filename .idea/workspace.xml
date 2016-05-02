@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a0cbfb26-e098-4c89-894d-d1109ca46de4" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/KitchenBundle/Controller/ApiController.php" afterPath="$PROJECT_DIR$/src/KitchenBundle/Controller/ApiController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/KitchenBundle/Entity/Plate.php" afterPath="$PROJECT_DIR$/src/KitchenBundle/Entity/Plate.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/KitchenBundle/Entity/User.php" afterPath="$PROJECT_DIR$/src/KitchenBundle/Entity/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/KitchenBundle/Form/PlateType.php" afterPath="$PROJECT_DIR$/src/KitchenBundle/Form/PlateType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/KitchenBundle/Form/UserType.php" afterPath="$PROJECT_DIR$/src/KitchenBundle/Form/UserType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/KitchenBundle/Resources/config/serializer/Entity.Category.yml" afterPath="$PROJECT_DIR$/src/KitchenBundle/Resources/config/serializer/Entity.Category.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/KitchenBundle/Resources/config/serializer/Entity.Plate.yml" afterPath="$PROJECT_DIR$/src/KitchenBundle/Resources/config/serializer/Entity.Plate.yml" />
     </list>
     <ignored path="my_kitchen.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,8 +32,8 @@
       <file leaf-file-name="ApiController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Controller/ApiController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="258">
-              <caret line="359" column="24" selection-start-line="359" selection-start-column="24" selection-end-line="359" selection-end-column="24" />
+            <state relative-caret-position="191">
+              <caret line="1370" column="121" selection-start-line="1370" selection-start-column="121" selection-end-line="1370" selection-end-column="121" />
               <folding>
                 <element signature="e#44#77#0#PHP" expanded="true" />
                 <element signature="e#11117#11137#1#PHP" expanded="true" />
@@ -518,6 +511,36 @@
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="my_kitchen">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="app">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="cache">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="dev">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="profiler">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="a6">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="ProjectPane">
@@ -608,12 +631,12 @@
       <workItem from="1461959802929" duration="8061000" />
       <workItem from="1461987298419" duration="4688000" />
       <workItem from="1462094624517" duration="4248000" />
-      <workItem from="1462216598630" duration="3014000" />
+      <workItem from="1462216598630" duration="3642000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="91407000" />
+    <option name="totallyTimeSpent" value="92035000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="27" width="1368" height="742" extended-state="6" />
@@ -1058,8 +1081,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/KitchenBundle/Controller/ApiController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="359" column="24" selection-start-line="359" selection-start-column="24" selection-end-line="359" selection-end-column="24" />
+        <state relative-caret-position="191">
+          <caret line="1370" column="121" selection-start-line="1370" selection-start-column="121" selection-end-line="1370" selection-end-column="121" />
           <folding>
             <element signature="e#44#77#0#PHP" expanded="true" />
             <element signature="e#11117#11137#1#PHP" expanded="true" />
