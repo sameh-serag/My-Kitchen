@@ -1387,7 +1387,7 @@ class ApiController extends FOSRestController
         else {
             // get form errors
             // prepare response object with http bad request status 400
-            $apiResponse = new APIResponse(FALSE, "", 'Wrong Credentials');
+            $apiResponse = new APIResponse(FALSE, "", 'الحساب غير صحيح');
             $view = $this->view($apiResponse, Codes::HTTP_BAD_REQUEST);
         }
 
