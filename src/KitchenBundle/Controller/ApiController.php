@@ -323,6 +323,64 @@ class ApiController extends FOSRestController
     }
 
     /**
+     * Get All categories for certain Chef
+     *
+     * @ApiDoc(
+     *   description = "Get All categories for certain Chef",
+     *   output = {
+     *     "class" = "KitchenBundle\Entity\Category",
+     *     "groups" = {"categories"},
+     *   },
+     *   statusCodes = {
+     *     200 = "Returned when successful",
+     *     404 = "Returned when no country found"
+     *   }
+     * )
+     *
+     * @param string     $chef_id      Chef Id
+     * @return type
+     */
+    public function getChefCategoriesAction($chef_id ) {
+
+        $em = $this->getDoctrine()->getManager();
+        $apiResponse = new APIResponse();
+
+        if($chef_id){
+            $chef = $em->getRepository('KitchenBundle:User')->findOneBy(array('id'=>$chef_id));
+
+            if($chef) {
+                $plates     = array();
+                $categories = array();
+
+                foreach ($chef->getPlates() as $plate){
+                    $plates[] = $plate;
+                }
+
+                foreach ($plates as $plate){
+                    if(!in_array($plate->getCategory(), $categories)){
+                        $categories[] = $plate->getCategory();
+                    }
+                }
+                $apiResponse->setStatus(TRUE);
+                $apiResponse->setData($categories);
+                // prepare response object with http status 200
+                $view = $this->view($apiResponse, Codes::HTTP_OK);
+            }
+            else {
+                $apiResponse->setStatus(FALSE);
+                $apiResponse->setError('No city found for the given id');
+                // prepare response object with http status 404 NOT FOUND
+                $view = $this->view($apiResponse, Codes::HTTP_NOT_FOUND);
+            }
+        }
+
+        $context = SerializationContext::create()->setGroups(array("apiResponse", "categories"));
+        $view->setSerializationContext($context);
+
+        return $this->handleView($view);
+    }
+
+    /**
      * Get All chefs for certain City
      *
      * @ApiDoc(
@@ -846,6 +904,8 @@ class ApiController extends FOSRestController
                 'lng'          => $lng,
                 'rate'         => 0,
                 'inHoliday'    => false,
+                'city'         => $city,
+                'country'      => $country,
                 'type'         => $type,
             );
         }
@@ -901,7 +961,9 @@ class ApiController extends FOSRestController
      *      { "name"="price", "dataType"="integer", "required"=true, "description"="", "" },
      *      { "name"="name", "dataType"="string", "required"=true, "description"="", "" },
      *      { "name"="description", "dataType"="string", "required"=true, "description"="", "" },
+     *      { "name"="category", "dataType"="string", "required"=true, "description"="", "" },
      *      { "name"="image[]", "dataType"="file", "required"=true, "description"="", "" },
+     *      { "name"="plate_id", "dataType"="integer", "required"=false, "description"="", "" },
      *   },
      *   statusCodes = {
      *     200 = "Returned when successful",
@@ -938,8 +1000,14 @@ class ApiController extends FOSRestController
         $price = $parameterBag->get('price');
         $description = $parameterBag->get('description');
         $image = $fileBag->get('image');
+        $category = $parameterBag->get('category');
+        $plate_id = $parameterBag->get('plate_id');
 
-        $entity = new Plate();
+        if($plate_id){
+            $entity = $em->getRepository('KitchenBundle:Plate')->findOneBy(array('id'=>$plate_id));
+        }else{
+            $entity = new Plate();
+        }
 
 
         $entityParams = array(
@@ -948,6 +1016,7 @@ class ApiController extends FOSRestController
             'isHot'   => $is_hot,
             'price'    => $price,
             'description'    => $description,
+            'category'    => $category,
             'file'    => $image[0],
         );
 
@@ -965,16 +1034,23 @@ class ApiController extends FOSRestController
 
             $obj = $form->getData();
             $em->persist($obj);
-            $apiResponse->setData('created');
+
+            if($plate_id){
+                $apiResponse->setData('updated');
+            }else{
+                $apiResponse->setData('created');
+            }
             $em->flush();
 
-            unset($image[0]);
-            foreach ($image as $img){
-                $gallery = new Gallery();
-                $gallery->setPlate($obj);
-                $gallery->setFile($img);
-                $em->persist($gallery);
-                $em->flush();
+            if($image){
+                unset($image[0]);
+                foreach ($image as $img){
+                    $gallery = new Gallery();
+                    $gallery->setPlate($obj);
+                    $gallery->setFile($img);
+                    $em->persist($gallery);
+                    $em->flush();
+                }
             }
 
             // prepare response object with http created status 201

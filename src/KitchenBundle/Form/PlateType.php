@@ -26,6 +26,9 @@ class PlateType extends AbstractType
             ))
             ->add('description')
             ->add('price')
+            ->add('category', NULL, array(
+                'property' => 'number'
+            ))
             ->add('chef', NULL, array(
                 'property' => 'number'
             ))

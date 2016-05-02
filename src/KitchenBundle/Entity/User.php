@@ -252,7 +252,7 @@ class User {
      * @return string
      */
     public function getFullImagePath() {
-        return $_SERVER['HTTP_HOST'].'/'.$this->getUploadDir(). '/' .$this->image;
+        return 'http://'.$_SERVER['HTTP_HOST'].'/'.$this->getUploadDir(). '/' .$this->image;
     }
 
 

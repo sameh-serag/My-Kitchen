@@ -3,7 +3,7 @@ KitchenBundle\Entity\Category:
     properties : 
         id:
             expose:  true
-            groups: [categories]
+            groups: [categories,chefplates, plate, plates]
         name :
             expose : true
-            groups: [categories]
+            groups: [categories,chefplates, plate, plates]

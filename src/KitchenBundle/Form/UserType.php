@@ -71,6 +71,12 @@ class UserType extends AbstractType
             ->add('password', NULL, array(
                 'constraints' => array(new NotBlank())
             ))
+            ->add('city', NULL, array(
+                'constraints' => array(new NotBlank())
+            ))
+            ->add('country', NULL, array(
+                'constraints' => array(new NotBlank())
+            ))
             ->add('mobile')
             ->add('rate')
             ->add('inHoliday')

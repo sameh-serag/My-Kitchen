@@ -21,6 +21,9 @@ KitchenBundle\Entity\Plate:
         description :
             expose : true
             groups: [chefplates, plate, plates]
+        category :
+            expose : true
+            groups: [chefplates, plate, plates]
         gallery :
             expose : true
             groups: [chefplates, plate]
