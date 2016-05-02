@@ -169,6 +169,52 @@ class ApiController extends FOSRestController
     }
 
     /**
+     * Get All comments for certain Chef
+     *
+     * @ApiDoc(
+     *   description = "Get All comments for certain Chef",
+     *   output = {
+     *     "class" = "KitchenBundle\Entity\Rating",
+     *     "groups" = {"chefComments"},
+     *   },
+     *   statusCodes = {
+     *     200 = "Returned when successful",
+     *     404 = "Returned when no country found"
+     *   }
+     * )
+     *
+     * @param string     $chef_id      chef Id
+     * @return type
+     */
+    public function getChefCommentsAction( $chef_id ) {
+
+        $em = $this->getDoctrine()->getManager();
+        $apiResponse = new APIResponse();
+
+        if($chef_id){
+            $chef = $em->getRepository('KitchenBundle:User')->findOneBy(array('id'=>$chef_id));
+
+            if($chef) {
+                $apiResponse->setStatus(TRUE);
+                $apiResponse->setData($chef->getRatings());
+                // prepare response object with http status 200
+                $view = $this->view($apiResponse, Codes::HTTP_OK);
+            }
+            else {
+                $apiResponse->setStatus(FALSE);
+                $apiResponse->setError('No chef found for the given id');
+                // prepare response object with http status 404 NOT FOUND
+                $view = $this->view($apiResponse, Codes::HTTP_NOT_FOUND);
+            }
+        }
+
+        $context = SerializationContext::create()->setGroups(array("apiResponse", "chefComments"));
+        $view->setSerializationContext($context);
+
+        return $this->handleView($view);
+    }
+
+    /**
      * Get All plates for certain City
      *
      * @ApiDoc(

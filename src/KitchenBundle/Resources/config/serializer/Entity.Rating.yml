@@ -1,0 +1,12 @@
+KitchenBundle\Entity\Rating:
+    exclusion_policy: ALL
+    properties : 
+        id:
+            expose:  true
+            groups: [chefComments]
+        user :
+            expose : true
+            groups: [chefComments]
+        comment :
+            expose : true
+            groups: [chefComments]

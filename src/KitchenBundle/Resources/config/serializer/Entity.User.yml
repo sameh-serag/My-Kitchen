@@ -6,7 +6,7 @@ KitchenBundle\Entity\User:
             groups: [chefs, chefplates, chef, userDetails]
         name :
             expose : true
-            groups: [chefs, chefplates, chef, myOrders, userDetails, myRequests]
+            groups: [chefs, chefplates, chef, myOrders, userDetails, myRequests, chefComments]
         image :
             expose : true
             groups: [chefs, chefplates, chef, userDetails]
