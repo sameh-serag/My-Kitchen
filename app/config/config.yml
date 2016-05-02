@@ -98,17 +98,17 @@ nelmio_api_doc:
             default_format:       json
             
 sonata_admin:
-    title: My Kitchen
+    title: مطبخى
     templates:
         layout: AdminBundle:General:standard_layout.html.twig
     dashboard:
-        blocks:
-            # display a dashboard block
-            - { position: left, type: sonata.admin.block.admin_list, settings: { groups: [Site] } }
+#        blocks:
+#            # display a dashboard block
+#            - { position: left, type: sonata.admin.block.admin_list, settings: { groups: [الموقع] } }
 
         groups:
-            Site:
-                items:
+            بيانات الموقع:
+                items: 
                     - category_admin    
                     - country_admin
                     - city_admin

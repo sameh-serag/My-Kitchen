@@ -29,8 +29,7 @@ class UserAdmin extends Admin {
                 ->add('name')
                 ->add('username')
                 ->add('mobile')
-                ->add('email')
-                ->add('image', null, array('template' => 'AdminBundle:General:list_image.html.twig'))
+                ->add('email')                
                 ->add('_action', 'actions', array(
                     'actions' => array(
                         'show' => array(),
@@ -50,8 +49,7 @@ class UserAdmin extends Admin {
                 ->add('email')
                 ->add('Location', null, array('template' => 'AdminBundle:General:show_chef_location.html.twig'))
                 ->add('lat')
-                ->add('lng')
-                ->add('image', null, array('template' => 'AdminBundle:General:show_image.html.twig'))
+                ->add('lng')                
         ;
     }
 
@@ -73,8 +71,7 @@ class UserAdmin extends Admin {
                 ->add('mobile')
                 ->add('email')
                 ->add('lat', null, array('attr' => array('class' => 'LatField')))
-                ->add('lng', null, array('attr' => array('class' => 'LngField')))             
-                ->add('file', 'file', array('required' => false, 'label' => 'Image'))
+                ->add('lng', null, array('attr' => array('class' => 'LngField')))                             
                 ->setHelps(array(
                     'userPassword' => 'Password required in new user create.'
                 ))
