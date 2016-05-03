@@ -27,6 +27,8 @@ class UserAdmin extends Admin {
         $listMapper
                 ->addIdentifier('id')
                 ->add('name')
+                ->add('country')
+                ->add('city')
                 ->add('username')
                 ->add('mobile')
                 ->add('email')                
@@ -45,6 +47,8 @@ class UserAdmin extends Admin {
                 ->add('id')
                 ->add('name')
                 ->add('username')
+                ->add('country')
+                ->add('city')
                 ->add('mobile')
                 ->add('email')
                 ->add('Location', null, array('template' => 'AdminBundle:General:show_chef_location.html.twig'))
@@ -58,15 +62,25 @@ class UserAdmin extends Admin {
                 ->add('id')
                 ->add('name')
                 ->add('username')
+                ->add('country')
+                ->add('city')
                 ->add('mobile')
                 ->add('email')
         ;
     }
 
-    public function configureFormFields(FormMapper $formMapper) {        
+    public function configureFormFields(FormMapper $formMapper) {   
+        $class = 'new';
+
+        if ($this->getSubject() && $this->getSubject()->getId()) {
+            $class = 'edit';
+        }
+        
         $formMapper
                 ->add('name')
                 ->add('username')
+                ->add('country', null, array('attr' => array('class' => 'countries-list ' . $class)))
+                ->add('city', null, array('attr' => array('class' => 'cities-list')))
                 ->add('userPassword', 'password', array('label' => 'Password', 'required' => false))
                 ->add('mobile')
                 ->add('email')
