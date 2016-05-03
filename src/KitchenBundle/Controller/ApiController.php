@@ -123,6 +123,49 @@ class ApiController extends FOSRestController
     }
 
     /**
+     * Get All Categories
+     *
+     * @ApiDoc(
+     *   description = "Get All Categories in the System",
+     *   output = {
+     *    "class" = "KitchenBundle\Entity\Category",
+     *     "groups" = {"category"},
+     *   },
+     *   statusCodes = {
+     *     200 = "Returned when successful",
+     *   }
+     * )
+     *
+     * @return type
+     */
+    public function getCategoriesAction() {
+
+        $em = $this->getDoctrine()->getManager();
+
+        $categories = $em->getRepository('KitchenBundle:Category')->findAll();
+
+        $apiResponse = new APIResponse();
+
+        if($categories) {
+            $apiResponse->setStatus(TRUE);
+            $apiResponse->setData($categories);
+            // prepare response object with http status 200
+            $view = $this->view($apiResponse, Codes::HTTP_OK);
+        }
+        else {
+            $apiResponse->setStatus(FALSE);
+            $apiResponse->setError('No countries are found');
+            // prepare response object with http status 404 NOT FOUND
+            $view = $this->view($apiResponse, Codes::HTTP_NOT_FOUND);
+        }
+
+        $context = SerializationContext::create()->setGroups(array("apiResponse", "categories"));
+        $view->setSerializationContext($context);
+
+        return $this->handleView($view);
+    }
+
+    /**
      * Get All plates for certain Chef
      *
      * @ApiDoc(
@@ -1384,7 +1427,7 @@ class ApiController extends FOSRestController
             $em->flush();
             $apiResponse = new APIResponse(TRUE);
 
-            $apiResponse->setData(array('token' => $token, 'id' => $user->getId(), 'type' => $user->getType() ? 'user' : 'chef' ));
+            $apiResponse->setData(array('token' => $token, 'id' => $user->getId(), 'city_id' => $user->getCity()? $user->getCity()->getId() : 0, 'type' => $user->getType() ? 'user' : 'chef' ));
 
             // prepare response object with http created status 201
             $view = $this->view($apiResponse, Codes::HTTP_ACCEPTED);

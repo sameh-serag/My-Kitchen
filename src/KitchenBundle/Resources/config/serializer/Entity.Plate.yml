@@ -7,6 +7,9 @@ KitchenBundle\Entity\Plate:
         name :
             expose : true
             groups: [chefplates, plate, requestDetails, plates]
+        chef :
+            expose : true
+            groups: [plate]
         isHot :
             expose : true
             groups: [chefplates, plate, plates]

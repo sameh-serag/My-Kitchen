@@ -3,7 +3,7 @@ KitchenBundle\Entity\User:
     properties : 
         id :
             expose:  true
-            groups: [chefs, chefplates, chef, userDetails]
+            groups: [chefs, chefplates, chef, userDetails, plate]
         name :
             expose : true
             groups: [chefs, chefplates, chef, myOrders, userDetails, myRequests, chefComments]
