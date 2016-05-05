@@ -366,6 +366,64 @@ class ApiController extends FOSRestController
     }
 
     /**
+     * Get All plates for certain City and category
+     *
+     * @ApiDoc(
+     *   description = "Get All plates for certain City and category",
+     *   output = {
+     *     "class" = "KitchenBundle\Entity\Plate",
+     *     "groups" = {"plates"},
+     *   },
+     *   statusCodes = {
+     *     200 = "Returned when successful",
+     *     404 = "Returned when no country found"
+     *   }
+     * )
+     *
+     * @param string     $city_id          City Id
+     * @param string     $category_id      CategoryId
+     * @return type
+     */
+    public function getCityCategoryPlatesAction($city_id, $category_id ) {
+
+        $em = $this->getDoctrine()->getManager();
+        $apiResponse = new APIResponse();
+
+        if($city_id){
+            $city = $em->getRepository('KitchenBundle:City')->findOneBy(array('id'=>$city_id));
+
+            if($city) {
+                $plates     = array();
+                $categories = array();
+                foreach ($city->getChefs() as $chef){
+                    foreach ($chef->getPlates() as $plate){
+                        if($plate->getCategory() && ($plate->getCategory()->getId() == $category_id)){
+                            $plates[] = $plate;
+                        }
+                    }
+                }
+
+
+                $apiResponse->setStatus(TRUE);
+                $apiResponse->setData($plates);
+                // prepare response object with http status 200
+                $view = $this->view($apiResponse, Codes::HTTP_OK);
+            }
+            else {
+                $apiResponse->setStatus(FALSE);
+                $apiResponse->setError('No city found for the given id');
+                // prepare response object with http status 404 NOT FOUND
+                $view = $this->view($apiResponse, Codes::HTTP_NOT_FOUND);
+            }
+        }
+
+        $context = SerializationContext::create()->setGroups(array("apiResponse", "plates"));
+        $view->setSerializationContext($context);
+
+        return $this->handleView($view);
+    }
+
+    /**
      * Get All categories for certain Chef
      *
      * @ApiDoc(
@@ -1228,12 +1286,12 @@ class ApiController extends FOSRestController
         $header = $request->headers;
         $token = $header->get('token');
 
-        if(!$this->isTokenValid($token)){
-            $apiResponse = new APIResponse(FALSE, "", 'Not Authorized');
-            $view = $this->view($apiResponse, Codes::HTTP_BAD_REQUEST);
-
-            return $this->handleView($view);
-        }
+//        if(!$this->isTokenValid($token)){
+//            $apiResponse = new APIResponse(FALSE, "", 'Not Authorized');
+//            $view = $this->view($apiResponse, Codes::HTTP_BAD_REQUEST);
+//
+//            return $this->handleView($view);
+//        }
 
         // get POST params
         $user = $parameterBag->get('user');
@@ -1250,8 +1308,8 @@ class ApiController extends FOSRestController
         $entityParams = array(
             'user'          => $user,
             'chef'          => $chef,
-            'deliveryDate'  => $delivery_date,
-            'deliveryTime'  => $delivery_time,
+            'deliveryDate'  => $this->convert($delivery_date),
+            'deliveryTime'  => $this->convert($delivery_time),
             'userLat'       => $user_lat,
             'userLng'       => $user_lng,
             'status'        => 0,
@@ -1477,6 +1535,12 @@ class ApiController extends FOSRestController
         }
 
         return $errors;
+    }
+
+    private function convert($string) {
+        $persian = array('۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹');
+        $num = range(0, 9);
+        return str_replace($persian, $num, $string);
     }
 
 
