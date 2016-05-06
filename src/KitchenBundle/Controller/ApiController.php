@@ -1538,7 +1538,7 @@ class ApiController extends FOSRestController
     }
 
     private function convert($string) {
-        $persian = array('۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹');
+        $persian = array('۰', '۱', '۲', '۳', '٤', '۵', '٦', '۷', '۸', '۹');
         $num = range(0, 9);
         return str_replace($persian, $num, $string);
     }
