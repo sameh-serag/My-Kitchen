@@ -6,7 +6,7 @@ KitchenBundle\Entity\Request:
             groups: [myOrders, myRequests, requestDetails]
         totalPrice :
             expose : true
-            groups: [myOrders]
+            groups: [myOrders, requestDetails]
         status :
             expose : true
             groups: [myOrders]
@@ -26,6 +26,9 @@ KitchenBundle\Entity\Request:
             expose : true
             groups: [requestDetails]
         userLng :
+            expose : true
+            groups: [requestDetails]
+        notes :
             expose : true
             groups: [requestDetails]
         requestdetails :

@@ -344,7 +344,9 @@ class ApiController extends FOSRestController
                     }
                 }
                 foreach ($plates as $plate){
-                    $categories[] = $plate->getCategory();
+                    if(!in_array($plate->getCategory(), $categories)){
+                        $categories[] = $plate->getCategory();
+                    }
                 }
                 $apiResponse->setStatus(TRUE);
                 $apiResponse->setData($categories);
@@ -788,7 +790,14 @@ class ApiController extends FOSRestController
 
             if($user) {
                 $apiResponse->setStatus(TRUE);
-                $apiResponse->setData($user->getOrders());
+                $orders = $user->getOrders();
+                $orderArr = array();
+                foreach ($orders as $order){
+                    if($order->getStatus() != 3){
+                        $orderArr[] = $order;
+                    }
+                }
+                $apiResponse->setData($orderArr);
                 // prepare response object with http status 200
                 $view = $this->view($apiResponse, Codes::HTTP_OK);
             }
@@ -1135,6 +1144,7 @@ class ApiController extends FOSRestController
             $apiResponse = new APIResponse(TRUE);
 
             $obj = $form->getData();
+            $obj->setIsHot($is_hot);
             $em->persist($obj);
 
             if($plate_id){
@@ -1164,6 +1174,74 @@ class ApiController extends FOSRestController
 
             // prepare response object with http bad request status 400
             $apiResponse = new APIResponse(FALSE, "", $errors);
+            $view = $this->view($apiResponse, Codes::HTTP_BAD_REQUEST);
+        }
+
+        return $this->handleView($view);
+    }
+
+
+    /**
+     * Cancel Order
+     *
+     * @ApiDoc(
+     *   resource = true,
+     *   description = "Cancel Order",
+     *   parameters={
+     *      { "name"="order_id", "dataType"="string", "required"=true, "description"="", "format"="" },
+     *   },
+     *   statusCodes = {
+     *     200 = "Returned when successful",
+     *     400 = "Returned when the data has errors"
+     *   }
+     * )
+     *
+     * @return type
+     */
+    public function postCancelorderAction(Request $request) {
+
+        // get parameterBag object
+        $parameterBag = $request->request;
+
+        // get entity manager
+        $em = $this->getDoctrine()->getManager();
+
+        // get Headers object
+        $header = $request->headers;
+        $token = $header->get('token');
+
+        if(!$this->isTokenValid($token)){
+            $apiResponse = new APIResponse(FALSE, "", 'Not Authorized');
+            $view = $this->view($apiResponse, Codes::HTTP_BAD_REQUEST);
+
+            return $this->handleView($view);
+        }
+
+        // get POST params
+        $order_id = $parameterBag->get('order_id');
+
+        $order = $em->getRepository('KitchenBundle:Request')->findOneBy(array('id'=>$order_id));
+
+        if($order) {
+            if($order->getCancelTime() < new \DateTime()){
+                $apiResponse = new APIResponse(FALSE, "", 'Canot cancel order.');
+                $view = $this->view($apiResponse, Codes::HTTP_BAD_REQUEST);
+            }
+            else{
+                $order->setStatus(3);
+                $em->persist($order);
+                $em->flush();
+                $apiResponse = new APIResponse(TRUE);
+
+                $apiResponse->setData("updated");
+
+                // prepare response object with http created status 201
+                $view = $this->view($apiResponse, Codes::HTTP_ACCEPTED);
+            }
+        }
+        else {
+            // prepare response object with http bad request status 400
+            $apiResponse = new APIResponse(FALSE, "", 'Order not found');
             $view = $this->view($apiResponse, Codes::HTTP_BAD_REQUEST);
         }
 

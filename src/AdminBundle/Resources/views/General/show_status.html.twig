@@ -7,5 +7,7 @@
         موافق عليه
     {% elseif object.getStatus() == '2' %}
         مرفوض
+    {% elseif object.getStatus() == '3' %}
+        ملغي
     {% endif %}
 {% endblock %}

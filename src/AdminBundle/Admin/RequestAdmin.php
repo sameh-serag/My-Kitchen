@@ -82,7 +82,7 @@ class RequestAdmin extends Admin {
                 ))
                 ->add('createdAt', 'doctrine_orm_date', array(), null, array('widget' => 'single_text', 'required' => false,  'attr' => array('class' => 'datepicker', 'data-class' => 'date')))                
                 ->add('userMobile')
-                ->add('status', 'doctrine_orm_choice', array(), 'choice', array('choices' => array('0' => 'معلق', '1' => 'موافق عليه', '2' => 'مرفوض')))
+                ->add('status', 'doctrine_orm_choice', array(), 'choice', array('choices' => array('0' => 'معلق', '1' => 'موافق عليه', '2' => 'مرفوض', '3' => 'ملغي')))
         ;
     }
 
@@ -104,7 +104,7 @@ class RequestAdmin extends Admin {
                         return $qb->where($qb->expr()->eq('u.type', '1'));
                     }
                 ),array('admin_code' => 'user_admin'))
-                ->add('status', 'choice', array('choices' => array('0' => 'معلق', '1' => 'موافق عليه', '2' => 'مرفوض')))
+                ->add('status', 'choice', array('choices' => array('0' => 'معلق', '1' => 'موافق عليه', '2' => 'مرفوض', '3' => 'ملغي')))
                 ->add('cancelTime', null, array('attr' => array('data-class' => 'datetime'), 'widget' => 'single_text', 'format' => 'yyyy-MM-dd H:mm'))
                 ->add('deliveryDate', null, array('attr' => array('data-class' => 'date'), 'widget' => 'single_text', 'format' => 'yyyy-MM-dd'))
                 ->add('deliveryTime', null, array('attr' => array('data-class' => 'time'), 'widget' => 'single_text'))
