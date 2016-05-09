@@ -511,7 +511,13 @@ class ApiController extends FOSRestController
 
             if($city) {
                 $chefs     = array();
-                $chefs = $city->getChefs();
+                $all = $city->getChefs();
+                foreach ($all as $user){
+                    if(!$user->getType()){
+                        $chefs[] = $user;
+                    }
+                }
+
                 $apiResponse->setStatus(TRUE);
                 $apiResponse->setData($chefs);
                 // prepare response object with http status 200
@@ -1217,14 +1223,17 @@ class ApiController extends FOSRestController
             return $this->handleView($view);
         }
 
+
         // get POST params
         $order_id = $parameterBag->get('order_id');
 
         $order = $em->getRepository('KitchenBundle:Request')->findOneBy(array('id'=>$order_id));
 
         if($order) {
-            if($order->getCancelTime() < new \DateTime()){
-                $apiResponse = new APIResponse(FALSE, "", 'Canot cancel order.');
+            date_default_timezone_set('Asia/Riyadh');
+            $now =new \DateTime();
+            if($order->getCancelTime()->format('Y-m-d H:i:s') < $now->format('Y-m-d H:i:s')){
+                $apiResponse = new APIResponse(FALSE, "", 'لا يمكن حذف الطلب فقد انتهى الوقت المتاح للالغاء');
                 $view = $this->view($apiResponse, Codes::HTTP_BAD_REQUEST);
             }
             else{
