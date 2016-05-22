@@ -34,6 +34,7 @@ class RequestAdmin extends Admin {
                 ->add('deliveryDate')
                 ->add('deliveryTime')
                 ->add('totalPrice')
+                ->add('address')
                 ->add('_action', 'actions', array(
                     'actions' => array(
                         'show' => array(),
@@ -57,6 +58,7 @@ class RequestAdmin extends Admin {
                 ->add('userLat')
                 ->add('userLng')
                 ->add('totalPrice')
+                ->add('address')
                 ->add('userMobile')
                 ->add('notes')
                 ->add('requestdetails', null, array('template' => 'AdminBundle:General:show_request_details.html.twig'))
@@ -111,6 +113,7 @@ class RequestAdmin extends Admin {
                 ->add('userLat', null, array('attr' => array('class' => 'LatField')))
                 ->add('userLng', null, array('attr' => array('class' => 'LngField')))
                 ->add('totalPrice')
+                ->add('address')
                 ->add('deliveryPrice')
                 ->add('userMobile')
                 ->add('notes')

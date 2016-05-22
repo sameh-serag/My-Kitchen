@@ -7,6 +7,9 @@ KitchenBundle\Entity\Request:
         totalPrice :
             expose : true
             groups: [myOrders, requestDetails]
+        address :
+            expose : true
+            groups: [requestDetails]
         status :
             expose : true
             groups: [myOrders]

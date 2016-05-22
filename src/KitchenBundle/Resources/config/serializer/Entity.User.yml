@@ -17,7 +17,7 @@ KitchenBundle\Entity\User:
             groups: [chefs, chef]
         notes :
             expose : true
-            groups: [chefplates, chef, userDetails]
+            groups: [chefplates, chef, userDetails, plate]
         deliveryNotes :
             expose : true
             groups: [chefplates, chef, userDetails]

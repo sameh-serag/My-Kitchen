@@ -1044,6 +1044,7 @@
             }
 
             $entity->setStatus(1);
+            $entity->setInHoliday($in_holiday);
             // create service form
             $form = $this->createForm(new UserType($type), $entity, array('csrf_protection' => false));
 
@@ -1429,6 +1430,7 @@
          *      { "name"="user_lat", "dataType"="string", "required"=true, "description"="", "" },
          *      { "name"="user_lng", "dataType"="string", "required"=true, "description"="", "" },
          *      { "name"="total_price", "dataType"="string", "required"=true, "description"="", "" },
+         *      { "name"="address", "dataType"="string", "required"=true, "description"="", "" },
          *      { "name"="plates", "dataType"="json array", "required"=true, "description"="ex. [{'id':1,'quantity':55},{'id':2,'quantity':33}]", "" },
          *   },
          *   statusCodes = {
@@ -1466,6 +1468,7 @@
             $user_lat = $parameterBag->get('user_lat');
             $user_lng = $parameterBag->get('user_lng');
             $plates = $parameterBag->get('plates');
+            $address = $parameterBag->get('address');
             $total_price = $parameterBag->get('total_price');
 
             $entity = new \KitchenBundle\Entity\Request();
@@ -1478,10 +1481,9 @@
                 'userLat'       => $user_lat,
                 'userLng'       => $user_lng,
                 'status'        => 0,
+                'address'        => $address,
                 'totalPrice'    => $total_price
             );
-
-
 
             // create service form
             $form = $this->createForm(new RequestType(), $entity, array('csrf_protection' => false));
@@ -1496,7 +1498,6 @@
                 $obj = $form->getData();
 
                 $apiResponse->setData('created');
-    //            echo json_encode(array(array('id'=>1,'quantity'=>55), array('id'=>1,'quantity'=>55)));
                 $plates = json_decode($plates, true);
                 foreach ($plates as $plate){
                     $ent = new RequestDetails();
