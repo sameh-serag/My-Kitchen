@@ -94,6 +94,13 @@ class Request
     /**
      * @var string
      *
+     * @ORM\Column(name="customer_notes", type="text", nullable=true)
+     */
+    private $customerNotes;
+    
+    /**
+     * @var string
+     *
      * @ORM\Column(name="notes", type="text", nullable=true)
      */
     private $notes;
@@ -503,5 +510,28 @@ class Request
     public function setAddress($address)
     {
         $this->address = $address;
+    }
+
+    /**
+     * Set customerNotes
+     *
+     * @param string $customerNotes
+     * @return Request
+     */
+    public function setCustomerNotes($customerNotes)
+    {
+        $this->customerNotes = $customerNotes;
+
+        return $this;
+    }
+
+    /**
+     * Get customerNotes
+     *
+     * @return string 
+     */
+    public function getCustomerNotes()
+    {
+        return $this->customerNotes;
     }
 }

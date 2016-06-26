@@ -61,6 +61,7 @@ class RequestAdmin extends Admin {
                 ->add('address')
                 ->add('userMobile')
                 ->add('notes')
+                ->add('customerNotes')
                 ->add('requestdetails', null, array('template' => 'AdminBundle:General:show_request_details.html.twig'))
         ;
     }
@@ -117,6 +118,7 @@ class RequestAdmin extends Admin {
                 ->add('deliveryPrice')
                 ->add('userMobile')
                 ->add('notes')
+                ->add('customerNotes')        
                 ->add('requestdetails', 'sonata_type_collection', array(
                     'by_reference' => false,
                     'cascade_validation' => true,

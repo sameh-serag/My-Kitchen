@@ -106,6 +106,10 @@
                 <source>Notes</source>
                 <target>ملاحظات</target>
             </trans-unit>
+            <trans-unit id="Customer Notes">
+                <source>Customer Notes</source>
+                <target>ملاحظات العميل</target>
+            </trans-unit>
             <trans-unit id="Delivery Notes">
                 <source>Delivery Notes</source>
                 <target>ملاحظات التوصيل</target>
@@ -221,6 +225,14 @@
             <trans-unit id="Content">
                 <source>Content</source>
                 <target>المحتوى</target>
+            </trans-unit>
+            <trans-unit id="Address">
+                <source>Address</source>
+                <target>العنوان</target>
+            </trans-unit>
+            <trans-unit id="Delivery Price">
+                <source>Delivery Price</source>
+                <target>سعر التوصيل</target>
             </trans-unit>
         </body>
     </file>
